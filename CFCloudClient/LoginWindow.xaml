@@ -1,0 +1,26 @@
+﻿<Window x:Class="CFCloudClient.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CFCloudClient"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="280" Width="360" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <WrapPanel HorizontalAlignment="Left" Height="110" Width="300" Grid.Row="1" Orientation="Vertical" Margin="50, 0, 0, 0">
+            <TextBlock x:Name="email" TextWrapping="Wrap" Text="Email:" Margin="0,10,0,0"/>
+            <TextBox x:Name="emailBox" Height="20" TextWrapping="Wrap" Width="250" Margin="0,5,0,0" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="password" TextWrapping="Wrap" Text="Password:" Margin="0,10,0,0"/>
+            <PasswordBox x:Name="passwordBox" Width="250" Height="20" Margin="0,5,0,0" HorizontalAlignment="Left"/>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="60" Grid.Row="2" VerticalAlignment="Top" Width="300">
+            <Button x:Name="Register" Content="Register" Width="75" Background="White" Margin="50,20,0,0" Click="Button_Register"/>
+            <Button x:Name="Login" Content="Login" Width="75" Background="White" Margin="100,20,0,0" Click="Button_Login"/>
+        </WrapPanel>
+    </Grid>
+</Window>
