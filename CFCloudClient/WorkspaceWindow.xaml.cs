@@ -36,8 +36,9 @@ namespace CFCloudClient
             {
                 if (MessageBox.Show(Properties.Resources.WorkspaceExist, this.Title, MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    Util.Utils.DeleteFolder(workspace);
-                    Directory.CreateDirectory(workspace);
+                    DeleteFolder(workspace);
+                    if (!Directory.Exists(workspace))
+                        Directory.CreateDirectory(workspace);
                 }
                 else
                     return;
@@ -66,6 +67,22 @@ namespace CFCloudClient
             {
                 Workspace.Text = folderBrowserDialog.SelectedPath;
             }
+        }
+
+        private void DeleteFolder(string path)
+        {
+            string[] dirs = Directory.GetDirectories(path);
+            string[] files = Directory.GetFiles(path);
+            foreach (string dir in dirs)
+            {
+                DeleteFolder(dir);
+            }
+            foreach (string file in files)
+            {
+                new FileInfo(file).Attributes = FileAttributes.Normal;
+                File.Delete(file);
+            }
+            Directory.Delete(path);
         }
     }
 }
