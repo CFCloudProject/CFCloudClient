@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CFCloudClient.Util
@@ -11,6 +12,7 @@ namespace CFCloudClient.Util
     {
         public static void DeleteFolder(string path)
         {
+            bool retry = true;
             string[] dirs = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
             foreach (string dir in dirs)
@@ -20,11 +22,35 @@ namespace CFCloudClient.Util
             foreach (string file in files)
             {
                 UnLockFile(file);
-                new FileInfo(file).Attributes = FileAttributes.Normal;
-                File.Delete(file);
+                retry = true;
+                while (retry)
+                {
+                    try
+                    {
+                        new FileInfo(file).Attributes = FileAttributes.Normal;
+                        File.Delete(file);
+                        retry = false;
+                    }
+                    catch (IOException)
+                    {
+                        Thread.Sleep(5000);
+                    }
+                }
                 SqliteHelper.Delete(file);
             }
-            Directory.Delete(path);
+            retry = true;
+            while (retry)
+            {
+                try
+                {
+                    Directory.Delete(path);
+                    retry = false;
+                }
+                catch (IOException)
+                {
+                    Thread.Sleep(5000);
+                }
+            }
             SqliteHelper.Delete(path);
         }
 

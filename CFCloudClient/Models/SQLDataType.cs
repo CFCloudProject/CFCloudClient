@@ -23,6 +23,15 @@ namespace CFCloudClient.Models
             IsShared = isShared;
         }
 
+        public SQLDataType(string path, DateTime modifiedTime, string version, string modifier, string isShared)
+        {
+            Path = path;
+            ModifiedTime = modifiedTime.ToUniversalTime().Ticks.ToString();
+            Version = version;
+            Modifier = modifier;
+            IsShared = isShared;
+        }
+
         public DateTime getModifiedTime()
         {
             return new DateTime(long.Parse(ModifiedTime), DateTimeKind.Utc);

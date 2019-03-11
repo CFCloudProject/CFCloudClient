@@ -23,21 +23,25 @@ namespace CFCloudClient.BackgroundWorks
                     if (eve == null)
                     {
                         EventQueue.Add(e);
+                        Util.Global.manualResetEvent.Set();
                         return;
                     }
                     switch (eve.Type)
                     {
                         case Models.FileChangeEvent.FileChangeType.ClientDelete:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ClientChange;
+                            Util.Global.manualResetEvent.Set();
                             return;
                         case Models.FileChangeEvent.FileChangeType.ServerRename:
                         case Models.FileChangeEvent.FileChangeType.ServerRenameAndClientChange:
                         case Models.FileChangeEvent.FileChangeType.ServerRenameAndServerChange:
                             this.Add(new Models.FileChangeEvent(Models.FileChangeEvent.FileChangeType.ServerDelete, eve.OldLocalPath));
                             eve.Type = Models.FileChangeEvent.FileChangeType.ClientCreate;
+                            Util.Global.manualResetEvent.Set();
                             return;
                         default:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ClientCreate;
+                            Util.Global.manualResetEvent.Set();
                             return;
                     }
                 }
@@ -63,21 +67,24 @@ namespace CFCloudClient.BackgroundWorks
                         switch (eve1.Type)
                         {
                             case Models.FileChangeEvent.FileChangeType.ClientCreate:
-                                return;
                             case Models.FileChangeEvent.FileChangeType.ClientChange:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             default:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ClientChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     if (eve1 == null && eve2 == null)
                         EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
                 else if (e.Type == Models.FileChangeEvent.FileChangeType.ClientRename)
@@ -113,6 +120,7 @@ namespace CFCloudClient.BackgroundWorks
                             case Models.FileChangeEvent.FileChangeType.ClientCreate:
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange;
@@ -120,12 +128,14 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.CloudPath = e.CloudPath;
                                 eve1.OldCloudPath = e.OldCloudPath;
                                 eve1.OldLocalPath = e.OldLocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange:
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange;
@@ -133,17 +143,21 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.CloudPath = e.CloudPath;
                                 eve1.OldCloudPath = e.OldCloudPath;
                                 eve1.OldLocalPath = e.OldLocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerDelete:
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             default:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     if (eve1 == null && eve2 == null)
                         EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
                 else if (e.Type == Models.FileChangeEvent.FileChangeType.ClientDelete)
@@ -170,6 +184,7 @@ namespace CFCloudClient.BackgroundWorks
                             case Models.FileChangeEvent.FileChangeType.ClientCreate:
                             case Models.FileChangeEvent.FileChangeType.ServerDelete:
                                 EventQueue.Remove(eve);
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange:
@@ -177,14 +192,17 @@ namespace CFCloudClient.BackgroundWorks
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ClientDelete;
                                 eve.CloudPath = eve.OldCloudPath;
                                 eve.LocalPath = eve.OldLocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             default:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ClientDelete;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     if (eve == null && eve2 == null)
                         EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
                 else if (e.Type == Models.FileChangeEvent.FileChangeType.ServerCreate)
@@ -196,21 +214,26 @@ namespace CFCloudClient.BackgroundWorks
                     if (eve == null)
                     {
                         EventQueue.Add(e);
+                        Util.Global.manualResetEvent.Set();
                         return;
                     }
                     switch (eve.Type)
                     {
                         case Models.FileChangeEvent.FileChangeType.ClientCreate:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ClientCreate;
+                            Util.Global.manualResetEvent.Set();
                             return;
                         case Models.FileChangeEvent.FileChangeType.ClientChange:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ClientChange;
+                            Util.Global.manualResetEvent.Set();
                             return;
                         case Models.FileChangeEvent.FileChangeType.ServerDelete:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ServerChange;
+                            Util.Global.manualResetEvent.Set();
                             return;
                         default:
                             eve.Type = Models.FileChangeEvent.FileChangeType.ServerCreate;
+                            Util.Global.manualResetEvent.Set();
                             return;
                     }
                 }
@@ -226,24 +249,31 @@ namespace CFCloudClient.BackgroundWorks
                         {
                             case Models.FileChangeEvent.FileChangeType.ClientCreate:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ClientCreate;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientChange:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ClientChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientDelete:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ServerChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerRename:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ServerRenameAndServerChange;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             default:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
                 else if (e.Type == Models.FileChangeEvent.FileChangeType.ServerRename)
@@ -269,6 +299,7 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ServerRenameAndClientChange;
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ServerRename;
@@ -276,6 +307,7 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.OldLocalPath = eve1.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
                                 eve1.LocalPath = e.LocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ServerRenameAndClientChange;
@@ -283,6 +315,7 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.OldLocalPath = eve1.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
                                 eve1.LocalPath = e.LocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ServerRenameAndServerChange;
@@ -290,6 +323,7 @@ namespace CFCloudClient.BackgroundWorks
                                 eve1.OldLocalPath = eve1.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
                                 eve1.LocalPath = e.LocalPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientDelete:
                             case Models.FileChangeEvent.FileChangeType.ServerCreate:
@@ -298,18 +332,22 @@ namespace CFCloudClient.BackgroundWorks
                             case Models.FileChangeEvent.FileChangeType.ServerRenameAndServerChange:
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerChange:
                                 eve1.Type = Models.FileChangeEvent.FileChangeType.ServerRenameAndServerChange;
                                 eve1.LocalPath = e.LocalPath;
                                 eve1.CloudPath = e.CloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             default:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     if (eve1 == null && eve2 == null)
                         EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
                 else if (e.Type == Models.FileChangeEvent.FileChangeType.ServerDelete)
@@ -324,16 +362,19 @@ namespace CFCloudClient.BackgroundWorks
                         {
                             case Models.FileChangeEvent.FileChangeType.ClientCreate:
                             case Models.FileChangeEvent.FileChangeType.ClientChange:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientRename:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndClientChange:
                             case Models.FileChangeEvent.FileChangeType.ClientRenameAndServerChange:
                             case Models.FileChangeEvent.FileChangeType.ServerChange:
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ServerDelete;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ClientDelete:
                             case Models.FileChangeEvent.FileChangeType.ServerCreate:
                                 EventQueue.Remove(eve);
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerRename:
                             case Models.FileChangeEvent.FileChangeType.ServerRenameAndClientChange:
@@ -341,13 +382,16 @@ namespace CFCloudClient.BackgroundWorks
                                 eve.Type = Models.FileChangeEvent.FileChangeType.ServerDelete;
                                 eve.LocalPath = eve.OldLocalPath;
                                 eve.CloudPath = eve.OldCloudPath;
+                                Util.Global.manualResetEvent.Set();
                                 return;
                             case Models.FileChangeEvent.FileChangeType.ServerDelete:
                             default:
+                                Util.Global.manualResetEvent.Set();
                                 return;
                         }
                     }
                     EventQueue.Add(e);
+                    Util.Global.manualResetEvent.Set();
                     return;
                 }
             }

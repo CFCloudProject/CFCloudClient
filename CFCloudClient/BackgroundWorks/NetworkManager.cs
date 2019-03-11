@@ -60,16 +60,15 @@ namespace CFCloudClient.BackgroundWorks
             return metadata;
         }
 
-        public static Models.Metadata Upload(string path)
+        public static Models.Metadata Upload(string path, string baseRev = null)
         {
             Models.Metadata metadata = new Models.Metadata();
             return metadata;
         }
 
-        public static Models.Metadata Download(string path)
+        public static bool Download(string path)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            return true;
         }
 
         public static Models.Metadata GetMetadata(string path)
