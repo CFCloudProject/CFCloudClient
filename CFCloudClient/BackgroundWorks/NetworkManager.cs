@@ -91,7 +91,7 @@ namespace CFCloudClient.BackgroundWorks
 
         public static void ReturnToken(string path)
         {
-
+            
         }
 
         public static NetworkResults.GetFolderTokenResult GetFolderToken(string folder)
