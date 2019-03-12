@@ -13,8 +13,8 @@ namespace CFCloudClient.Util
         public static Models.LoginInfo info = new Models.LoginInfo();
         public static Dictionary<string, FileStream> LockedFiles = new Dictionary<string, FileStream>();
         public static BackgroundWorks.FileChangeMonitor FileMonitor;
-        public static BackgroundWorks.FileChangeQueue FileUpdateQueue = new BackgroundWorks.FileChangeQueue();
+        public static BackgroundWorks.FileChangeQueue FileUpdateQueue;
         public static ManualResetEvent manualResetEvent = new ManualResetEvent(false);
-        public static BackgroundWorks.FileUpdater updater = new BackgroundWorks.FileUpdater();
+        public static BackgroundWorks.FileUpdater updater;
     }
 }

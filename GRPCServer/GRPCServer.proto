@@ -37,7 +37,7 @@ message User
 message RegisterResult
 {
 	bool Succeed = 1;
-	string ErrorMessage = 2;
+	int32 Error = 2;
 }
 
 message LoginResult
@@ -48,7 +48,7 @@ message LoginResult
 	string Password = 4;
 	string FirstName = 5;
 	string LastName = 6;
-	string ErrorMessage = 7;
+	int32 Error = 7;
 }
 
 message EmptyRequest

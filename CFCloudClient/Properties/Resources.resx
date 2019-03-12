@@ -144,6 +144,12 @@
   <data name="GetTokenFailUnknown" xml:space="preserve">
     <value>Get token fail. Unknown error.</value>
   </data>
+  <data name="HeartBeatHost" xml:space="preserve">
+    <value>127.0.0.1:12346</value>
+  </data>
+  <data name="Host" xml:space="preserve">
+    <value>127.0.0.1:12345</value>
+  </data>
   <data name="InputFolderName" xml:space="preserve">
     <value>Please input your new folder name:</value>
   </data>

@@ -10,5 +10,10 @@ namespace CFCloudClient.Models
     {
         public User user { get; set; }
         public string SessionId { get; set; }
+
+        public LoginInfo()
+        {
+            user = new User();
+        }
     }
 }

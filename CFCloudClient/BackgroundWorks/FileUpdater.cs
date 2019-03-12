@@ -9,8 +9,8 @@ namespace CFCloudClient.BackgroundWorks
 {
     public class FileUpdater
     {
-        private int ThreadCount;
-        private const int MaxThreadCount = 20;
+        private long ThreadCount;
+        private const long MaxThreadCount = 20;
         private Thread UploaderThread;
         private bool stop = false;
 
@@ -39,9 +39,16 @@ namespace CFCloudClient.BackgroundWorks
             UploaderThread.Start();
         }
 
+        public void WaitForAllThreadEnd()
+        {
+            while (Interlocked.Read(ref ThreadCount) != 0)
+                Thread.Sleep(1000);
+        }
+
         public void Destory()
         {
             Util.Global.manualResetEvent.Set();
+            WaitForAllThreadEnd();
             stop = true;
         }
 

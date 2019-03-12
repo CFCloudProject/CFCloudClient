@@ -36,6 +36,11 @@ namespace CFCloudClient
                 + Util.Global.info.user.LastName + " ("
                 + Util.Global.info.user.Email + ")";
             this.Closed += OnClose;
+            this.Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
             Util.Utils.LockAllFiles(Properties.Settings.Default.Workspace);
             Util.Utils.CheckConsistency(Properties.Settings.Default.Workspace);
             ChangeCurrentFolder(Properties.Settings.Default.Workspace);
@@ -44,6 +49,8 @@ namespace CFCloudClient
             Util.Global.FileMonitor = new BackgroundWorks.FileChangeMonitor();
             Util.Global.FileMonitor.OnFileChange += FileMonitor_OnFileChange;
             Util.Global.FileMonitor.Start();
+            Util.Global.FileUpdateQueue = new BackgroundWorks.FileChangeQueue();
+            Util.Global.updater = new BackgroundWorks.FileUpdater();
             BackgroundWorks.HeartBeat.Start();
         }
 
