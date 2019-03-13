@@ -305,7 +305,10 @@ namespace CFCloudClient
                 return;
             else
             {
-                BackgroundWorks.NetworkManager.Share(Util.Utils.LocalPathtoCloudPath(filename), Email);
+                if (BackgroundWorks.NetworkManager.Share(Util.Utils.LocalPathtoCloudPath(filename), Email) != null)
+                    MessageBox.Show("Share succeed.", "Share");
+                else
+                    MessageBox.Show("Share failed.", "Share");
             }
         }
 

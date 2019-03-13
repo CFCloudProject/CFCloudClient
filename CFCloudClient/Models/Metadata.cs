@@ -20,5 +20,11 @@ namespace CFCloudClient.Models
         public bool isShared { get; set; }
         public List<User> SharedUsers { get; set; }
         public User TokenHolder { get; set; }
+
+        public static Metadata FromJson(string json)
+        {
+            Metadata metadata = new Metadata();
+            return metadata;
+        }
     }
 }

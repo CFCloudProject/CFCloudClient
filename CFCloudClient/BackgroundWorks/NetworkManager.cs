@@ -13,23 +13,35 @@ namespace CFCloudClient.BackgroundWorks
     {
         private static Channel channel = new Channel(Properties.Resources.Host, ChannelCredentials.Insecure);
         private static Channel heartBeatChannel = new Channel(Properties.Resources.HeartBeatHost, ChannelCredentials.Insecure);
+        private static bool Online = true;
 
         public static NetworkResults.RegisterResult Register(Models.User user)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            var response = client.Register(
-                new User()
-                {
-                    Email = user.Email,
-                    Password = user.Password,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName
-                });
+            RegisterResult response = null;
 
             NetworkResults.RegisterResult rr = new NetworkResults.RegisterResult();
             rr.Fail = NetworkResults.RegisterResult.FailType.Unknown;
             rr.Succeed = false;
 
+            try
+            {
+                response = client.Register(
+                    new User
+                    {
+                        Email = user.Email,
+                        Password = user.Password,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName
+                    });
+            }
+            catch (RpcException)
+            {
+                rr.Succeed = false;
+                rr.Fail = NetworkResults.RegisterResult.FailType.Unknown;
+                return rr;
+            }
+            
             if (response != null)
             {
                 rr.Succeed = response.Succeed;
@@ -43,17 +55,26 @@ namespace CFCloudClient.BackgroundWorks
         public static NetworkResults.LoginResult Login(Models.User user)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            var response = client.Login(
-                new User()
-                {
-                    Email = user.Email,
-                    Password = user.Password
-                });
+            LoginResult response = null;
 
             NetworkResults.LoginResult lr = new NetworkResults.LoginResult();
             lr.Succeed = false;
             lr.Fail = NetworkResults.LoginResult.FailType.Unknown;
             lr.info = new Models.LoginInfo();
+
+            try
+            {
+                response = client.Login(
+                    new User
+                    {
+                        Email = user.Email,
+                        Password = user.Password
+                    });
+            }
+            catch (RpcException)
+            {
+                return lr;
+            }
 
             if (response != null)
             {
@@ -83,11 +104,19 @@ namespace CFCloudClient.BackgroundWorks
             Util.Global.updater.WaitForAllThreadEnd();
 
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            var response = client.Logout(
-                new EmptyRequest()
+            StringRespone response = null;
+            try
+            {
+                response = client.Logout(
+                new EmptyRequest
                 {
                     SessionId = Util.Global.info.SessionId
                 });
+            }
+            catch (RpcException)
+            {
+
+            }
             
             BackgroundWorks.HeartBeat.Stop();
             channel.ShutdownAsync().Wait();
@@ -97,11 +126,28 @@ namespace CFCloudClient.BackgroundWorks
         public static List<Models.FileChangeEvent> HeartBeat()
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(heartBeatChannel);
-            var response = client.HeartBeat(  //timeout setting
-                new EmptyRequest()
-                {
-                    SessionId = Util.Global.info.SessionId
-                });
+            StringRespone response = null;
+            try
+            {
+                response = client.HeartBeat(
+                    new EmptyRequest
+                    {
+                        SessionId = Util.Global.info.SessionId
+                    });
+            }
+            catch (RpcException)
+            {
+                if (Online)
+                    Online = false;
+                Util.Global.manualResetEvent.Reset();
+                return null;
+            }
+
+            if (!Online)
+            {
+                Online = true;
+                Util.Global.manualResetEvent.Set();
+            }
 
             if (response == null)
                 return null;
@@ -136,12 +182,27 @@ namespace CFCloudClient.BackgroundWorks
             }
             return eventsList;
         }
-
-        //to be continue
+        
         public static Models.Metadata Share(string path, string email)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            try
+            {
+                response = client.Share(
+                    new ShareRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path,
+                        Dst = email
+                    });
+            }
+            catch (RpcException)
+            {
+                return null;
+            }
+
+            return Models.Metadata.FromJson(response.PayLoad);
         }
 
         public static Models.Metadata Create(string path)
