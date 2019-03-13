@@ -20,5 +20,11 @@ namespace CFCloudClient.NetworkResults
             }
             return message;
         }
+
+        //to be continue
+        public static GetFolderTokenResult FromJson(string json)
+        {
+            return new GetFolderTokenResult();
+        }
     }
 }

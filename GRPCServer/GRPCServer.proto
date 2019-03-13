@@ -13,7 +13,7 @@ service GRPCServer
 	rpc Rename (RenameRequest) returns (StringRespone) {}
 	rpc Delete (PathRequest) returns (StringRespone) {}
 
-	rpc Upload (PathRequest) returns (StringRespone) {}
+	rpc Upload (PathRevRequest) returns (StringRespone) {}
 	rpc UploadBlock (BlockRequest) returns (StringRespone) {}
 
 	rpc Download (PathRequest) returns (StringRespone) {}
@@ -21,7 +21,7 @@ service GRPCServer
 
 	rpc GetMetadata (PathRequest) returns (StringRespone) {}
 	rpc ListFolder (PathRequest) returns (StringRespone) {}
-	rpc GetToken (PathRequest) returns (StringRespone) {}
+	rpc GetToken (PathRevRequest) returns (GetTokenResult) {}
 	rpc ReturnToken (PathRequest) returns (StringRespone) {}
 	rpc CanModifyFolder (PathRequest) returns (StringRespone) {}
 }
@@ -76,7 +76,7 @@ message ShareRequest
 	string Dst = 3;
 }
 
-message UploadRequest
+message PathRevRequest
 {
 	string SessionId = 1;
 	string Path = 2;
@@ -97,4 +97,15 @@ message BlockRequest
 message StringRespone
 {
 	string PayLoad = 1;
+}
+
+message GetTokenResult
+{
+	bool Succeed = 1;
+	string FileName = 2;
+	string Email = 3;
+	string Password = 4;
+	string FirstName = 5;
+	string LastName = 6;
+	int32 Error = 7;
 }

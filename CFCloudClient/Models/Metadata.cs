@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,13 @@ namespace CFCloudClient.Models
         public User TokenHolder { get; set; }
 
         public static Metadata FromJson(string json)
+        {
+            JToken token = JToken.Parse(json);
+            return FromJson(token);
+        }
+
+        //to be continue
+        public static Metadata FromJson(JToken json)
         {
             Metadata metadata = new Metadata();
             return metadata;

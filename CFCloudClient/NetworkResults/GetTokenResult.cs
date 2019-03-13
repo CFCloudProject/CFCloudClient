@@ -10,7 +10,7 @@ namespace CFCloudClient.NetworkResults
     {
         public bool Succeed { get; set; }
         public Models.FileAndEditorMap TokenHolder { get; set; }
-        public enum FailType { OtherHolding, UnConsistent };
+        public enum FailType { OtherHolding, UnConsistent, Unknown };
         public FailType Fail;
     }
 }

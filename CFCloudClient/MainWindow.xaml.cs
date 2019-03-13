@@ -183,7 +183,7 @@ namespace CFCloudClient
                 Models.SQLDataType sdt = Util.SqliteHelper.Select(filename);
                 if (sdt.IsShared.Equals("true"))
                 {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename));
+                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename), sdt.Version);
                     if (gr != null && !gr.Succeed)
                     {
                         if (gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
@@ -240,7 +240,7 @@ namespace CFCloudClient
                 }
                 else
                 {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(oldName));
+                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(oldName), sdt.Version);
                     if (gr != null && !gr.Succeed && gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
                     {
                         MessageBox.Show(Properties.Resources.GetTokenFail + gr.TokenHolder.TokenHolder.getUserName(), "Rename Fail");
@@ -336,7 +336,7 @@ namespace CFCloudClient
                 }
                 else
                 {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename));
+                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename), sdt.Version);
                     if (gr != null && !gr.Succeed && gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
                     {
                         MessageBox.Show(Properties.Resources.GetTokenFail + gr.TokenHolder.TokenHolder.getUserName(), "Delete Fail");

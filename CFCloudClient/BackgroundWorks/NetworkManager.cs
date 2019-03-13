@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CFCloudClient.BackgroundWorks
@@ -26,14 +27,13 @@ namespace CFCloudClient.BackgroundWorks
 
             try
             {
-                response = client.Register(
-                    new User
-                    {
-                        Email = user.Email,
-                        Password = user.Password,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName
-                    });
+                response = client.Register(new User
+                {
+                    Email = user.Email,
+                    Password = user.Password,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                });
             }
             catch (RpcException)
             {
@@ -64,12 +64,11 @@ namespace CFCloudClient.BackgroundWorks
 
             try
             {
-                response = client.Login(
-                    new User
-                    {
-                        Email = user.Email,
-                        Password = user.Password
-                    });
+                response = client.Login(new User
+                {
+                    Email = user.Email,
+                    Password = user.Password
+                });
             }
             catch (RpcException)
             {
@@ -107,8 +106,7 @@ namespace CFCloudClient.BackgroundWorks
             StringRespone response = null;
             try
             {
-                response = client.Logout(
-                new EmptyRequest
+                response = client.Logout(new EmptyRequest
                 {
                     SessionId = Util.Global.info.SessionId
                 });
@@ -129,11 +127,10 @@ namespace CFCloudClient.BackgroundWorks
             StringRespone response = null;
             try
             {
-                response = client.HeartBeat(
-                    new EmptyRequest
-                    {
-                        SessionId = Util.Global.info.SessionId
-                    });
+                response = client.HeartBeat(new EmptyRequest
+                {
+                    SessionId = Util.Global.info.SessionId
+                });
             }
             catch (RpcException)
             {
@@ -189,13 +186,12 @@ namespace CFCloudClient.BackgroundWorks
             StringRespone response = null;
             try
             {
-                response = client.Share(
-                    new ShareRequest
-                    {
-                        SessionId = Util.Global.info.SessionId,
-                        Path = path,
-                        Dst = email
-                    });
+                response = client.Share(new ShareRequest
+                {
+                    SessionId = Util.Global.info.SessionId,
+                    Path = path,
+                    Dst = email
+                });
             }
             catch (RpcException)
             {
@@ -207,28 +203,91 @@ namespace CFCloudClient.BackgroundWorks
 
         public static Models.Metadata Create(string path)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.Create(new PathRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
+
+            return Models.Metadata.FromJson(response.PayLoad);
         }
 
         public static Models.Metadata Rename(string path, string oldPath)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.Rename(new RenameRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path,
+                        OldPath = oldPath
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
+
+            return Models.Metadata.FromJson(response.PayLoad);
         }
 
         public static Models.Metadata Delete(string path)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.Delete(new PathRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
+
+            return Models.Metadata.FromJson(response.PayLoad);
         }
 
+        //to be continue
         public static Models.Metadata Upload(string path, string baseRev = null)
         {
             Models.Metadata metadata = new Models.Metadata();
             return metadata;
         }
 
+        //to be continue
         public static bool Download(string path)
         {
             return true;
@@ -236,31 +295,156 @@ namespace CFCloudClient.BackgroundWorks
 
         public static Models.Metadata GetMetadata(string path)
         {
-            Models.Metadata metadata = new Models.Metadata();
-            return metadata;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.GetMetadata(new PathRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
+
+            return Models.Metadata.FromJson(response.PayLoad);
         }
 
         public static List<Models.Metadata> ListFolder(string path)
         {
-            List<Models.Metadata> ListFolderResult = new List<Models.Metadata>();
-            return ListFolderResult;
-        }
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.ListFolder(new PathRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
 
-        public static NetworkResults.GetTokenResult GetToken(string path)
+            List<Models.Metadata> metadataList = new List<Models.Metadata>();
+
+            JObject obj = JObject.Parse(response.PayLoad);
+            JArray MetadataArray = (JArray)obj["Entries"];
+            foreach (var item in MetadataArray)
+            {
+                metadataList.Add(Models.Metadata.FromJson(item));
+            }
+            return metadataList;
+        }
+        
+        public static NetworkResults.GetTokenResult GetToken(string path, string Rev)
         {
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            GetTokenResult response = null;
+
             NetworkResults.GetTokenResult gr = new NetworkResults.GetTokenResult();
-            return null;
+            gr.Succeed = false;
+            gr.TokenHolder = new Models.FileAndEditorMap();
+            gr.Fail = NetworkResults.GetTokenResult.FailType.Unknown;
+
+            try
+            {
+                response = client.GetToken(new PathRevRequest
+                {
+                    SessionId = Util.Global.info.SessionId,
+                    Path = path,
+                    BaseRev = Rev
+                });
+            }
+            catch (RpcException)
+            {
+                return null;
+            }
+
+            if (response != null)
+            {
+                gr.Succeed = response.Succeed;
+                gr.TokenHolder.Name = response.FileName;
+                gr.TokenHolder.TokenHolder = new Models.User
+                {
+                    Email = response.Email,
+                    Password = response.Password,
+                    FirstName = response.FirstName,
+                    LastName = response.LastName
+                };
+                if (!gr.Succeed)
+                {
+                    if (response.Error == 1)
+                        gr.Fail = NetworkResults.GetTokenResult.FailType.OtherHolding;
+                    if (response.Error == 2)
+                        gr.Fail = NetworkResults.GetTokenResult.FailType.UnConsistent;
+                }
+            }
+
+            return gr;
         }
 
         public static void ReturnToken(string path)
         {
-            
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+            bool retry = true;
+            while (retry)
+            {
+                try
+                {
+                    response = client.ReturnToken(new PathRequest
+                    {
+                        SessionId = Util.Global.info.SessionId,
+                        Path = path
+                    });
+                }
+                catch (RpcException)
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
+                retry = false;
+            }
         }
-
+        
         public static NetworkResults.GetFolderTokenResult GetFolderToken(string folder)
         {
-            NetworkResults.GetFolderTokenResult gfr = new NetworkResults.GetFolderTokenResult();
-            return gfr;
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringRespone response = null;
+
+            try
+            {
+                response = client.CanModifyFolder(new PathRequest
+                {
+                    SessionId = Util.Global.info.SessionId,
+                    Path = folder
+                });
+            }
+            catch (RpcException)
+            {
+                return null;
+            }
+
+            if (response == null)
+                return null;
+            return NetworkResults.GetFolderTokenResult.FromJson(response.PayLoad);
         }
     }
 }

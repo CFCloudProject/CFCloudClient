@@ -20,7 +20,9 @@ namespace GRPCServer {
     static readonly grpc::Marshaller<global::GRPCServer.ShareRequest> __Marshaller_GRPCServer_ShareRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.ShareRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.PathRequest> __Marshaller_GRPCServer_PathRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.PathRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.RenameRequest> __Marshaller_GRPCServer_RenameRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.RenameRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GRPCServer.PathRevRequest> __Marshaller_GRPCServer_PathRevRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.PathRevRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.BlockRequest> __Marshaller_GRPCServer_BlockRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.BlockRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GRPCServer.GetTokenResult> __Marshaller_GRPCServer_GetTokenResult = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.GetTokenResult.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult> __Method_Register = new grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult>(
         grpc::MethodType.Unary,
@@ -78,11 +80,11 @@ namespace GRPCServer {
         __Marshaller_GRPCServer_PathRequest,
         __Marshaller_GRPCServer_StringRespone);
 
-    static readonly grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone> __Method_Upload = new grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(
+    static readonly grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.StringRespone> __Method_Upload = new grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.StringRespone>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Upload",
-        __Marshaller_GRPCServer_PathRequest,
+        __Marshaller_GRPCServer_PathRevRequest,
         __Marshaller_GRPCServer_StringRespone);
 
     static readonly grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringRespone> __Method_UploadBlock = new grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringRespone>(
@@ -120,12 +122,12 @@ namespace GRPCServer {
         __Marshaller_GRPCServer_PathRequest,
         __Marshaller_GRPCServer_StringRespone);
 
-    static readonly grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone> __Method_GetToken = new grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(
+    static readonly grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.GetTokenResult> __Method_GetToken = new grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.GetTokenResult>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetToken",
-        __Marshaller_GRPCServer_PathRequest,
-        __Marshaller_GRPCServer_StringRespone);
+        __Marshaller_GRPCServer_PathRevRequest,
+        __Marshaller_GRPCServer_GetTokenResult);
 
     static readonly grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone> __Method_ReturnToken = new grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(
         grpc::MethodType.Unary,
@@ -190,7 +192,7 @@ namespace GRPCServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringRespone> Upload(global::GRPCServer.PathRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringRespone> Upload(global::GRPCServer.PathRevRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -220,7 +222,7 @@ namespace GRPCServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringRespone> GetToken(global::GRPCServer.PathRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.GetTokenResult> GetToken(global::GRPCServer.PathRevRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -388,19 +390,19 @@ namespace GRPCServer {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
       }
-      public virtual global::GRPCServer.StringRespone Upload(global::GRPCServer.PathRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GRPCServer.StringRespone Upload(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Upload(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GRPCServer.StringRespone Upload(global::GRPCServer.PathRequest request, grpc::CallOptions options)
+      public virtual global::GRPCServer.StringRespone Upload(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_Upload, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> UploadAsync(global::GRPCServer.PathRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> UploadAsync(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return UploadAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> UploadAsync(global::GRPCServer.PathRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> UploadAsync(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Upload, null, options, request);
       }
@@ -484,19 +486,19 @@ namespace GRPCServer {
       {
         return CallInvoker.AsyncUnaryCall(__Method_ListFolder, null, options, request);
       }
-      public virtual global::GRPCServer.StringRespone GetToken(global::GRPCServer.PathRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GRPCServer.GetTokenResult GetToken(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetToken(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GRPCServer.StringRespone GetToken(global::GRPCServer.PathRequest request, grpc::CallOptions options)
+      public virtual global::GRPCServer.GetTokenResult GetToken(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_GetToken, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> GetTokenAsync(global::GRPCServer.PathRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.GetTokenResult> GetTokenAsync(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetTokenAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringRespone> GetTokenAsync(global::GRPCServer.PathRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.GetTokenResult> GetTokenAsync(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetToken, null, options, request);
       }
@@ -577,13 +579,13 @@ namespace GRPCServer {
       serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.Create));
       serviceBinder.AddMethod(__Method_Rename, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.RenameRequest, global::GRPCServer.StringRespone>(serviceImpl.Rename));
       serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.Delete));
-      serviceBinder.AddMethod(__Method_Upload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.Upload));
+      serviceBinder.AddMethod(__Method_Upload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRevRequest, global::GRPCServer.StringRespone>(serviceImpl.Upload));
       serviceBinder.AddMethod(__Method_UploadBlock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.StringRespone>(serviceImpl.UploadBlock));
       serviceBinder.AddMethod(__Method_Download, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.Download));
       serviceBinder.AddMethod(__Method_DownloadBlock, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.StringRespone>(serviceImpl.DownloadBlock));
       serviceBinder.AddMethod(__Method_GetMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.GetMetadata));
       serviceBinder.AddMethod(__Method_ListFolder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.ListFolder));
-      serviceBinder.AddMethod(__Method_GetToken, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.GetToken));
+      serviceBinder.AddMethod(__Method_GetToken, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRevRequest, global::GRPCServer.GetTokenResult>(serviceImpl.GetToken));
       serviceBinder.AddMethod(__Method_ReturnToken, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.ReturnToken));
       serviceBinder.AddMethod(__Method_CanModifyFolder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringRespone>(serviceImpl.CanModifyFolder));
     }
