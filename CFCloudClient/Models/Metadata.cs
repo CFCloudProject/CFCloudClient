@@ -27,11 +27,27 @@ namespace CFCloudClient.Models
             JToken token = JToken.Parse(json);
             return FromJson(token);
         }
-
-        //to be continue
+        
         public static Metadata FromJson(JToken json)
         {
             Metadata metadata = new Metadata();
+            metadata.Tag = json["Tag"].ToString();
+            metadata.Name = json["Name"].ToString();
+            metadata.FullPath = json["FullPath"].ToString();
+            metadata.size = long.Parse(json["size"].ToString());
+            metadata.Rev = json["Rev"].ToString();
+            metadata.CreationTime = new DateTime(long.Parse(json["CreationTime"].ToString()), DateTimeKind.Utc);
+            metadata.ModifiedTime = new DateTime(long.Parse(json["ModifiedTime"].ToString()), DateTimeKind.Utc);
+            metadata.Modifier = User.FromJson(json["Modifier"]);
+            metadata.Owner = User.FromJson(json["Owner"]);
+            metadata.isShared = json["isShared"].ToString().Equals("true");
+            metadata.SharedUsers = new List<User>();
+            JArray sharedUsers = (JArray)json["SharedUsers"];
+            foreach (var item in sharedUsers)
+            {
+                metadata.SharedUsers.Add(User.FromJson(item));
+            }
+            metadata.TokenHolder = User.FromJson(json["TokenHolder"]);
             return metadata;
         }
     }

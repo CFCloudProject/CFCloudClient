@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,22 @@ namespace CFCloudClient.Models
         public string getUserName()
         {
             return FirstName + " " + LastName;
+        }
+
+        public static User FromJson(string json)
+        {
+            JToken token = JToken.Parse(json);
+            return FromJson(token);
+        }
+
+        public static User FromJson(JToken json)
+        {
+            User user = new User();
+            user.Email = json["Email"].ToString();
+            user.Password = json["Password"].ToString();
+            user.FirstName = json["FirstName"].ToString();
+            user.LastName = json["LastName"].ToString();
+            return user;
         }
     }
 }

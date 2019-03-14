@@ -5,25 +5,25 @@ service GRPCServer
 {
 	rpc Register (User) returns (RegisterResult) {}
 	rpc Login (User) returns (LoginResult) {}
-	rpc Logout (EmptyRequest) returns (StringRespone) {}
-	rpc HeartBeat (EmptyRequest) returns (StringRespone) {}
+	rpc Logout (EmptyRequest) returns (StringResponse) {}
+	rpc HeartBeat (EmptyRequest) returns (StringResponse) {}
 
-	rpc Share (ShareRequest) returns (StringRespone) {}
-	rpc Create (PathRequest) returns (StringRespone) {}
-	rpc Rename (RenameRequest) returns (StringRespone) {}
-	rpc Delete (PathRequest) returns (StringRespone) {}
+	rpc Share (ShareRequest) returns (StringResponse) {}
+	rpc CreateFolder (PathRequest) returns (StringResponse) {}
+	rpc Rename (RenameRequest) returns (StringResponse) {}
+	rpc Delete (PathRequest) returns (StringResponse) {}
 
-	rpc Upload (PathRevRequest) returns (StringRespone) {}
-	rpc UploadBlock (BlockRequest) returns (StringRespone) {}
+	rpc Upload (PathRevRequest) returns (StringResponse) {}
+	rpc UploadBlock (stream BlockRequest) returns (StringResponse) {}
 
-	rpc Download (PathRequest) returns (StringRespone) {}
-	rpc DownloadBlock (BlockRequest) returns (StringRespone) {}
+	rpc Download (PathRequest) returns (StringResponse) {}
+	rpc DownloadBlock (stream BlockRequest) returns (stream BlockResponse) {}
 
-	rpc GetMetadata (PathRequest) returns (StringRespone) {}
-	rpc ListFolder (PathRequest) returns (StringRespone) {}
+	rpc GetMetadata (PathRequest) returns (StringResponse) {}
+	rpc ListFolder (PathRequest) returns (StringResponse) {}
 	rpc GetToken (PathRevRequest) returns (GetTokenResult) {}
-	rpc ReturnToken (PathRequest) returns (StringRespone) {}
-	rpc CanModifyFolder (PathRequest) returns (StringRespone) {}
+	rpc ReturnToken (PathRequest) returns (StringResponse) {}
+	rpc CanModifyFolder (PathRequest) returns (StringResponse) {}
 }
 
 message User
@@ -94,7 +94,16 @@ message BlockRequest
 	string Content = 7;
 }
 
-message StringRespone
+message BlockResponse
+{
+	string Path = 1;
+	string Rev = 2;
+	string BlockIndex = 3;
+	string BlockHash = 4;
+	string Content = 5;
+}
+
+message StringResponse
 {
 	string PayLoad = 1;
 }

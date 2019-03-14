@@ -55,7 +55,13 @@ namespace CFCloudClient.BackgroundWorks
         {
             if (Util.SqliteHelper.Select(e.LocalPath) != null)
                 return;
-            Models.Metadata createResult = NetworkManager.Create(e.CloudPath);
+            if (!Directory.Exists(e.LocalPath) && !File.Exists(e.LocalPath))
+                return;
+            Models.Metadata createResult;
+            if (!File.Exists(e.LocalPath))
+                createResult = NetworkManager.CreateFolder(e.CloudPath);
+            else
+                createResult = NetworkManager.Upload(e.CloudPath);
             Models.SQLDataType sdt = new Models.SQLDataType(e.LocalPath, 
                 createResult.ModifiedTime, 
                 createResult.Rev, 
@@ -70,26 +76,18 @@ namespace CFCloudClient.BackgroundWorks
 
         private void ClientChange()
         {
+            if (!Directory.Exists(e.LocalPath) && !File.Exists(e.LocalPath))
+                return;
             Models.SQLDataType sdt = Util.SqliteHelper.Select(e.LocalPath);
-            if (sdt != null && sdt.getModifiedTime() == File.GetLastWriteTime(e.LocalPath))
+            if (sdt != null && sdt.getModifiedTime() == File.GetLastWriteTimeUtc(e.LocalPath))
                 return;
             if (sdt == null)
             {
-                Models.Metadata createResult = NetworkManager.Create(e.CloudPath);
-                Models.SQLDataType sdt2 = new Models.SQLDataType(e.LocalPath,
-                    createResult.ModifiedTime,
-                    createResult.Rev,
-                    createResult.Modifier.Email,
-                    createResult.isShared ? "true" : "false");
-                Util.SqliteHelper.Insert(sdt2);
-                if (createResult.isShared && createResult.Tag.Equals("File"))
-                    Util.Utils.LockFile(e.LocalPath);
-                if (createResult.TokenHolder.Equal(Util.Global.info.user))
-                    NetworkManager.ReturnToken(e.CloudPath);
+                ClientCreate();
             }
             else
             {
-                if (Directory.Exists(e.LocalPath) && !File.Exists(e.LocalPath))
+                if (Directory.Exists(e.LocalPath))
                     return;
                 if (sdt.IsShared.Equals("true"))
                     Util.Utils.UnLockFile(e.LocalPath);
@@ -109,6 +107,8 @@ namespace CFCloudClient.BackgroundWorks
 
         private void ClientRename()
         {
+            if (!Directory.Exists(e.LocalPath) && !File.Exists(e.LocalPath))
+                return;
             Models.SQLDataType sdt = Util.SqliteHelper.Select(e.OldLocalPath);
             sdt.Path = e.LocalPath;
             Util.SqliteHelper.Delete(e.OldLocalPath);

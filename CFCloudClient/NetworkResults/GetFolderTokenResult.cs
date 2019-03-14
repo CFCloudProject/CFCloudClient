@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,27 @@ namespace CFCloudClient.NetworkResults
             return message;
         }
 
-        //to be continue
         public static GetFolderTokenResult FromJson(string json)
         {
-            return new GetFolderTokenResult();
+            JToken token = JToken.Parse(json);
+            return FromJson(token);
+        }
+        
+        public static GetFolderTokenResult FromJson(JToken json)
+        {
+            GetFolderTokenResult result = new GetFolderTokenResult();
+            result.Succeed = json["Succeed"].ToString().Equals("true");
+            result.TokenHolders = new List<Models.FileAndEditorMap>();
+            JArray maps = (JArray)json["TokenHolders"];
+            foreach (var item in maps)
+            {
+                result.TokenHolders.Add(new Models.FileAndEditorMap
+                {
+                    Name = item["Name"].ToString(),
+                    TokenHolder = Models.User.FromJson(item["TokenHolder"])
+                });
+            }
+            return result;
         }
     }
 }

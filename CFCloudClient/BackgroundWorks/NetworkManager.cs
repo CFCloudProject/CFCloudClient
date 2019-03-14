@@ -103,7 +103,7 @@ namespace CFCloudClient.BackgroundWorks
             Util.Global.updater.WaitForAllThreadEnd();
 
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             try
             {
                 response = client.Logout(new EmptyRequest
@@ -124,7 +124,7 @@ namespace CFCloudClient.BackgroundWorks
         public static List<Models.FileChangeEvent> HeartBeat()
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(heartBeatChannel);
-            StringRespone response = null;
+            StringResponse response = null;
             try
             {
                 response = client.HeartBeat(new EmptyRequest
@@ -183,7 +183,7 @@ namespace CFCloudClient.BackgroundWorks
         public static Models.Metadata Share(string path, string email)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             try
             {
                 response = client.Share(new ShareRequest
@@ -201,16 +201,16 @@ namespace CFCloudClient.BackgroundWorks
             return Models.Metadata.FromJson(response.PayLoad);
         }
 
-        public static Models.Metadata Create(string path)
+        public static Models.Metadata CreateFolder(string path)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
                 try
                 {
-                    response = client.Create(new PathRequest
+                    response = client.CreateFolder(new PathRequest
                     {
                         SessionId = Util.Global.info.SessionId,
                         Path = path
@@ -230,7 +230,7 @@ namespace CFCloudClient.BackgroundWorks
         public static Models.Metadata Rename(string path, string oldPath)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
@@ -257,7 +257,7 @@ namespace CFCloudClient.BackgroundWorks
         public static Models.Metadata Delete(string path)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
@@ -296,7 +296,7 @@ namespace CFCloudClient.BackgroundWorks
         public static Models.Metadata GetMetadata(string path)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
@@ -322,7 +322,7 @@ namespace CFCloudClient.BackgroundWorks
         public static List<Models.Metadata> ListFolder(string path)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
@@ -403,7 +403,7 @@ namespace CFCloudClient.BackgroundWorks
         public static void ReturnToken(string path)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
             bool retry = true;
             while (retry)
             {
@@ -427,7 +427,7 @@ namespace CFCloudClient.BackgroundWorks
         public static NetworkResults.GetFolderTokenResult GetFolderToken(string folder)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringRespone response = null;
+            StringResponse response = null;
 
             try
             {
