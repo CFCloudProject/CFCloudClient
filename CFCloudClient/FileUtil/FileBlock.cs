@@ -8,7 +8,9 @@ namespace CFCloudClient.FileUtil
 {
     public class FileBlock
     {
-        public string BlockHash { get; set; }
+        public int Start { get; set; }
+        public int Length { get; set; }
+        public long BlockHash { get; set; }
         public string Content { get; set; }
     }
 }
