@@ -36,43 +36,43 @@ namespace GRPCServer {
             "bklkGAEgASgJEgwKBFBhdGgYAiABKAkSDwoHT2xkUGF0aBgDIAEoCSI8CgxT",
             "aGFyZVJlcXVlc3QSEQoJU2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkS",
             "CwoDRHN0GAMgASgJIkIKDlBhdGhSZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgB",
-            "IAEoCRIMCgRQYXRoGAIgASgJEg8KB0Jhc2VSZXYYAyABKAkihQEKDEJsb2Nr",
+            "IAEoCRIMCgRQYXRoGAIgASgJEg8KB0Jhc2VSZXYYAyABKAkinQEKDEJsb2Nr",
             "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdC",
-            "YXNlUmV2GAMgASgJEgsKA1JldhgEIAEoCRISCgpCbG9ja0luZGV4GAUgASgJ",
-            "EhEKCUJsb2NrSGFzaBgGIAEoCRIPCgdDb250ZW50GAcgASgJImIKDUJsb2Nr",
-            "UmVzcG9uc2USDAoEUGF0aBgBIAEoCRILCgNSZXYYAiABKAkSEgoKQmxvY2tJ",
-            "bmRleBgDIAEoCRIRCglCbG9ja0hhc2gYBCABKAkSDwoHQ29udGVudBgFIAEo",
-            "CSIhCg5TdHJpbmdSZXNwb25zZRIPCgdQYXlMb2FkGAEgASgJIogBCg5HZXRU",
-            "b2tlblJlc3VsdBIPCgdTdWNjZWVkGAEgASgIEhAKCEZpbGVOYW1lGAIgASgJ",
-            "Eg0KBUVtYWlsGAMgASgJEhAKCFBhc3N3b3JkGAQgASgJEhEKCUZpcnN0TmFt",
-            "ZRgFIAEoCRIQCghMYXN0TmFtZRgGIAEoCRINCgVFcnJvchgHIAEoBTKOCQoK",
-            "R1JQQ1NlcnZlchI6CghSZWdpc3RlchIQLkdSUENTZXJ2ZXIuVXNlchoaLkdS",
-            "UENTZXJ2ZXIuUmVnaXN0ZXJSZXN1bHQiABI0CgVMb2dpbhIQLkdSUENTZXJ2",
-            "ZXIuVXNlchoXLkdSUENTZXJ2ZXIuTG9naW5SZXN1bHQiABJACgZMb2dvdXQS",
-            "GC5HUlBDU2VydmVyLkVtcHR5UmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
-            "UmVzcG9uc2UiABJDCglIZWFydEJlYXQSGC5HUlBDU2VydmVyLkVtcHR5UmVx",
-            "dWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/CgVTaGFyZRIY",
-            "LkdSUENTZXJ2ZXIuU2hhcmVSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdS",
-            "ZXNwb25zZSIAEkUKDENyZWF0ZUZvbGRlchIXLkdSUENTZXJ2ZXIuUGF0aFJl",
-            "cXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQQoGUmVuYW1l",
-            "EhkuR1JQQ1NlcnZlci5SZW5hbWVSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJp",
-            "bmdSZXNwb25zZSIAEj8KBkRlbGV0ZRIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVl",
-            "c3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQgoGVXBsb2FkEhou",
-            "R1JQQ1NlcnZlci5QYXRoUmV2UmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
-            "UmVzcG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdSUENTZXJ2ZXIuQmxvY2tS",
-            "ZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAKAESQQoIRG93",
-            "bmxvYWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
-            "dHJpbmdSZXNwb25zZSIAEkoKDURvd25sb2FkQmxvY2sSGC5HUlBDU2VydmVy",
-            "LkJsb2NrUmVxdWVzdBoZLkdSUENTZXJ2ZXIuQmxvY2tSZXNwb25zZSIAKAEw",
-            "ARJECgtHZXRNZXRhZGF0YRIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5H",
-            "UlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoKTGlzdEZvbGRlchIXLkdS",
-            "UENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3Bv",
-            "bnNlIgASRAoIR2V0VG9rZW4SGi5HUlBDU2VydmVyLlBhdGhSZXZSZXF1ZXN0",
-            "GhouR1JQQ1NlcnZlci5HZXRUb2tlblJlc3VsdCIAEkQKC1JldHVyblRva2Vu",
-            "EhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
-            "UmVzcG9uc2UiABJICg9DYW5Nb2RpZnlGb2xkZXISFy5HUlBDU2VydmVyLlBh",
-            "dGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAYgZwcm90",
-            "bzM="));
+            "YXNlUmV2GAMgASgJEgsKA1JldhgEIAEoCRIRCglCYXNlSW5kZXgYBSABKAUS",
+            "DQoFSW5kZXgYBiABKAUSDgoGU0hBMjU2GAcgASgJEgsKA01ENRgIIAEoCRIP",
+            "CgdDb250ZW50GAkgASgMImkKDUJsb2NrUmVzcG9uc2USDAoEUGF0aBgBIAEo",
+            "CRILCgNSZXYYAiABKAkSEgoKQmxvY2tJbmRleBgDIAEoBRILCgNTSEEYBCAB",
+            "KAkSCwoDTUQ1GAUgASgJEg8KB0NvbnRlbnQYBiABKAwiIQoOU3RyaW5nUmVz",
+            "cG9uc2USDwoHUGF5TG9hZBgBIAEoCSKIAQoOR2V0VG9rZW5SZXN1bHQSDwoH",
+            "U3VjY2VlZBgBIAEoCBIQCghGaWxlTmFtZRgCIAEoCRINCgVFbWFpbBgDIAEo",
+            "CRIQCghQYXNzd29yZBgEIAEoCRIRCglGaXJzdE5hbWUYBSABKAkSEAoITGFz",
+            "dE5hbWUYBiABKAkSDQoFRXJyb3IYByABKAUyjgkKCkdSUENTZXJ2ZXISOgoI",
+            "UmVnaXN0ZXISEC5HUlBDU2VydmVyLlVzZXIaGi5HUlBDU2VydmVyLlJlZ2lz",
+            "dGVyUmVzdWx0IgASNAoFTG9naW4SEC5HUlBDU2VydmVyLlVzZXIaFy5HUlBD",
+            "U2VydmVyLkxvZ2luUmVzdWx0IgASQAoGTG9nb3V0EhguR1JQQ1NlcnZlci5F",
+            "bXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoJ",
+            "SGVhcnRCZWF0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2Vy",
+            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASPwoFU2hhcmUSGC5HUlBDU2VydmVyLlNo",
+            "YXJlUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJFCgxD",
+            "cmVhdGVGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1Nl",
+            "cnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlJlbmFtZRIZLkdSUENTZXJ2ZXIu",
+            "UmVuYW1lUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/",
+            "CgZEZWxldGUSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZl",
+            "ci5TdHJpbmdSZXNwb25zZSIAEkIKBlVwbG9hZBIaLkdSUENTZXJ2ZXIuUGF0",
+            "aFJldlJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASRwoL",
+            "VXBsb2FkQmxvY2sSGC5HUlBDU2VydmVyLkJsb2NrUmVxdWVzdBoaLkdSUENT",
+            "ZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiACgBEkEKCERvd25sb2FkEhcuR1JQQ1Nl",
+            "cnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2Ui",
+            "ABJKCg1Eb3dubG9hZEJsb2NrEhguR1JQQ1NlcnZlci5CbG9ja1JlcXVlc3Qa",
+            "GS5HUlBDU2VydmVyLkJsb2NrUmVzcG9uc2UiACgBMAESRAoLR2V0TWV0YWRh",
+            "dGESFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJp",
+            "bmdSZXNwb25zZSIAEkMKCkxpc3RGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhS",
+            "ZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkQKCEdldFRv",
+            "a2VuEhouR1JQQ1NlcnZlci5QYXRoUmV2UmVxdWVzdBoaLkdSUENTZXJ2ZXIu",
+            "R2V0VG9rZW5SZXN1bHQiABJECgtSZXR1cm5Ub2tlbhIXLkdSUENTZXJ2ZXIu",
+            "UGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASSAoP",
+            "Q2FuTW9kaWZ5Rm9sZGVyEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdS",
+            "UENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,8 +84,8 @@ namespace GRPCServer {
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RenameRequest), global::GRPCServer.RenameRequest.Parser, new[]{ "SessionId", "Path", "OldPath" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.ShareRequest), global::GRPCServer.ShareRequest.Parser, new[]{ "SessionId", "Path", "Dst" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRevRequest), global::GRPCServer.PathRevRequest.Parser, new[]{ "SessionId", "Path", "BaseRev" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BlockIndex", "BlockHash", "Content" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "BlockHash", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "SHA256", "MD5", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "SHA", "MD5", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.GetTokenResult), global::GRPCServer.GetTokenResult.Parser, new[]{ "Succeed", "FileName", "Email", "Password", "FirstName", "LastName", "Error" }, null, null, null)
           }));
@@ -1631,8 +1631,10 @@ namespace GRPCServer {
       path_ = other.path_;
       baseRev_ = other.baseRev_;
       rev_ = other.rev_;
-      blockIndex_ = other.blockIndex_;
-      blockHash_ = other.blockHash_;
+      baseIndex_ = other.baseIndex_;
+      index_ = other.index_;
+      sHA256_ = other.sHA256_;
+      mD5_ = other.mD5_;
       content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1686,33 +1688,55 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "BlockIndex" field.</summary>
-    public const int BlockIndexFieldNumber = 5;
-    private string blockIndex_ = "";
+    /// <summary>Field number for the "BaseIndex" field.</summary>
+    public const int BaseIndexFieldNumber = 5;
+    private int baseIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BlockIndex {
-      get { return blockIndex_; }
+    public int BaseIndex {
+      get { return baseIndex_; }
       set {
-        blockIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        baseIndex_ = value;
       }
     }
 
-    /// <summary>Field number for the "BlockHash" field.</summary>
-    public const int BlockHashFieldNumber = 6;
-    private string blockHash_ = "";
+    /// <summary>Field number for the "Index" field.</summary>
+    public const int IndexFieldNumber = 6;
+    private int index_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BlockHash {
-      get { return blockHash_; }
+    public int Index {
+      get { return index_; }
       set {
-        blockHash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        index_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "SHA256" field.</summary>
+    public const int SHA256FieldNumber = 7;
+    private string sHA256_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SHA256 {
+      get { return sHA256_; }
+      set {
+        sHA256_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MD5" field.</summary>
+    public const int MD5FieldNumber = 8;
+    private string mD5_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MD5 {
+      get { return mD5_; }
+      set {
+        mD5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 7;
-    private string content_ = "";
+    public const int ContentFieldNumber = 9;
+    private pb::ByteString content_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Content {
+    public pb::ByteString Content {
       get { return content_; }
       set {
         content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -1736,8 +1760,10 @@ namespace GRPCServer {
       if (Path != other.Path) return false;
       if (BaseRev != other.BaseRev) return false;
       if (Rev != other.Rev) return false;
-      if (BlockIndex != other.BlockIndex) return false;
-      if (BlockHash != other.BlockHash) return false;
+      if (BaseIndex != other.BaseIndex) return false;
+      if (Index != other.Index) return false;
+      if (SHA256 != other.SHA256) return false;
+      if (MD5 != other.MD5) return false;
       if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1749,8 +1775,10 @@ namespace GRPCServer {
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (BaseRev.Length != 0) hash ^= BaseRev.GetHashCode();
       if (Rev.Length != 0) hash ^= Rev.GetHashCode();
-      if (BlockIndex.Length != 0) hash ^= BlockIndex.GetHashCode();
-      if (BlockHash.Length != 0) hash ^= BlockHash.GetHashCode();
+      if (BaseIndex != 0) hash ^= BaseIndex.GetHashCode();
+      if (Index != 0) hash ^= Index.GetHashCode();
+      if (SHA256.Length != 0) hash ^= SHA256.GetHashCode();
+      if (MD5.Length != 0) hash ^= MD5.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1781,17 +1809,25 @@ namespace GRPCServer {
         output.WriteRawTag(34);
         output.WriteString(Rev);
       }
-      if (BlockIndex.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(BlockIndex);
+      if (BaseIndex != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(BaseIndex);
       }
-      if (BlockHash.Length != 0) {
-        output.WriteRawTag(50);
-        output.WriteString(BlockHash);
+      if (Index != 0) {
+        output.WriteRawTag(48);
+        output.WriteInt32(Index);
+      }
+      if (SHA256.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(SHA256);
+      }
+      if (MD5.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(MD5);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(58);
-        output.WriteString(Content);
+        output.WriteRawTag(74);
+        output.WriteBytes(Content);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1813,14 +1849,20 @@ namespace GRPCServer {
       if (Rev.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Rev);
       }
-      if (BlockIndex.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BlockIndex);
+      if (BaseIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BaseIndex);
       }
-      if (BlockHash.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BlockHash);
+      if (Index != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
+      }
+      if (SHA256.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SHA256);
+      }
+      if (MD5.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MD5);
       }
       if (Content.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1845,11 +1887,17 @@ namespace GRPCServer {
       if (other.Rev.Length != 0) {
         Rev = other.Rev;
       }
-      if (other.BlockIndex.Length != 0) {
-        BlockIndex = other.BlockIndex;
+      if (other.BaseIndex != 0) {
+        BaseIndex = other.BaseIndex;
       }
-      if (other.BlockHash.Length != 0) {
-        BlockHash = other.BlockHash;
+      if (other.Index != 0) {
+        Index = other.Index;
+      }
+      if (other.SHA256.Length != 0) {
+        SHA256 = other.SHA256;
+      }
+      if (other.MD5.Length != 0) {
+        MD5 = other.MD5;
       }
       if (other.Content.Length != 0) {
         Content = other.Content;
@@ -1881,16 +1929,24 @@ namespace GRPCServer {
             Rev = input.ReadString();
             break;
           }
-          case 42: {
-            BlockIndex = input.ReadString();
+          case 40: {
+            BaseIndex = input.ReadInt32();
             break;
           }
-          case 50: {
-            BlockHash = input.ReadString();
+          case 48: {
+            Index = input.ReadInt32();
             break;
           }
           case 58: {
-            Content = input.ReadString();
+            SHA256 = input.ReadString();
+            break;
+          }
+          case 66: {
+            MD5 = input.ReadString();
+            break;
+          }
+          case 74: {
+            Content = input.ReadBytes();
             break;
           }
         }
@@ -1927,7 +1983,8 @@ namespace GRPCServer {
       path_ = other.path_;
       rev_ = other.rev_;
       blockIndex_ = other.blockIndex_;
-      blockHash_ = other.blockHash_;
+      sHA_ = other.sHA_;
+      mD5_ = other.mD5_;
       content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1961,31 +2018,42 @@ namespace GRPCServer {
 
     /// <summary>Field number for the "BlockIndex" field.</summary>
     public const int BlockIndexFieldNumber = 3;
-    private string blockIndex_ = "";
+    private int blockIndex_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BlockIndex {
+    public int BlockIndex {
       get { return blockIndex_; }
       set {
-        blockIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        blockIndex_ = value;
       }
     }
 
-    /// <summary>Field number for the "BlockHash" field.</summary>
-    public const int BlockHashFieldNumber = 4;
-    private string blockHash_ = "";
+    /// <summary>Field number for the "SHA" field.</summary>
+    public const int SHAFieldNumber = 4;
+    private string sHA_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BlockHash {
-      get { return blockHash_; }
+    public string SHA {
+      get { return sHA_; }
       set {
-        blockHash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        sHA_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "MD5" field.</summary>
+    public const int MD5FieldNumber = 5;
+    private string mD5_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MD5 {
+      get { return mD5_; }
+      set {
+        mD5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 5;
-    private string content_ = "";
+    public const int ContentFieldNumber = 6;
+    private pb::ByteString content_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Content {
+    public pb::ByteString Content {
       get { return content_; }
       set {
         content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
@@ -2008,7 +2076,8 @@ namespace GRPCServer {
       if (Path != other.Path) return false;
       if (Rev != other.Rev) return false;
       if (BlockIndex != other.BlockIndex) return false;
-      if (BlockHash != other.BlockHash) return false;
+      if (SHA != other.SHA) return false;
+      if (MD5 != other.MD5) return false;
       if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2018,8 +2087,9 @@ namespace GRPCServer {
       int hash = 1;
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (Rev.Length != 0) hash ^= Rev.GetHashCode();
-      if (BlockIndex.Length != 0) hash ^= BlockIndex.GetHashCode();
-      if (BlockHash.Length != 0) hash ^= BlockHash.GetHashCode();
+      if (BlockIndex != 0) hash ^= BlockIndex.GetHashCode();
+      if (SHA.Length != 0) hash ^= SHA.GetHashCode();
+      if (MD5.Length != 0) hash ^= MD5.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2042,17 +2112,21 @@ namespace GRPCServer {
         output.WriteRawTag(18);
         output.WriteString(Rev);
       }
-      if (BlockIndex.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(BlockIndex);
+      if (BlockIndex != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(BlockIndex);
       }
-      if (BlockHash.Length != 0) {
+      if (SHA.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(BlockHash);
+        output.WriteString(SHA);
+      }
+      if (MD5.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(MD5);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(Content);
+        output.WriteRawTag(50);
+        output.WriteBytes(Content);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2068,14 +2142,17 @@ namespace GRPCServer {
       if (Rev.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Rev);
       }
-      if (BlockIndex.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BlockIndex);
+      if (BlockIndex != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlockIndex);
       }
-      if (BlockHash.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BlockHash);
+      if (SHA.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SHA);
+      }
+      if (MD5.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MD5);
       }
       if (Content.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2094,11 +2171,14 @@ namespace GRPCServer {
       if (other.Rev.Length != 0) {
         Rev = other.Rev;
       }
-      if (other.BlockIndex.Length != 0) {
+      if (other.BlockIndex != 0) {
         BlockIndex = other.BlockIndex;
       }
-      if (other.BlockHash.Length != 0) {
-        BlockHash = other.BlockHash;
+      if (other.SHA.Length != 0) {
+        SHA = other.SHA;
+      }
+      if (other.MD5.Length != 0) {
+        MD5 = other.MD5;
       }
       if (other.Content.Length != 0) {
         Content = other.Content;
@@ -2122,16 +2202,20 @@ namespace GRPCServer {
             Rev = input.ReadString();
             break;
           }
-          case 26: {
-            BlockIndex = input.ReadString();
+          case 24: {
+            BlockIndex = input.ReadInt32();
             break;
           }
           case 34: {
-            BlockHash = input.ReadString();
+            SHA = input.ReadString();
             break;
           }
           case 42: {
-            Content = input.ReadString();
+            MD5 = input.ReadString();
+            break;
+          }
+          case 50: {
+            Content = input.ReadBytes();
             break;
           }
         }

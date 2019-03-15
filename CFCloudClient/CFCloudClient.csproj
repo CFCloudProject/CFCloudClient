@@ -99,10 +99,11 @@
     <Compile Include="BackgroundWorks\FileUpdaterProcesser.cs" />
     <Compile Include="BackgroundWorks\FileUpdater.cs" />
     <Compile Include="BackgroundWorks\HeartBeat.cs" />
-    <Compile Include="FileUtil\Chunker.cs" />
+    <Compile Include="FileUtil\Block.cs" />
+    <Compile Include="FileUtil\CDC.cs" />
+    <Compile Include="FileUtil\CloudBlock.cs" />
     <Compile Include="FileUtil\File.cs" />
-    <Compile Include="FileUtil\FileBlock.cs" />
-    <Compile Include="FileUtil\Polynomials.cs" />
+    <Compile Include="FileUtil\Chunk.cs" />
     <Compile Include="InputWindow.xaml.cs">
       <DependentUpon>InputWindow.xaml</DependentUpon>
     </Compile>

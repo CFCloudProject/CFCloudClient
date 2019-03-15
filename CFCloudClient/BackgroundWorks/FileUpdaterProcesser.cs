@@ -61,7 +61,10 @@ namespace CFCloudClient.BackgroundWorks
             if (!File.Exists(e.LocalPath))
                 createResult = NetworkManager.CreateFolder(e.CloudPath);
             else
-                createResult = NetworkManager.Upload(e.CloudPath);
+            {
+                while ((createResult = NetworkManager.Upload(e.CloudPath)) == null)
+                    Thread.Sleep(5000);
+            }
             Models.SQLDataType sdt = new Models.SQLDataType(e.LocalPath, 
                 createResult.ModifiedTime, 
                 createResult.Rev, 
@@ -91,7 +94,9 @@ namespace CFCloudClient.BackgroundWorks
                     return;
                 if (sdt.IsShared.Equals("true"))
                     Util.Utils.UnLockFile(e.LocalPath);
-                Models.Metadata uploadResult = NetworkManager.Upload(e.CloudPath, sdt.Version);
+                Models.Metadata uploadResult;
+                while ((uploadResult = NetworkManager.Upload(e.CloudPath)) == null)
+                    Thread.Sleep(5000);
                 Models.SQLDataType sdt2 = new Models.SQLDataType(e.LocalPath,
                     uploadResult.ModifiedTime,
                     uploadResult.Rev,
@@ -131,7 +136,9 @@ namespace CFCloudClient.BackgroundWorks
             Models.Metadata metadata = NetworkManager.GetMetadata(e.CloudPath);
             if (metadata.Tag.Equals("File"))
             {
-                NetworkManager.Download(e.CloudPath);
+                while (!NetworkManager.Download(e.CloudPath))
+                    Thread.Sleep(5000);
+                metadata = NetworkManager.GetMetadata(e.CloudPath);
                 File.SetLastWriteTimeUtc(e.LocalPath, metadata.ModifiedTime);
                 if (metadata.isShared)
                     Util.Utils.LockFile(e.LocalPath);
@@ -157,6 +164,7 @@ namespace CFCloudClient.BackgroundWorks
                 Util.Utils.UnLockFile(e.LocalPath);
                 while (!NetworkManager.Download(e.CloudPath))
                     Thread.Sleep(5000);
+                metadata = NetworkManager.GetMetadata(e.CloudPath);
                 File.SetLastWriteTimeUtc(e.LocalPath, metadata.ModifiedTime);
                 if (metadata.isShared)
                     Util.Utils.LockFile(e.LocalPath);

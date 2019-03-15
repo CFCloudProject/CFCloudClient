@@ -283,7 +283,80 @@ namespace CFCloudClient.BackgroundWorks
         //to be continue
         public static Models.Metadata Upload(string path, string baseRev = null)
         {
-            Models.Metadata metadata = new Models.Metadata();
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringResponse response = null;
+            try
+            {
+                response = client.Upload(new PathRevRequest
+                {
+                    SessionId = Util.Global.info.SessionId,
+                    Path = path,
+                    BaseRev = baseRev
+                });
+            }
+            catch (RpcException)
+            {
+                return null;
+            }
+
+            if (response == null)
+                return null;
+            JObject obj = JObject.Parse(response.PayLoad);
+            string rev = obj["Rev"].ToString();
+            JArray blocks = (JArray)obj["Blocks"];
+            List<FileUtil.CloudBlock> cloudBlocks = new List<FileUtil.CloudBlock>();
+            for (int i = 0; i < blocks.Count; i++)
+            {
+                FileUtil.CloudBlock cb = new FileUtil.CloudBlock
+                {
+                    index = i,
+                    sha256 = blocks[i]["SHA256"].ToString(),
+                    md5 = blocks[i]["MD5"].ToString()
+                };
+                cloudBlocks.Add(cb);
+            }
+
+            FileUtil.File UploadFile = new FileUtil.File();
+            UploadFile.Path = Util.Utils.CloudPathtoLocalPath(path);
+            UploadFile.Rev = rev;
+            if (!UploadFile.OpenRead())
+                return null;
+            UploadFile.CDC_Chunking();
+            try
+            {
+                var requests = client.UploadBlock().RequestStream;
+                while (UploadFile.hasNextBlock())
+                {
+                    FileUtil.Block block = UploadFile.getNextBlock();
+                    var ret = cloudBlocks.Find((b) =>
+                    {
+                        return b.sha256.Equals(block.sha256) && b.md5.Equals(block.md5);
+                    });
+                    if (ret != null)
+                    {
+                        BlockRequest blockRequest = new BlockRequest
+                        {
+                            SessionId = Util.Global.info.SessionId,
+                            Path = path,
+                            BaseRev = baseRev,
+                            Rev = rev,
+                            BaseIndex = ret.index,
+                            Index = block.index,
+                            SHA256 = block.sha256,
+                            MD5 = block.md5,
+                            Content = null
+                        };
+                    }
+                }
+                requests.CompleteAsync().Wait();
+            }
+            catch (RpcException)
+            {
+                UploadFile.Close();
+                return null;
+            }
+
+            Models.Metadata metadata = GetMetadata(path);
             return metadata;
         }
 
