@@ -96,7 +96,7 @@ namespace CFCloudClient.FileUtil
             Block block = new Block();
             block.data = new byte[len];
             stream.Read(block.data, 0, len);
-            block.index = index;
+            block.index = index + 1;
             block.sha256 = block.SHA256();
             block.md5 = block.MD5();
             return block;
