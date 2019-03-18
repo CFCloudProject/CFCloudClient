@@ -475,7 +475,7 @@ namespace CFCloudClient.BackgroundWorks
             if (!DownloadFile.OpenWrite())
                 return false;
             DownloadFile.CDC_Chunking();
-            Dictionary<string, FileUtil.Block> localBlocks = new Dictionary<string, FileUtil.Block>():
+            Dictionary<string, FileUtil.Block> localBlocks = new Dictionary<string, FileUtil.Block>();
             while (DownloadFile.hasNextBlock())
             {
                 var block = DownloadFile.getNextBlock();
