@@ -89,11 +89,12 @@ message BlockRequest
 	string Path = 2;
 	string BaseRev = 3;
 	string Rev = 4;
-	int32 BaseIndex = 5;
+	string BaseIndex = 5;
 	int32 Index = 6;
-	string SHA256 = 7;
-	string MD5 = 8;
-	bytes Content = 9;
+	bool Confident = 7;
+	string SHA256 = 8;
+	string MD5 = 9;
+	bytes Content = 10;
 }
 
 message BlockResponse

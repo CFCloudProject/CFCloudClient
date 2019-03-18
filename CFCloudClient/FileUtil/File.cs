@@ -10,9 +10,11 @@ namespace CFCloudClient.FileUtil
     public class File
     {
         public string Path { get; set; }
+        public string TempPath { get; set; }
         public string Rev { get; set; }
         public List<Chunk> chunks { get; set; }
         private FileStream stream;
+        private FileStream _tempstream;
         private int index = 0;
 
         public bool OpenRead()
@@ -33,6 +35,7 @@ namespace CFCloudClient.FileUtil
             try
             {
                 stream = new FileStream(Path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read);
+                _tempstream = new FileStream(TempPath, FileMode.Create);
             }
             catch (IOException)
             {
@@ -44,6 +47,10 @@ namespace CFCloudClient.FileUtil
         public void Close()
         {
             stream.Close();
+            if (_tempstream != null)
+                _tempstream.Close();
+            if (System.IO.File.Exists(TempPath))
+                System.IO.File.Delete(TempPath);
         }
 
         public void CDC_Chunking()
@@ -99,7 +106,34 @@ namespace CFCloudClient.FileUtil
             block.index = index + 1;
             block.sha256 = block.SHA256();
             block.md5 = block.MD5();
+            block.start = (int)chunks[index].start;
+            block.length = len;
             return block;
+        }
+
+        public byte[] ReadBlock(int start, int len)
+        {
+            stream.Seek(start, SeekOrigin.Begin);
+            byte[] ret = new byte[len];
+            stream.Read(ret, 0, len);
+            return ret;
+        }
+
+        public void WriteTemp(byte[] data)
+        {
+            _tempstream.Write(data, 0, data.Length);
+        }
+
+        public void WriteFile()
+        {
+            stream.Seek(0, SeekOrigin.Begin);
+            _tempstream.Seek(0, SeekOrigin.Begin);
+            byte[] buffer = new byte[1024 * 1024];
+            while (_tempstream.Read(buffer, 0, 1024 * 1024) > 0)
+            {
+                stream.Write(buffer, 0, 1024 * 1024);
+            }
+            stream.Flush();
         }
     }
 }

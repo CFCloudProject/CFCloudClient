@@ -36,43 +36,44 @@ namespace GRPCServer {
             "bklkGAEgASgJEgwKBFBhdGgYAiABKAkSDwoHT2xkUGF0aBgDIAEoCSI8CgxT",
             "aGFyZVJlcXVlc3QSEQoJU2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkS",
             "CwoDRHN0GAMgASgJIkIKDlBhdGhSZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgB",
-            "IAEoCRIMCgRQYXRoGAIgASgJEg8KB0Jhc2VSZXYYAyABKAkinQEKDEJsb2Nr",
+            "IAEoCRIMCgRQYXRoGAIgASgJEg8KB0Jhc2VSZXYYAyABKAkisAEKDEJsb2Nr",
             "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdC",
-            "YXNlUmV2GAMgASgJEgsKA1JldhgEIAEoCRIRCglCYXNlSW5kZXgYBSABKAUS",
-            "DQoFSW5kZXgYBiABKAUSDgoGU0hBMjU2GAcgASgJEgsKA01ENRgIIAEoCRIP",
-            "CgdDb250ZW50GAkgASgMImkKDUJsb2NrUmVzcG9uc2USDAoEUGF0aBgBIAEo",
-            "CRILCgNSZXYYAiABKAkSEgoKQmxvY2tJbmRleBgDIAEoBRILCgNTSEEYBCAB",
-            "KAkSCwoDTUQ1GAUgASgJEg8KB0NvbnRlbnQYBiABKAwiIQoOU3RyaW5nUmVz",
-            "cG9uc2USDwoHUGF5TG9hZBgBIAEoCSKIAQoOR2V0VG9rZW5SZXN1bHQSDwoH",
-            "U3VjY2VlZBgBIAEoCBIQCghGaWxlTmFtZRgCIAEoCRINCgVFbWFpbBgDIAEo",
-            "CRIQCghQYXNzd29yZBgEIAEoCRIRCglGaXJzdE5hbWUYBSABKAkSEAoITGFz",
-            "dE5hbWUYBiABKAkSDQoFRXJyb3IYByABKAUyjgkKCkdSUENTZXJ2ZXISOgoI",
-            "UmVnaXN0ZXISEC5HUlBDU2VydmVyLlVzZXIaGi5HUlBDU2VydmVyLlJlZ2lz",
-            "dGVyUmVzdWx0IgASNAoFTG9naW4SEC5HUlBDU2VydmVyLlVzZXIaFy5HUlBD",
-            "U2VydmVyLkxvZ2luUmVzdWx0IgASQAoGTG9nb3V0EhguR1JQQ1NlcnZlci5F",
-            "bXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoJ",
-            "SGVhcnRCZWF0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2Vy",
-            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASPwoFU2hhcmUSGC5HUlBDU2VydmVyLlNo",
-            "YXJlUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJFCgxD",
-            "cmVhdGVGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1Nl",
-            "cnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlJlbmFtZRIZLkdSUENTZXJ2ZXIu",
-            "UmVuYW1lUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/",
-            "CgZEZWxldGUSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZl",
-            "ci5TdHJpbmdSZXNwb25zZSIAEkIKBlVwbG9hZBIaLkdSUENTZXJ2ZXIuUGF0",
-            "aFJldlJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASRwoL",
-            "VXBsb2FkQmxvY2sSGC5HUlBDU2VydmVyLkJsb2NrUmVxdWVzdBoaLkdSUENT",
-            "ZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiACgBEkEKCERvd25sb2FkEhcuR1JQQ1Nl",
-            "cnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2Ui",
-            "ABJKCg1Eb3dubG9hZEJsb2NrEhguR1JQQ1NlcnZlci5CbG9ja1JlcXVlc3Qa",
-            "GS5HUlBDU2VydmVyLkJsb2NrUmVzcG9uc2UiACgBMAESRAoLR2V0TWV0YWRh",
-            "dGESFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJp",
-            "bmdSZXNwb25zZSIAEkMKCkxpc3RGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhS",
-            "ZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkQKCEdldFRv",
-            "a2VuEhouR1JQQ1NlcnZlci5QYXRoUmV2UmVxdWVzdBoaLkdSUENTZXJ2ZXIu",
-            "R2V0VG9rZW5SZXN1bHQiABJECgtSZXR1cm5Ub2tlbhIXLkdSUENTZXJ2ZXIu",
-            "UGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASSAoP",
-            "Q2FuTW9kaWZ5Rm9sZGVyEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdS",
-            "UENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiAGIGcHJvdG8z"));
+            "YXNlUmV2GAMgASgJEgsKA1JldhgEIAEoCRIRCglCYXNlSW5kZXgYBSABKAkS",
+            "DQoFSW5kZXgYBiABKAUSEQoJQ29uZmlkZW50GAcgASgIEg4KBlNIQTI1NhgI",
+            "IAEoCRILCgNNRDUYCSABKAkSDwoHQ29udGVudBgKIAEoDCJpCg1CbG9ja1Jl",
+            "c3BvbnNlEgwKBFBhdGgYASABKAkSCwoDUmV2GAIgASgJEhIKCkJsb2NrSW5k",
+            "ZXgYAyABKAUSCwoDU0hBGAQgASgJEgsKA01ENRgFIAEoCRIPCgdDb250ZW50",
+            "GAYgASgMIiEKDlN0cmluZ1Jlc3BvbnNlEg8KB1BheUxvYWQYASABKAkiiAEK",
+            "DkdldFRva2VuUmVzdWx0Eg8KB1N1Y2NlZWQYASABKAgSEAoIRmlsZU5hbWUY",
+            "AiABKAkSDQoFRW1haWwYAyABKAkSEAoIUGFzc3dvcmQYBCABKAkSEQoJRmly",
+            "c3ROYW1lGAUgASgJEhAKCExhc3ROYW1lGAYgASgJEg0KBUVycm9yGAcgASgF",
+            "Mo4JCgpHUlBDU2VydmVyEjoKCFJlZ2lzdGVyEhAuR1JQQ1NlcnZlci5Vc2Vy",
+            "GhouR1JQQ1NlcnZlci5SZWdpc3RlclJlc3VsdCIAEjQKBUxvZ2luEhAuR1JQ",
+            "Q1NlcnZlci5Vc2VyGhcuR1JQQ1NlcnZlci5Mb2dpblJlc3VsdCIAEkAKBkxv",
+            "Z291dBIYLkdSUENTZXJ2ZXIuRW1wdHlSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
+            "dHJpbmdSZXNwb25zZSIAEkMKCUhlYXJ0QmVhdBIYLkdSUENTZXJ2ZXIuRW1w",
+            "dHlSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEj8KBVNo",
+            "YXJlEhguR1JQQ1NlcnZlci5TaGFyZVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0",
+            "cmluZ1Jlc3BvbnNlIgASRQoMQ3JlYXRlRm9sZGVyEhcuR1JQQ1NlcnZlci5Q",
+            "YXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJBCgZS",
+            "ZW5hbWUSGS5HUlBDU2VydmVyLlJlbmFtZVJlcXVlc3QaGi5HUlBDU2VydmVy",
+            "LlN0cmluZ1Jlc3BvbnNlIgASPwoGRGVsZXRlEhcuR1JQQ1NlcnZlci5QYXRo",
+            "UmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJCCgZVcGxv",
+            "YWQSGi5HUlBDU2VydmVyLlBhdGhSZXZSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
+            "dHJpbmdSZXNwb25zZSIAEkcKC1VwbG9hZEJsb2NrEhguR1JQQ1NlcnZlci5C",
+            "bG9ja1JlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgAoARJB",
+            "CghEb3dubG9hZBIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2Vy",
+            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASSgoNRG93bmxvYWRCbG9jaxIYLkdSUENT",
+            "ZXJ2ZXIuQmxvY2tSZXF1ZXN0GhkuR1JQQ1NlcnZlci5CbG9ja1Jlc3BvbnNl",
+            "IgAoATABEkQKC0dldE1ldGFkYXRhEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVz",
+            "dBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJDCgpMaXN0Rm9sZGVy",
+            "EhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
+            "UmVzcG9uc2UiABJECghHZXRUb2tlbhIaLkdSUENTZXJ2ZXIuUGF0aFJldlJl",
+            "cXVlc3QaGi5HUlBDU2VydmVyLkdldFRva2VuUmVzdWx0IgASRAoLUmV0dXJu",
+            "VG9rZW4SFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
+            "dHJpbmdSZXNwb25zZSIAEkgKD0Nhbk1vZGlmeUZvbGRlchIXLkdSUENTZXJ2",
+            "ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgBi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,7 +85,7 @@ namespace GRPCServer {
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RenameRequest), global::GRPCServer.RenameRequest.Parser, new[]{ "SessionId", "Path", "OldPath" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.ShareRequest), global::GRPCServer.ShareRequest.Parser, new[]{ "SessionId", "Path", "Dst" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRevRequest), global::GRPCServer.PathRevRequest.Parser, new[]{ "SessionId", "Path", "BaseRev" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "SHA256", "MD5", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "Confident", "SHA256", "MD5", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "SHA", "MD5", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.GetTokenResult), global::GRPCServer.GetTokenResult.Parser, new[]{ "Succeed", "FileName", "Email", "Password", "FirstName", "LastName", "Error" }, null, null, null)
@@ -1633,6 +1634,7 @@ namespace GRPCServer {
       rev_ = other.rev_;
       baseIndex_ = other.baseIndex_;
       index_ = other.index_;
+      confident_ = other.confident_;
       sHA256_ = other.sHA256_;
       mD5_ = other.mD5_;
       content_ = other.content_;
@@ -1690,12 +1692,12 @@ namespace GRPCServer {
 
     /// <summary>Field number for the "BaseIndex" field.</summary>
     public const int BaseIndexFieldNumber = 5;
-    private int baseIndex_;
+    private string baseIndex_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int BaseIndex {
+    public string BaseIndex {
       get { return baseIndex_; }
       set {
-        baseIndex_ = value;
+        baseIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1710,8 +1712,19 @@ namespace GRPCServer {
       }
     }
 
+    /// <summary>Field number for the "Confident" field.</summary>
+    public const int ConfidentFieldNumber = 7;
+    private bool confident_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Confident {
+      get { return confident_; }
+      set {
+        confident_ = value;
+      }
+    }
+
     /// <summary>Field number for the "SHA256" field.</summary>
-    public const int SHA256FieldNumber = 7;
+    public const int SHA256FieldNumber = 8;
     private string sHA256_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string SHA256 {
@@ -1722,7 +1735,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "MD5" field.</summary>
-    public const int MD5FieldNumber = 8;
+    public const int MD5FieldNumber = 9;
     private string mD5_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string MD5 {
@@ -1733,7 +1746,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 9;
+    public const int ContentFieldNumber = 10;
     private pb::ByteString content_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Content {
@@ -1762,6 +1775,7 @@ namespace GRPCServer {
       if (Rev != other.Rev) return false;
       if (BaseIndex != other.BaseIndex) return false;
       if (Index != other.Index) return false;
+      if (Confident != other.Confident) return false;
       if (SHA256 != other.SHA256) return false;
       if (MD5 != other.MD5) return false;
       if (Content != other.Content) return false;
@@ -1775,8 +1789,9 @@ namespace GRPCServer {
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (BaseRev.Length != 0) hash ^= BaseRev.GetHashCode();
       if (Rev.Length != 0) hash ^= Rev.GetHashCode();
-      if (BaseIndex != 0) hash ^= BaseIndex.GetHashCode();
+      if (BaseIndex.Length != 0) hash ^= BaseIndex.GetHashCode();
       if (Index != 0) hash ^= Index.GetHashCode();
+      if (Confident != false) hash ^= Confident.GetHashCode();
       if (SHA256.Length != 0) hash ^= SHA256.GetHashCode();
       if (MD5.Length != 0) hash ^= MD5.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
@@ -1809,24 +1824,28 @@ namespace GRPCServer {
         output.WriteRawTag(34);
         output.WriteString(Rev);
       }
-      if (BaseIndex != 0) {
-        output.WriteRawTag(40);
-        output.WriteInt32(BaseIndex);
+      if (BaseIndex.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(BaseIndex);
       }
       if (Index != 0) {
         output.WriteRawTag(48);
         output.WriteInt32(Index);
       }
+      if (Confident != false) {
+        output.WriteRawTag(56);
+        output.WriteBool(Confident);
+      }
       if (SHA256.Length != 0) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteString(SHA256);
       }
       if (MD5.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteString(MD5);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(74);
+        output.WriteRawTag(82);
         output.WriteBytes(Content);
       }
       if (_unknownFields != null) {
@@ -1849,11 +1868,14 @@ namespace GRPCServer {
       if (Rev.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Rev);
       }
-      if (BaseIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BaseIndex);
+      if (BaseIndex.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseIndex);
       }
       if (Index != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
+      }
+      if (Confident != false) {
+        size += 1 + 1;
       }
       if (SHA256.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(SHA256);
@@ -1887,11 +1909,14 @@ namespace GRPCServer {
       if (other.Rev.Length != 0) {
         Rev = other.Rev;
       }
-      if (other.BaseIndex != 0) {
+      if (other.BaseIndex.Length != 0) {
         BaseIndex = other.BaseIndex;
       }
       if (other.Index != 0) {
         Index = other.Index;
+      }
+      if (other.Confident != false) {
+        Confident = other.Confident;
       }
       if (other.SHA256.Length != 0) {
         SHA256 = other.SHA256;
@@ -1929,23 +1954,27 @@ namespace GRPCServer {
             Rev = input.ReadString();
             break;
           }
-          case 40: {
-            BaseIndex = input.ReadInt32();
+          case 42: {
+            BaseIndex = input.ReadString();
             break;
           }
           case 48: {
             Index = input.ReadInt32();
             break;
           }
-          case 58: {
-            SHA256 = input.ReadString();
+          case 56: {
+            Confident = input.ReadBool();
             break;
           }
           case 66: {
-            MD5 = input.ReadString();
+            SHA256 = input.ReadString();
             break;
           }
           case 74: {
+            MD5 = input.ReadString();
+            break;
+          }
+          case 82: {
             Content = input.ReadBytes();
             break;
           }

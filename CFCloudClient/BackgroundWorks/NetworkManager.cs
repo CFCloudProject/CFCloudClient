@@ -156,25 +156,27 @@ namespace CFCloudClient.BackgroundWorks
                 return null;
 
             List<Models.FileChangeEvent> eventsList = new List<Models.FileChangeEvent>();
+            Func<int, Models.FileChangeEvent.FileChangeType> getType = delegate(int type)
+            {
+                switch (type)
+                {
+                    case 1:
+                        return Models.FileChangeEvent.FileChangeType.ServerCreate;
+                    case 2:
+                        return Models.FileChangeEvent.FileChangeType.ServerChange;
+                    case 3:
+                        return Models.FileChangeEvent.FileChangeType.ServerRename;
+                    default:
+                        return Models.FileChangeEvent.FileChangeType.ServerDelete;
+                }
+            };
             foreach (var item in eventsArray)
             {
                 int type = int.Parse(item["Type"].ToString());
                 string path = item["Path"].ToString();
                 string oldPath = item["OldPath"].ToString();
                 Models.FileChangeEvent e = new Models.FileChangeEvent(
-                    new Func<Models.FileChangeEvent.FileChangeType>(() => {
-                        switch (type)
-                        {
-                            case 1:
-                                return Models.FileChangeEvent.FileChangeType.ServerCreate;
-                            case 2:
-                                return Models.FileChangeEvent.FileChangeType.ServerChange;
-                            case 3:
-                                return Models.FileChangeEvent.FileChangeType.ServerRename;
-                            default:
-                                return Models.FileChangeEvent.FileChangeType.ServerDelete;
-                        }
-                    }).Invoke(), Util.Utils.CloudPathtoLocalPath(path), Util.Utils.CloudPathtoLocalPath(oldPath));
+                    getType(type), Util.Utils.CloudPathtoLocalPath(path), Util.Utils.CloudPathtoLocalPath(oldPath));
                 eventsList.Add(e);
             }
             return eventsList;
@@ -279,8 +281,7 @@ namespace CFCloudClient.BackgroundWorks
 
             return Models.Metadata.FromJson(response.PayLoad);
         }
-
-        //to be continue
+        
         public static Models.Metadata Upload(string path, string baseRev = null)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
@@ -304,7 +305,7 @@ namespace CFCloudClient.BackgroundWorks
             JObject obj = JObject.Parse(response.PayLoad);
             string rev = obj["Rev"].ToString();
             JArray blocks = (JArray)obj["Blocks"];
-            List<FileUtil.CloudBlock> cloudBlocks = new List<FileUtil.CloudBlock>();
+            Dictionary<string, Dictionary<string, FileUtil.CloudBlock>> cloudBlocks = new Dictionary<string, Dictionary<string, FileUtil.CloudBlock>>();
             for (int i = 0; i < blocks.Count; i++)
             {
                 FileUtil.CloudBlock cb = new FileUtil.CloudBlock
@@ -313,7 +314,15 @@ namespace CFCloudClient.BackgroundWorks
                     sha256 = blocks[i]["SHA256"].ToString(),
                     md5 = blocks[i]["MD5"].ToString()
                 };
-                cloudBlocks.Add(cb);
+                if (cloudBlocks.ContainsKey(cb.sha256))
+                {
+                    cloudBlocks[cb.sha256].Add(cb.md5, cb);
+                }
+                else
+                {
+                    cloudBlocks.Add(cb.sha256, new Dictionary<string, FileUtil.CloudBlock>());
+                    cloudBlocks[cb.sha256].Add(cb.md5, cb);
+                }
             }
 
             FileUtil.File UploadFile = new FileUtil.File();
@@ -325,13 +334,18 @@ namespace CFCloudClient.BackgroundWorks
             try
             {
                 var requests = client.UploadBlock().RequestStream;
+                List<BlockRequest> WaitRequests = new List<BlockRequest>();
+                int lastIndex = 0;
+                int maxIndex = blocks.Count;
                 while (UploadFile.hasNextBlock())
                 {
                     FileUtil.Block block = UploadFile.getNextBlock();
-                    var ret = cloudBlocks.Find((b) =>
+                    FileUtil.CloudBlock ret = null;
+                    if (cloudBlocks.ContainsKey(block.sha256))
                     {
-                        return b.sha256.Equals(block.sha256) && b.md5.Equals(block.md5);
-                    });
+                        if (cloudBlocks[block.sha256].ContainsKey(block.md5))
+                            ret = cloudBlocks[block.sha256][block.md5];
+                    }
                     if (ret != null)
                     {
                         BlockRequest blockRequest = new BlockRequest
@@ -340,15 +354,76 @@ namespace CFCloudClient.BackgroundWorks
                             Path = path,
                             BaseRev = baseRev,
                             Rev = rev,
-                            BaseIndex = ret.index,
+                            BaseIndex = ret.index.ToString(),
                             Index = block.index,
+                            Confident = true,
                             SHA256 = block.sha256,
                             MD5 = block.md5,
                             Content = null
                         };
+                        if (WaitRequests.Count > 0 && ret.index > lastIndex)
+                        {
+                            string baseIndex;
+                            if (ret.index - lastIndex == 1)
+                                baseIndex = null;
+                            else
+                            {
+                                baseIndex = (lastIndex + 1).ToString();
+                                for (int i = lastIndex + 2; i < ret.index; ++i)
+                                {
+                                    baseIndex += "|" + i;
+                                }
+                            }
+                            foreach (var request in WaitRequests)
+                            {
+                                request.BaseIndex = baseIndex;
+                                request.Confident = false;
+                                requests.WriteAsync(request).Start();
+                            }
+                            WaitRequests.Clear();
+                            lastIndex = ret.index;
+                        }
+                        requests.WriteAsync(blockRequest).Start();
+                    }
+                    else
+                    {
+                        BlockRequest blockRequest = new BlockRequest
+                        {
+                            SessionId = Util.Global.info.SessionId,
+                            Path = path,
+                            BaseRev = baseRev,
+                            Rev = rev,
+                            Index = block.index,
+                            SHA256 = block.sha256,
+                            MD5 = block.md5,
+                            Content = Google.Protobuf.ByteString.CopyFrom(block.data)
+                        };
+                        WaitRequests.Add(blockRequest);
+                    }
+                }
+                if (WaitRequests.Count != 0)
+                {
+                    string baseIndex;
+                    if (maxIndex - lastIndex <= 1)
+                        baseIndex = null;
+                    else
+                    {
+                        baseIndex = (lastIndex + 1).ToString();
+                        for (int i = lastIndex + 2; i < maxIndex; ++i)
+                        {
+                            baseIndex += "|" + i;
+                        }
+                        foreach (var request in WaitRequests)
+                        {
+                            request.BaseIndex = baseIndex;
+                            request.Confident = false;
+                            requests.WriteAsync(request).Start();
+                        }
+                        WaitRequests.Clear();
                     }
                 }
                 requests.CompleteAsync().Wait();
+                UploadFile.Close();
             }
             catch (RpcException)
             {
@@ -359,10 +434,98 @@ namespace CFCloudClient.BackgroundWorks
             Models.Metadata metadata = GetMetadata(path);
             return metadata;
         }
-
-        //to be continue
+        
         public static bool Download(string path)
         {
+            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
+            StringResponse response = null;
+            try
+            {
+                response = client.Download(new PathRequest
+                {
+                    SessionId = Util.Global.info.SessionId,
+                    Path = path
+                });
+            }
+            catch (RpcException)
+            {
+                return false;
+            }
+
+            if (response == null)
+                return false;
+            JObject obj = JObject.Parse(response.PayLoad);
+            string rev = obj["Rev"].ToString();
+            JArray blocks = (JArray)obj["Blocks"];
+            List<FileUtil.CloudBlock> cloudBlocks = new List<FileUtil.CloudBlock>();
+            for (int i = 0; i < blocks.Count; i++)
+            {
+                cloudBlocks.Add(new FileUtil.CloudBlock
+                {
+                    index = i,
+                    sha256 = blocks[i]["SHA256"].ToString(),
+                    md5 = blocks[i]["MD5"].ToString()
+                });
+            }
+
+            FileUtil.File DownloadFile = new FileUtil.File();
+            DownloadFile.Path = Util.Utils.CloudPathtoLocalPath(path);
+            DownloadFile.TempPath = "temp\\" + path.Replace('/', '_') + ".temp";
+            DownloadFile.Rev = rev;
+            if (!DownloadFile.OpenWrite())
+                return false;
+            DownloadFile.CDC_Chunking();
+            Dictionary<string, FileUtil.Block> localBlocks = new Dictionary<string, FileUtil.Block>():
+            while (DownloadFile.hasNextBlock())
+            {
+                var block = DownloadFile.getNextBlock();
+                block.data = null;
+                localBlocks.Add(block.sha256 + block.md5, block);
+            }
+
+            var requests = client.DownloadBlock().RequestStream;
+            var responses = client.DownloadBlock().ResponseStream;
+
+            foreach (var block in cloudBlocks)
+            {
+                if (localBlocks.ContainsKey(block.sha256 + block.md5))
+                {
+                    var lb = localBlocks[block.sha256 + block.md5];
+                    DownloadFile.WriteTemp(DownloadFile.ReadBlock(lb.start, lb.length));
+                }
+                else
+                {
+                    BlockResponse res = null;
+                    do
+                    {
+                        try
+                        {
+                            requests.WriteAsync(new BlockRequest
+                            {
+                                SessionId = Util.Global.info.SessionId,
+                                Path = path,
+                                Rev = rev,
+                                Index = block.index,
+                                SHA256 = block.sha256,
+                                MD5 = block.md5,
+                            }).Wait();
+                            res = responses.Current;
+                        }
+                        catch (RpcException)
+                        {
+                            DownloadFile.Close();
+                            return false;
+                        }
+                    }
+                    while (!(res != null && res.BlockIndex == block.index
+                    && res.SHA == block.sha256 && res.MD5 == block.md5));
+                    DownloadFile.WriteTemp(res.Content.ToByteArray());
+                }
+            }
+            requests.CompleteAsync().Wait();
+            DownloadFile.WriteFile();
+            DownloadFile.Close();
+
             return true;
         }
 
