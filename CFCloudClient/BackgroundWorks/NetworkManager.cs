@@ -378,12 +378,12 @@ namespace CFCloudClient.BackgroundWorks
                             {
                                 request.BaseIndex = baseIndex;
                                 request.Confident = false;
-                                requests.WriteAsync(request).Start();
+                                requests.WriteAsync(request).Wait();
                             }
                             WaitRequests.Clear();
                             lastIndex = ret.index;
                         }
-                        requests.WriteAsync(blockRequest).Start();
+                        requests.WriteAsync(blockRequest).Wait();
                     }
                     else
                     {
@@ -417,7 +417,7 @@ namespace CFCloudClient.BackgroundWorks
                         {
                             request.BaseIndex = baseIndex;
                             request.Confident = false;
-                            requests.WriteAsync(request).Start();
+                            requests.WriteAsync(request).Wait();
                         }
                         WaitRequests.Clear();
                     }
@@ -483,9 +483,34 @@ namespace CFCloudClient.BackgroundWorks
                 localBlocks.Add(block.sha256 + block.md5, block);
             }
 
-            var requests = client.DownloadBlock().RequestStream;
-            var responses = client.DownloadBlock().ResponseStream;
+            var reqres = client.DownloadBlock();
+            var requests = reqres.RequestStream;
+            var responses = reqres.ResponseStream;
 
+            foreach (var block in cloudBlocks)
+            {
+                if (!localBlocks.ContainsKey(block.sha256 + block.md5))
+                {
+                    try
+                    {
+                        requests.WriteAsync(new BlockRequest
+                        {
+                            SessionId = Util.Global.info.SessionId,
+                            Path = path,
+                            Rev = rev,
+                            Index = block.index,
+                            SHA256 = block.sha256,
+                            MD5 = block.md5,
+                        }).Wait();
+                    }
+                    catch (RpcException)
+                    {
+                        DownloadFile.Close();
+                        return false;
+                    }
+                }
+            }
+            requests.CompleteAsync().Wait();
             foreach (var block in cloudBlocks)
             {
                 if (localBlocks.ContainsKey(block.sha256 + block.md5))
@@ -495,34 +520,12 @@ namespace CFCloudClient.BackgroundWorks
                 }
                 else
                 {
-                    BlockResponse res = null;
-                    do
-                    {
-                        try
-                        {
-                            requests.WriteAsync(new BlockRequest
-                            {
-                                SessionId = Util.Global.info.SessionId,
-                                Path = path,
-                                Rev = rev,
-                                Index = block.index,
-                                SHA256 = block.sha256,
-                                MD5 = block.md5,
-                            }).Wait();
-                            res = responses.Current;
-                        }
-                        catch (RpcException)
-                        {
-                            DownloadFile.Close();
-                            return false;
-                        }
-                    }
-                    while (!(res != null && res.BlockIndex == block.index
-                    && res.SHA == block.sha256 && res.MD5 == block.md5));
-                    DownloadFile.WriteTemp(res.Content.ToByteArray());
+                    if (responses.MoveNext().Result)
+                        DownloadFile.WriteTemp(responses.Current.Content.ToByteArray());
+                    else
+                        return false;
                 }
             }
-            requests.CompleteAsync().Wait();
             DownloadFile.WriteFile();
             DownloadFile.Close();
 
