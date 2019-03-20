@@ -35,7 +35,7 @@ namespace CFCloudClient.BackgroundWorks
                     LastName = user.LastName
                 });
             }
-            catch (RpcException)
+            catch (RpcException e)
             {
                 rr.Succeed = false;
                 rr.Fail = NetworkResults.RegisterResult.FailType.Unknown;

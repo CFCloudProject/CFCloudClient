@@ -126,12 +126,13 @@ namespace CFCloudClient.FileUtil
 
         public void WriteFile()
         {
-            stream.Seek(0, SeekOrigin.Begin);
+            stream.SetLength(0);
             _tempstream.Seek(0, SeekOrigin.Begin);
             byte[] buffer = new byte[1024 * 1024];
-            while (_tempstream.Read(buffer, 0, 1024 * 1024) > 0)
+            int count;
+            while ((count = _tempstream.Read(buffer, 0, 1024 * 1024)) > 0)
             {
-                stream.Write(buffer, 0, 1024 * 1024);
+                stream.Write(buffer, 0, count);
             }
             stream.Flush();
         }
