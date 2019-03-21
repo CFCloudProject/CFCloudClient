@@ -73,7 +73,7 @@ namespace CFCloudClient.BackgroundWorks
             Util.SqliteHelper.Insert(sdt);
             if (createResult.isShared && createResult.Tag.Equals("File"))
                 Util.Utils.LockFile(e.LocalPath);
-            if (createResult.TokenHolder.Equal(Util.Global.info.user))
+            if (createResult.TokenHolder.Equal(Util.Global.user))
                 NetworkManager.ReturnToken(e.CloudPath);
         }
 
@@ -105,7 +105,7 @@ namespace CFCloudClient.BackgroundWorks
                 Util.SqliteHelper.Update(sdt2);
                 if (uploadResult.isShared)
                     Util.Utils.LockFile(e.LocalPath);
-                if (uploadResult.TokenHolder.Equal(Util.Global.info.user))
+                if (uploadResult.TokenHolder.Equal(Util.Global.user))
                     NetworkManager.ReturnToken(e.CloudPath);
             }
         }
@@ -121,7 +121,7 @@ namespace CFCloudClient.BackgroundWorks
             Models.Metadata renameResult = NetworkManager.Rename(e.CloudPath, e.OldCloudPath);
             if (renameResult.isShared && renameResult.Tag.Equals("File"))
                 Util.Utils.LockFile(e.LocalPath);
-            if (renameResult.TokenHolder.Equal(Util.Global.info.user))
+            if (renameResult.TokenHolder.Equal(Util.Global.user))
                 NetworkManager.ReturnToken(e.CloudPath);
         }
 

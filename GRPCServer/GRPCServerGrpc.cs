@@ -20,9 +20,10 @@ namespace GRPCServer {
     static readonly grpc::Marshaller<global::GRPCServer.ShareRequest> __Marshaller_GRPCServer_ShareRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.ShareRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.PathRequest> __Marshaller_GRPCServer_PathRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.PathRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.RenameRequest> __Marshaller_GRPCServer_RenameRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.RenameRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GRPCServer.PathRevRequest> __Marshaller_GRPCServer_PathRevRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.PathRevRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GRPCServer.UploadRequest> __Marshaller_GRPCServer_UploadRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.UploadRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.BlockRequest> __Marshaller_GRPCServer_BlockRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.BlockRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.BlockResponse> __Marshaller_GRPCServer_BlockResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.BlockResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GRPCServer.PathRevRequest> __Marshaller_GRPCServer_PathRevRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.PathRevRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.GetTokenResult> __Marshaller_GRPCServer_GetTokenResult = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.GetTokenResult.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult> __Method_Register = new grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult>(
@@ -81,11 +82,11 @@ namespace GRPCServer {
         __Marshaller_GRPCServer_PathRequest,
         __Marshaller_GRPCServer_StringResponse);
 
-    static readonly grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.StringResponse> __Method_Upload = new grpc::Method<global::GRPCServer.PathRevRequest, global::GRPCServer.StringResponse>(
+    static readonly grpc::Method<global::GRPCServer.UploadRequest, global::GRPCServer.StringResponse> __Method_Upload = new grpc::Method<global::GRPCServer.UploadRequest, global::GRPCServer.StringResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Upload",
-        __Marshaller_GRPCServer_PathRevRequest,
+        __Marshaller_GRPCServer_UploadRequest,
         __Marshaller_GRPCServer_StringResponse);
 
     static readonly grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse> __Method_UploadBlock = new grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse>(
@@ -193,7 +194,7 @@ namespace GRPCServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringResponse> Upload(global::GRPCServer.PathRevRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringResponse> Upload(global::GRPCServer.UploadRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -391,19 +392,19 @@ namespace GRPCServer {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Delete, null, options, request);
       }
-      public virtual global::GRPCServer.StringResponse Upload(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GRPCServer.StringResponse Upload(global::GRPCServer.UploadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Upload(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::GRPCServer.StringResponse Upload(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
+      public virtual global::GRPCServer.StringResponse Upload(global::GRPCServer.UploadRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_Upload, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> UploadAsync(global::GRPCServer.PathRevRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> UploadAsync(global::GRPCServer.UploadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return UploadAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> UploadAsync(global::GRPCServer.PathRevRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> UploadAsync(global::GRPCServer.UploadRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Upload, null, options, request);
       }
@@ -564,7 +565,7 @@ namespace GRPCServer {
       serviceBinder.AddMethod(__Method_CreateFolder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.CreateFolder));
       serviceBinder.AddMethod(__Method_Rename, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.RenameRequest, global::GRPCServer.StringResponse>(serviceImpl.Rename));
       serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.Delete));
-      serviceBinder.AddMethod(__Method_Upload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRevRequest, global::GRPCServer.StringResponse>(serviceImpl.Upload));
+      serviceBinder.AddMethod(__Method_Upload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.UploadRequest, global::GRPCServer.StringResponse>(serviceImpl.Upload));
       serviceBinder.AddMethod(__Method_UploadBlock, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse>(serviceImpl.UploadBlock));
       serviceBinder.AddMethod(__Method_Download, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.Download));
       serviceBinder.AddMethod(__Method_DownloadBlock, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse>(serviceImpl.DownloadBlock));

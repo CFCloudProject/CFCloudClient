@@ -13,7 +13,7 @@ service GRPCServer
 	rpc Rename (RenameRequest) returns (StringResponse) {}
 	rpc Delete (PathRequest) returns (StringResponse) {}
 
-	rpc Upload (PathRevRequest) returns (StringResponse) {}
+	rpc Upload (UploadRequest) returns (StringResponse) {}
 	rpc UploadBlock (stream BlockRequest) returns (StringResponse) {}
 
 	rpc Download (PathRequest) returns (StringResponse) {}
@@ -44,11 +44,9 @@ message LoginResult
 {
 	bool Succeed = 1;
 	string SessionId = 2;
-	string Email = 3;
-	string Password = 4;
-	string FirstName = 5;
-	string LastName = 6;
-	int32 Error = 7;
+	string FirstName = 3;
+	string LastName = 4;
+	int32 Error = 5;
 }
 
 message EmptyRequest
@@ -74,6 +72,15 @@ message ShareRequest
 	string SessionId = 1;
 	string Path = 2;
 	string Dst = 3;
+}
+
+message UploadRequest
+{
+	string SessionId = 1;
+	string Path = 2;
+	string BaseRev = 3;
+	int64 ModifiedTime = 4;
+	int64 Size = 5;
 }
 
 message PathRevRequest
@@ -117,8 +124,7 @@ message GetTokenResult
 	bool Succeed = 1;
 	string FileName = 2;
 	string Email = 3;
-	string Password = 4;
-	string FirstName = 5;
-	string LastName = 6;
-	int32 Error = 7;
+	string FirstName = 4;
+	string LastName = 5;
+	int32 Error = 6;
 }

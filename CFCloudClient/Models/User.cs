@@ -34,7 +34,6 @@ namespace CFCloudClient.Models
         {
             User user = new User();
             user.Email = json["Email"].ToString();
-            user.Password = json["Password"].ToString();
             user.FirstName = json["FirstName"].ToString();
             user.LastName = json["LastName"].ToString();
             return user;

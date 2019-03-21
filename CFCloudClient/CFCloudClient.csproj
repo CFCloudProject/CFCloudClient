@@ -110,11 +110,10 @@
     <Compile Include="Models\FileAndEditorMap.cs" />
     <Compile Include="Models\FileChangeEvent.cs" />
     <Compile Include="Models\FileSystemItem.cs" />
-    <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\Metadata.cs" />
     <Compile Include="Models\SQLDataType.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="NetworkResults\GetFolderTokenResult.cs" />
+    <Compile Include="NetworkResults\CanModifyFolderResult.cs" />
     <Compile Include="NetworkResults\GetTokenResult.cs" />
     <Compile Include="NetworkResults\RegisterResult.cs" />
     <Compile Include="RegisterWindow.xaml.cs">

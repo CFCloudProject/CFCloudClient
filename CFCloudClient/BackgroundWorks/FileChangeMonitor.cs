@@ -14,8 +14,7 @@ namespace CFCloudClient.BackgroundWorks
         public FileChangeMonitor()
         {
             watcher.Path = Properties.Settings.Default.Workspace;
-            watcher.NotifyFilter = NotifyFilters.Attributes
-                | NotifyFilters.CreationTime
+            watcher.NotifyFilter = NotifyFilters.CreationTime
                 | NotifyFilters.DirectoryName
                 | NotifyFilters.FileName
                 | NotifyFilters.LastAccess

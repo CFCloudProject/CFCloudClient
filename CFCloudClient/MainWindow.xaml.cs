@@ -32,9 +32,9 @@ namespace CFCloudClient
             if (!result.HasValue || !result.Value)
                 this.Close();
             this.Title = Properties.Resources.ProgramName + ": " 
-                + Util.Global.info.user.FirstName + " "
-                + Util.Global.info.user.LastName + " ("
-                + Util.Global.info.user.Email + ")";
+                + Util.Global.user.FirstName + " "
+                + Util.Global.user.LastName + " ("
+                + Util.Global.user.Email + ")";
             this.Closed += OnClose;
             this.Loaded += OnLoaded;
         }
@@ -218,7 +218,7 @@ namespace CFCloudClient
             {
                 if (item.Type.Equals("Folder"))
                 {
-                    NetworkResults.GetFolderTokenResult gfr = BackgroundWorks.NetworkManager.GetFolderToken(Util.Utils.LocalPathtoCloudPath(oldName));
+                    NetworkResults.CanModifyFolderResult gfr = BackgroundWorks.NetworkManager.CanModifyFolder(Util.Utils.LocalPathtoCloudPath(oldName));
                     if (gfr != null && !gfr.Succeed)
                     {
                         MessageBox.Show(gfr.FailMessage(), "Rename Fail");
@@ -321,7 +321,7 @@ namespace CFCloudClient
             {
                 if (item.Type.Equals("Folder"))
                 {
-                    NetworkResults.GetFolderTokenResult gfr = BackgroundWorks.NetworkManager.GetFolderToken(Util.Utils.LocalPathtoCloudPath(filename));
+                    NetworkResults.CanModifyFolderResult gfr = BackgroundWorks.NetworkManager.CanModifyFolder(Util.Utils.LocalPathtoCloudPath(filename));
                     if (gfr != null && !gfr.Succeed)
                     {
                         MessageBox.Show(gfr.FailMessage(), "Delete Fail");

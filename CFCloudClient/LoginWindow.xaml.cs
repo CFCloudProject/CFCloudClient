@@ -64,13 +64,13 @@ namespace CFCloudClient
                     bool? result = workspaceWindow.ShowDialog();
                     if (!result.HasValue && !result.Value)
                         return;
-                    Util.SqliteHelper.Init(lr.info.user.FirstName + lr.info.user.LastName);
+                    Util.SqliteHelper.Init(lr.user.FirstName + lr.user.LastName);
                 }
                 Properties.Settings.Default.Email = user.Email;
                 Properties.Settings.Default.Password = user.Password;
                 Properties.Settings.Default.Save();
-                Util.Global.info = lr.info;
-                Util.SqliteHelper.Connect(lr.info.user.FirstName + lr.info.user.LastName);
+                Util.Global.user = lr.user;
+                Util.SqliteHelper.Connect(lr.user.FirstName + lr.user.LastName);
                 this.DialogResult = true;
             }
             else

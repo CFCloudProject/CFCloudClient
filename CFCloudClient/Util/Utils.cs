@@ -183,7 +183,7 @@ namespace CFCloudClient.Util
                 string LocalPath = CloudPathtoLocalPath(metadata.FullPath);
                 if (!dirs.Contains(LocalPath))
                 {
-                    if (metadata.Modifier.Equal(Util.Global.info.user))
+                    if (metadata.Modifier.Equal(Util.Global.user))
                     {
                         Models.FileChangeEvent fce = new Models.FileChangeEvent(Models.FileChangeEvent.FileChangeType.ClientDelete, LocalPath);
                         Util.Global.FileUpdateQueue.Add(fce);
@@ -214,7 +214,7 @@ namespace CFCloudClient.Util
                 string LocalPath = CloudPathtoLocalPath(metadata.FullPath);
                 if (!files.Contains(LocalPath))
                 {
-                    if (metadata.Modifier.Equal(Util.Global.info.user))
+                    if (metadata.Modifier.Equal(Util.Global.user))
                     {
                         Models.FileChangeEvent fce = new Models.FileChangeEvent(Models.FileChangeEvent.FileChangeType.ClientDelete, LocalPath);
                         Util.Global.FileUpdateQueue.Add(fce);

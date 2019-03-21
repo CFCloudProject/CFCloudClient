@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CFCloudClient.NetworkResults
 {
-    public class GetFolderTokenResult
+    public class CanModifyFolderResult
     {
         public bool Succeed { get; set; }
         public List<Models.FileAndEditorMap> TokenHolders { get; set; }
@@ -22,15 +22,15 @@ namespace CFCloudClient.NetworkResults
             return message;
         }
 
-        public static GetFolderTokenResult FromJson(string json)
+        public static CanModifyFolderResult FromJson(string json)
         {
             JToken token = JToken.Parse(json);
             return FromJson(token);
         }
         
-        public static GetFolderTokenResult FromJson(JToken json)
+        public static CanModifyFolderResult FromJson(JToken json)
         {
-            GetFolderTokenResult result = new GetFolderTokenResult();
+            CanModifyFolderResult result = new CanModifyFolderResult();
             result.Succeed = json["Succeed"].ToString().Equals("true");
             result.TokenHolders = new List<Models.FileAndEditorMap>();
             JArray maps = (JArray)json["TokenHolders"];

@@ -3,6 +3,7 @@ using GRPCServer;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,6 +13,7 @@ namespace CFCloudClient.BackgroundWorks
 {
     public class NetworkManager
     {
+        private static string _SessionId;
         private static Channel channel = new Channel(Properties.Resources.Host, ChannelCredentials.Insecure);
         private static Channel heartBeatChannel = new Channel(Properties.Resources.HeartBeatHost, ChannelCredentials.Insecure);
         private static bool Online = true;
@@ -35,7 +37,7 @@ namespace CFCloudClient.BackgroundWorks
                     LastName = user.LastName
                 });
             }
-            catch (RpcException e)
+            catch (RpcException)
             {
                 rr.Succeed = false;
                 rr.Fail = NetworkResults.RegisterResult.FailType.Unknown;
@@ -60,7 +62,7 @@ namespace CFCloudClient.BackgroundWorks
             NetworkResults.LoginResult lr = new NetworkResults.LoginResult();
             lr.Succeed = false;
             lr.Fail = NetworkResults.LoginResult.FailType.Unknown;
-            lr.info = new Models.LoginInfo();
+            lr.user = new Models.User();
 
             try
             {
@@ -80,11 +82,11 @@ namespace CFCloudClient.BackgroundWorks
                 lr.Succeed = response.Succeed;
                 if (response.Succeed)
                 {
-                    lr.info.user.Email = response.Email;
-                    lr.info.user.Password = response.Password;
-                    lr.info.user.FirstName = response.FirstName;
-                    lr.info.user.LastName = response.LastName;
-                    lr.info.SessionId = response.SessionId;
+                    lr.user.Email = user.Email;
+                    lr.user.Password = user.Password;
+                    lr.user.FirstName = response.FirstName;
+                    lr.user.LastName = response.LastName;
+                    _SessionId = response.SessionId;
                 }
                 else
                 {
@@ -108,7 +110,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.Logout(new EmptyRequest
                 {
-                    SessionId = Util.Global.info.SessionId
+                    SessionId = _SessionId
                 });
             }
             catch (RpcException)
@@ -129,7 +131,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.HeartBeat(new EmptyRequest
                 {
-                    SessionId = Util.Global.info.SessionId
+                    SessionId = _SessionId
                 });
             }
             catch (RpcException)
@@ -190,7 +192,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.Share(new ShareRequest
                 {
-                    SessionId = Util.Global.info.SessionId,
+                    SessionId = _SessionId,
                     Path = path,
                     Dst = email
                 });
@@ -214,7 +216,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.CreateFolder(new PathRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path
                     });
                 }
@@ -240,7 +242,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.Rename(new RenameRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path,
                         OldPath = oldPath
                     });
@@ -267,7 +269,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.Delete(new PathRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path
                     });
                 }
@@ -284,15 +286,18 @@ namespace CFCloudClient.BackgroundWorks
         
         public static Models.Metadata Upload(string path, string baseRev = null)
         {
+            var info = new FileInfo(Util.Utils.CloudPathtoLocalPath(path));
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
             StringResponse response = null;
             try
             {
-                response = client.Upload(new PathRevRequest
+                response = client.Upload(new UploadRequest
                 {
-                    SessionId = Util.Global.info.SessionId,
+                    SessionId = _SessionId,
                     Path = path,
-                    BaseRev = baseRev
+                    BaseRev = baseRev,
+                    ModifiedTime = info.LastWriteTimeUtc.Ticks,
+                    Size = info.Length
                 });
             }
             catch (RpcException)
@@ -350,7 +355,7 @@ namespace CFCloudClient.BackgroundWorks
                     {
                         BlockRequest blockRequest = new BlockRequest
                         {
-                            SessionId = Util.Global.info.SessionId,
+                            SessionId = _SessionId,
                             Path = path,
                             BaseRev = baseRev,
                             Rev = rev,
@@ -389,7 +394,7 @@ namespace CFCloudClient.BackgroundWorks
                     {
                         BlockRequest blockRequest = new BlockRequest
                         {
-                            SessionId = Util.Global.info.SessionId,
+                            SessionId = _SessionId,
                             Path = path,
                             BaseRev = baseRev,
                             Rev = rev,
@@ -443,7 +448,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.Download(new PathRequest
                 {
-                    SessionId = Util.Global.info.SessionId,
+                    SessionId = _SessionId,
                     Path = path
                 });
             }
@@ -495,7 +500,7 @@ namespace CFCloudClient.BackgroundWorks
                     {
                         requests.WriteAsync(new BlockRequest
                         {
-                            SessionId = Util.Global.info.SessionId,
+                            SessionId = _SessionId,
                             Path = path,
                             Rev = rev,
                             Index = block.index,
@@ -543,7 +548,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.GetMetadata(new PathRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path
                     });
                 }
@@ -569,7 +574,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.ListFolder(new PathRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path
                     });
                 }
@@ -606,7 +611,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.GetToken(new PathRevRequest
                 {
-                    SessionId = Util.Global.info.SessionId,
+                    SessionId = _SessionId,
                     Path = path,
                     BaseRev = Rev
                 });
@@ -623,7 +628,6 @@ namespace CFCloudClient.BackgroundWorks
                 gr.TokenHolder.TokenHolder = new Models.User
                 {
                     Email = response.Email,
-                    Password = response.Password,
                     FirstName = response.FirstName,
                     LastName = response.LastName
                 };
@@ -650,7 +654,7 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     response = client.ReturnToken(new PathRequest
                     {
-                        SessionId = Util.Global.info.SessionId,
+                        SessionId = _SessionId,
                         Path = path
                     });
                 }
@@ -663,7 +667,7 @@ namespace CFCloudClient.BackgroundWorks
             }
         }
         
-        public static NetworkResults.GetFolderTokenResult GetFolderToken(string folder)
+        public static NetworkResults.CanModifyFolderResult CanModifyFolder(string folder)
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
             StringResponse response = null;
@@ -672,7 +676,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 response = client.CanModifyFolder(new PathRequest
                 {
-                    SessionId = Util.Global.info.SessionId,
+                    SessionId = _SessionId,
                     Path = folder
                 });
             }
@@ -683,7 +687,7 @@ namespace CFCloudClient.BackgroundWorks
 
             if (response == null)
                 return null;
-            return NetworkResults.GetFolderTokenResult.FromJson(response.PayLoad);
+            return NetworkResults.CanModifyFolderResult.FromJson(response.PayLoad);
         }
     }
 }

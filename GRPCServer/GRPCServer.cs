@@ -27,68 +27,70 @@ namespace GRPCServer {
             "ChBHUlBDU2VydmVyLnByb3RvEgpHUlBDU2VydmVyIkwKBFVzZXISDQoFRW1h",
             "aWwYASABKAkSEAoIUGFzc3dvcmQYAiABKAkSEQoJRmlyc3ROYW1lGAMgASgJ",
             "EhAKCExhc3ROYW1lGAQgASgJIjAKDlJlZ2lzdGVyUmVzdWx0Eg8KB1N1Y2Nl",
-            "ZWQYASABKAgSDQoFRXJyb3IYAiABKAUihgEKC0xvZ2luUmVzdWx0Eg8KB1N1",
-            "Y2NlZWQYASABKAgSEQoJU2Vzc2lvbklkGAIgASgJEg0KBUVtYWlsGAMgASgJ",
-            "EhAKCFBhc3N3b3JkGAQgASgJEhEKCUZpcnN0TmFtZRgFIAEoCRIQCghMYXN0",
-            "TmFtZRgGIAEoCRINCgVFcnJvchgHIAEoBSIhCgxFbXB0eVJlcXVlc3QSEQoJ",
-            "U2Vzc2lvbklkGAEgASgJIi4KC1BhdGhSZXF1ZXN0EhEKCVNlc3Npb25JZBgB",
-            "IAEoCRIMCgRQYXRoGAIgASgJIkEKDVJlbmFtZVJlcXVlc3QSEQoJU2Vzc2lv",
-            "bklkGAEgASgJEgwKBFBhdGgYAiABKAkSDwoHT2xkUGF0aBgDIAEoCSI8CgxT",
-            "aGFyZVJlcXVlc3QSEQoJU2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkS",
-            "CwoDRHN0GAMgASgJIkIKDlBhdGhSZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgB",
-            "IAEoCRIMCgRQYXRoGAIgASgJEg8KB0Jhc2VSZXYYAyABKAkisAEKDEJsb2Nr",
-            "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdC",
-            "YXNlUmV2GAMgASgJEgsKA1JldhgEIAEoCRIRCglCYXNlSW5kZXgYBSABKAkS",
-            "DQoFSW5kZXgYBiABKAUSEQoJQ29uZmlkZW50GAcgASgIEg4KBlNIQTI1NhgI",
-            "IAEoCRILCgNNRDUYCSABKAkSDwoHQ29udGVudBgKIAEoDCJpCg1CbG9ja1Jl",
-            "c3BvbnNlEgwKBFBhdGgYASABKAkSCwoDUmV2GAIgASgJEhIKCkJsb2NrSW5k",
-            "ZXgYAyABKAUSCwoDU0hBGAQgASgJEgsKA01ENRgFIAEoCRIPCgdDb250ZW50",
-            "GAYgASgMIiEKDlN0cmluZ1Jlc3BvbnNlEg8KB1BheUxvYWQYASABKAkiiAEK",
-            "DkdldFRva2VuUmVzdWx0Eg8KB1N1Y2NlZWQYASABKAgSEAoIRmlsZU5hbWUY",
-            "AiABKAkSDQoFRW1haWwYAyABKAkSEAoIUGFzc3dvcmQYBCABKAkSEQoJRmly",
-            "c3ROYW1lGAUgASgJEhAKCExhc3ROYW1lGAYgASgJEg0KBUVycm9yGAcgASgF",
-            "Mo4JCgpHUlBDU2VydmVyEjoKCFJlZ2lzdGVyEhAuR1JQQ1NlcnZlci5Vc2Vy",
-            "GhouR1JQQ1NlcnZlci5SZWdpc3RlclJlc3VsdCIAEjQKBUxvZ2luEhAuR1JQ",
-            "Q1NlcnZlci5Vc2VyGhcuR1JQQ1NlcnZlci5Mb2dpblJlc3VsdCIAEkAKBkxv",
-            "Z291dBIYLkdSUENTZXJ2ZXIuRW1wdHlSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
-            "dHJpbmdSZXNwb25zZSIAEkMKCUhlYXJ0QmVhdBIYLkdSUENTZXJ2ZXIuRW1w",
-            "dHlSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEj8KBVNo",
-            "YXJlEhguR1JQQ1NlcnZlci5TaGFyZVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0",
-            "cmluZ1Jlc3BvbnNlIgASRQoMQ3JlYXRlRm9sZGVyEhcuR1JQQ1NlcnZlci5Q",
-            "YXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJBCgZS",
-            "ZW5hbWUSGS5HUlBDU2VydmVyLlJlbmFtZVJlcXVlc3QaGi5HUlBDU2VydmVy",
-            "LlN0cmluZ1Jlc3BvbnNlIgASPwoGRGVsZXRlEhcuR1JQQ1NlcnZlci5QYXRo",
-            "UmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJCCgZVcGxv",
-            "YWQSGi5HUlBDU2VydmVyLlBhdGhSZXZSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
-            "dHJpbmdSZXNwb25zZSIAEkcKC1VwbG9hZEJsb2NrEhguR1JQQ1NlcnZlci5C",
-            "bG9ja1JlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgAoARJB",
-            "CghEb3dubG9hZBIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2Vy",
-            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASSgoNRG93bmxvYWRCbG9jaxIYLkdSUENT",
-            "ZXJ2ZXIuQmxvY2tSZXF1ZXN0GhkuR1JQQ1NlcnZlci5CbG9ja1Jlc3BvbnNl",
-            "IgAoATABEkQKC0dldE1ldGFkYXRhEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVz",
-            "dBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJDCgpMaXN0Rm9sZGVy",
-            "EhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
-            "UmVzcG9uc2UiABJECghHZXRUb2tlbhIaLkdSUENTZXJ2ZXIuUGF0aFJldlJl",
-            "cXVlc3QaGi5HUlBDU2VydmVyLkdldFRva2VuUmVzdWx0IgASRAoLUmV0dXJu",
-            "VG9rZW4SFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5T",
-            "dHJpbmdSZXNwb25zZSIAEkgKD0Nhbk1vZGlmeUZvbGRlchIXLkdSUENTZXJ2",
-            "ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgBi",
-            "BnByb3RvMw=="));
+            "ZWQYASABKAgSDQoFRXJyb3IYAiABKAUiZQoLTG9naW5SZXN1bHQSDwoHU3Vj",
+            "Y2VlZBgBIAEoCBIRCglTZXNzaW9uSWQYAiABKAkSEQoJRmlyc3ROYW1lGAMg",
+            "ASgJEhAKCExhc3ROYW1lGAQgASgJEg0KBUVycm9yGAUgASgFIiEKDEVtcHR5",
+            "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkiLgoLUGF0aFJlcXVlc3QSEQoJ",
+            "U2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkiQQoNUmVuYW1lUmVxdWVz",
+            "dBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdPbGRQYXRo",
+            "GAMgASgJIjwKDFNoYXJlUmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoE",
+            "UGF0aBgCIAEoCRILCgNEc3QYAyABKAkiZQoNVXBsb2FkUmVxdWVzdBIRCglT",
+            "ZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJ",
+            "EhQKDE1vZGlmaWVkVGltZRgEIAEoAxIMCgRTaXplGAUgASgDIkIKDlBhdGhS",
+            "ZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgBIAEoCRIMCgRQYXRoGAIgASgJEg8K",
+            "B0Jhc2VSZXYYAyABKAkisAEKDEJsb2NrUmVxdWVzdBIRCglTZXNzaW9uSWQY",
+            "ASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJEgsKA1JldhgE",
+            "IAEoCRIRCglCYXNlSW5kZXgYBSABKAkSDQoFSW5kZXgYBiABKAUSEQoJQ29u",
+            "ZmlkZW50GAcgASgIEg4KBlNIQTI1NhgIIAEoCRILCgNNRDUYCSABKAkSDwoH",
+            "Q29udGVudBgKIAEoDCJpCg1CbG9ja1Jlc3BvbnNlEgwKBFBhdGgYASABKAkS",
+            "CwoDUmV2GAIgASgJEhIKCkJsb2NrSW5kZXgYAyABKAUSCwoDU0hBGAQgASgJ",
+            "EgsKA01ENRgFIAEoCRIPCgdDb250ZW50GAYgASgMIiEKDlN0cmluZ1Jlc3Bv",
+            "bnNlEg8KB1BheUxvYWQYASABKAkidgoOR2V0VG9rZW5SZXN1bHQSDwoHU3Vj",
+            "Y2VlZBgBIAEoCBIQCghGaWxlTmFtZRgCIAEoCRINCgVFbWFpbBgDIAEoCRIR",
+            "CglGaXJzdE5hbWUYBCABKAkSEAoITGFzdE5hbWUYBSABKAkSDQoFRXJyb3IY",
+            "BiABKAUyjQkKCkdSUENTZXJ2ZXISOgoIUmVnaXN0ZXISEC5HUlBDU2VydmVy",
+            "LlVzZXIaGi5HUlBDU2VydmVyLlJlZ2lzdGVyUmVzdWx0IgASNAoFTG9naW4S",
+            "EC5HUlBDU2VydmVyLlVzZXIaFy5HUlBDU2VydmVyLkxvZ2luUmVzdWx0IgAS",
+            "QAoGTG9nb3V0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2Vy",
+            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoJSGVhcnRCZWF0EhguR1JQQ1NlcnZl",
+            "ci5FbXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgAS",
+            "PwoFU2hhcmUSGC5HUlBDU2VydmVyLlNoYXJlUmVxdWVzdBoaLkdSUENTZXJ2",
+            "ZXIuU3RyaW5nUmVzcG9uc2UiABJFCgxDcmVhdGVGb2xkZXISFy5HUlBDU2Vy",
+            "dmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIA",
+            "EkEKBlJlbmFtZRIZLkdSUENTZXJ2ZXIuUmVuYW1lUmVxdWVzdBoaLkdSUENT",
+            "ZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/CgZEZWxldGUSFy5HUlBDU2VydmVy",
+            "LlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEK",
+            "BlVwbG9hZBIZLkdSUENTZXJ2ZXIuVXBsb2FkUmVxdWVzdBoaLkdSUENTZXJ2",
+            "ZXIuU3RyaW5nUmVzcG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdSUENTZXJ2",
+            "ZXIuQmxvY2tSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIA",
+            "KAESQQoIRG93bmxvYWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQ",
+            "Q1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkoKDURvd25sb2FkQmxvY2sSGC5H",
+            "UlBDU2VydmVyLkJsb2NrUmVxdWVzdBoZLkdSUENTZXJ2ZXIuQmxvY2tSZXNw",
+            "b25zZSIAKAEwARJECgtHZXRNZXRhZGF0YRIXLkdSUENTZXJ2ZXIuUGF0aFJl",
+            "cXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoKTGlzdEZv",
+            "bGRlchIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0",
+            "cmluZ1Jlc3BvbnNlIgASRAoIR2V0VG9rZW4SGi5HUlBDU2VydmVyLlBhdGhS",
+            "ZXZSZXF1ZXN0GhouR1JQQ1NlcnZlci5HZXRUb2tlblJlc3VsdCIAEkQKC1Jl",
+            "dHVyblRva2VuEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2",
+            "ZXIuU3RyaW5nUmVzcG9uc2UiABJICg9DYW5Nb2RpZnlGb2xkZXISFy5HUlBD",
+            "U2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25z",
+            "ZSIAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.User), global::GRPCServer.User.Parser, new[]{ "Email", "Password", "FirstName", "LastName" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RegisterResult), global::GRPCServer.RegisterResult.Parser, new[]{ "Succeed", "Error" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.LoginResult), global::GRPCServer.LoginResult.Parser, new[]{ "Succeed", "SessionId", "Email", "Password", "FirstName", "LastName", "Error" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.LoginResult), global::GRPCServer.LoginResult.Parser, new[]{ "Succeed", "SessionId", "FirstName", "LastName", "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.EmptyRequest), global::GRPCServer.EmptyRequest.Parser, new[]{ "SessionId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRequest), global::GRPCServer.PathRequest.Parser, new[]{ "SessionId", "Path" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RenameRequest), global::GRPCServer.RenameRequest.Parser, new[]{ "SessionId", "Path", "OldPath" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.ShareRequest), global::GRPCServer.ShareRequest.Parser, new[]{ "SessionId", "Path", "Dst" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.UploadRequest), global::GRPCServer.UploadRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "ModifiedTime", "Size" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRevRequest), global::GRPCServer.PathRevRequest.Parser, new[]{ "SessionId", "Path", "BaseRev" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "Confident", "SHA256", "MD5", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "SHA", "MD5", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.GetTokenResult), global::GRPCServer.GetTokenResult.Parser, new[]{ "Succeed", "FileName", "Email", "Password", "FirstName", "LastName", "Error" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.GetTokenResult), global::GRPCServer.GetTokenResult.Parser, new[]{ "Succeed", "FileName", "Email", "FirstName", "LastName", "Error" }, null, null, null)
           }));
     }
     #endregion
@@ -492,8 +494,6 @@ namespace GRPCServer {
     public LoginResult(LoginResult other) : this() {
       succeed_ = other.succeed_;
       sessionId_ = other.sessionId_;
-      email_ = other.email_;
-      password_ = other.password_;
       firstName_ = other.firstName_;
       lastName_ = other.lastName_;
       error_ = other.error_;
@@ -527,30 +527,8 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "Email" field.</summary>
-    public const int EmailFieldNumber = 3;
-    private string email_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Email {
-      get { return email_; }
-      set {
-        email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Password" field.</summary>
-    public const int PasswordFieldNumber = 4;
-    private string password_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Password {
-      get { return password_; }
-      set {
-        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "FirstName" field.</summary>
-    public const int FirstNameFieldNumber = 5;
+    public const int FirstNameFieldNumber = 3;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string FirstName {
@@ -561,7 +539,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "LastName" field.</summary>
-    public const int LastNameFieldNumber = 6;
+    public const int LastNameFieldNumber = 4;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LastName {
@@ -572,7 +550,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "Error" field.</summary>
-    public const int ErrorFieldNumber = 7;
+    public const int ErrorFieldNumber = 5;
     private int error_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Error {
@@ -597,8 +575,6 @@ namespace GRPCServer {
       }
       if (Succeed != other.Succeed) return false;
       if (SessionId != other.SessionId) return false;
-      if (Email != other.Email) return false;
-      if (Password != other.Password) return false;
       if (FirstName != other.FirstName) return false;
       if (LastName != other.LastName) return false;
       if (Error != other.Error) return false;
@@ -610,8 +586,6 @@ namespace GRPCServer {
       int hash = 1;
       if (Succeed != false) hash ^= Succeed.GetHashCode();
       if (SessionId.Length != 0) hash ^= SessionId.GetHashCode();
-      if (Email.Length != 0) hash ^= Email.GetHashCode();
-      if (Password.Length != 0) hash ^= Password.GetHashCode();
       if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
       if (LastName.Length != 0) hash ^= LastName.GetHashCode();
       if (Error != 0) hash ^= Error.GetHashCode();
@@ -636,24 +610,16 @@ namespace GRPCServer {
         output.WriteRawTag(18);
         output.WriteString(SessionId);
       }
-      if (Email.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Email);
-      }
-      if (Password.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Password);
-      }
       if (FirstName.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(26);
         output.WriteString(FirstName);
       }
       if (LastName.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(34);
         output.WriteString(LastName);
       }
       if (Error != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(40);
         output.WriteInt32(Error);
       }
       if (_unknownFields != null) {
@@ -669,12 +635,6 @@ namespace GRPCServer {
       }
       if (SessionId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(SessionId);
-      }
-      if (Email.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
-      }
-      if (Password.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
       }
       if (FirstName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
@@ -701,12 +661,6 @@ namespace GRPCServer {
       }
       if (other.SessionId.Length != 0) {
         SessionId = other.SessionId;
-      }
-      if (other.Email.Length != 0) {
-        Email = other.Email;
-      }
-      if (other.Password.Length != 0) {
-        Password = other.Password;
       }
       if (other.FirstName.Length != 0) {
         FirstName = other.FirstName;
@@ -737,22 +691,14 @@ namespace GRPCServer {
             break;
           }
           case 26: {
-            Email = input.ReadString();
-            break;
-          }
-          case 34: {
-            Password = input.ReadString();
-            break;
-          }
-          case 42: {
             FirstName = input.ReadString();
             break;
           }
-          case 50: {
+          case 34: {
             LastName = input.ReadString();
             break;
           }
-          case 56: {
+          case 40: {
             Error = input.ReadInt32();
             break;
           }
@@ -1418,6 +1364,247 @@ namespace GRPCServer {
 
   }
 
+  public sealed partial class UploadRequest : pb::IMessage<UploadRequest> {
+    private static readonly pb::MessageParser<UploadRequest> _parser = new pb::MessageParser<UploadRequest>(() => new UploadRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UploadRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UploadRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UploadRequest(UploadRequest other) : this() {
+      sessionId_ = other.sessionId_;
+      path_ = other.path_;
+      baseRev_ = other.baseRev_;
+      modifiedTime_ = other.modifiedTime_;
+      size_ = other.size_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UploadRequest Clone() {
+      return new UploadRequest(this);
+    }
+
+    /// <summary>Field number for the "SessionId" field.</summary>
+    public const int SessionIdFieldNumber = 1;
+    private string sessionId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SessionId {
+      get { return sessionId_; }
+      set {
+        sessionId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Path" field.</summary>
+    public const int PathFieldNumber = 2;
+    private string path_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Path {
+      get { return path_; }
+      set {
+        path_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "BaseRev" field.</summary>
+    public const int BaseRevFieldNumber = 3;
+    private string baseRev_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BaseRev {
+      get { return baseRev_; }
+      set {
+        baseRev_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "ModifiedTime" field.</summary>
+    public const int ModifiedTimeFieldNumber = 4;
+    private long modifiedTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long ModifiedTime {
+      get { return modifiedTime_; }
+      set {
+        modifiedTime_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "Size" field.</summary>
+    public const int SizeFieldNumber = 5;
+    private long size_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Size {
+      get { return size_; }
+      set {
+        size_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UploadRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UploadRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (SessionId != other.SessionId) return false;
+      if (Path != other.Path) return false;
+      if (BaseRev != other.BaseRev) return false;
+      if (ModifiedTime != other.ModifiedTime) return false;
+      if (Size != other.Size) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (SessionId.Length != 0) hash ^= SessionId.GetHashCode();
+      if (Path.Length != 0) hash ^= Path.GetHashCode();
+      if (BaseRev.Length != 0) hash ^= BaseRev.GetHashCode();
+      if (ModifiedTime != 0L) hash ^= ModifiedTime.GetHashCode();
+      if (Size != 0L) hash ^= Size.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (SessionId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(SessionId);
+      }
+      if (Path.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Path);
+      }
+      if (BaseRev.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(BaseRev);
+      }
+      if (ModifiedTime != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(ModifiedTime);
+      }
+      if (Size != 0L) {
+        output.WriteRawTag(40);
+        output.WriteInt64(Size);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (SessionId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SessionId);
+      }
+      if (Path.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
+      }
+      if (BaseRev.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseRev);
+      }
+      if (ModifiedTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ModifiedTime);
+      }
+      if (Size != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Size);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UploadRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.SessionId.Length != 0) {
+        SessionId = other.SessionId;
+      }
+      if (other.Path.Length != 0) {
+        Path = other.Path;
+      }
+      if (other.BaseRev.Length != 0) {
+        BaseRev = other.BaseRev;
+      }
+      if (other.ModifiedTime != 0L) {
+        ModifiedTime = other.ModifiedTime;
+      }
+      if (other.Size != 0L) {
+        Size = other.Size;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            SessionId = input.ReadString();
+            break;
+          }
+          case 18: {
+            Path = input.ReadString();
+            break;
+          }
+          case 26: {
+            BaseRev = input.ReadString();
+            break;
+          }
+          case 32: {
+            ModifiedTime = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            Size = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class PathRevRequest : pb::IMessage<PathRevRequest> {
     private static readonly pb::MessageParser<PathRevRequest> _parser = new pb::MessageParser<PathRevRequest>(() => new PathRevRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -1426,7 +1613,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[7]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1611,7 +1798,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[8]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1992,7 +2179,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[9]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2261,7 +2448,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[10]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2390,7 +2577,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[11]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2410,7 +2597,6 @@ namespace GRPCServer {
       succeed_ = other.succeed_;
       fileName_ = other.fileName_;
       email_ = other.email_;
-      password_ = other.password_;
       firstName_ = other.firstName_;
       lastName_ = other.lastName_;
       error_ = other.error_;
@@ -2455,19 +2641,8 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "Password" field.</summary>
-    public const int PasswordFieldNumber = 4;
-    private string password_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Password {
-      get { return password_; }
-      set {
-        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "FirstName" field.</summary>
-    public const int FirstNameFieldNumber = 5;
+    public const int FirstNameFieldNumber = 4;
     private string firstName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string FirstName {
@@ -2478,7 +2653,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "LastName" field.</summary>
-    public const int LastNameFieldNumber = 6;
+    public const int LastNameFieldNumber = 5;
     private string lastName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LastName {
@@ -2489,7 +2664,7 @@ namespace GRPCServer {
     }
 
     /// <summary>Field number for the "Error" field.</summary>
-    public const int ErrorFieldNumber = 7;
+    public const int ErrorFieldNumber = 6;
     private int error_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Error {
@@ -2515,7 +2690,6 @@ namespace GRPCServer {
       if (Succeed != other.Succeed) return false;
       if (FileName != other.FileName) return false;
       if (Email != other.Email) return false;
-      if (Password != other.Password) return false;
       if (FirstName != other.FirstName) return false;
       if (LastName != other.LastName) return false;
       if (Error != other.Error) return false;
@@ -2528,7 +2702,6 @@ namespace GRPCServer {
       if (Succeed != false) hash ^= Succeed.GetHashCode();
       if (FileName.Length != 0) hash ^= FileName.GetHashCode();
       if (Email.Length != 0) hash ^= Email.GetHashCode();
-      if (Password.Length != 0) hash ^= Password.GetHashCode();
       if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
       if (LastName.Length != 0) hash ^= LastName.GetHashCode();
       if (Error != 0) hash ^= Error.GetHashCode();
@@ -2557,20 +2730,16 @@ namespace GRPCServer {
         output.WriteRawTag(26);
         output.WriteString(Email);
       }
-      if (Password.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Password);
-      }
       if (FirstName.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(34);
         output.WriteString(FirstName);
       }
       if (LastName.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteString(LastName);
       }
       if (Error != 0) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(48);
         output.WriteInt32(Error);
       }
       if (_unknownFields != null) {
@@ -2589,9 +2758,6 @@ namespace GRPCServer {
       }
       if (Email.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
-      }
-      if (Password.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
       }
       if (FirstName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
@@ -2621,9 +2787,6 @@ namespace GRPCServer {
       }
       if (other.Email.Length != 0) {
         Email = other.Email;
-      }
-      if (other.Password.Length != 0) {
-        Password = other.Password;
       }
       if (other.FirstName.Length != 0) {
         FirstName = other.FirstName;
@@ -2658,18 +2821,14 @@ namespace GRPCServer {
             break;
           }
           case 34: {
-            Password = input.ReadString();
-            break;
-          }
-          case 42: {
             FirstName = input.ReadString();
             break;
           }
-          case 50: {
+          case 42: {
             LastName = input.ReadString();
             break;
           }
-          case 56: {
+          case 48: {
             Error = input.ReadInt32();
             break;
           }
