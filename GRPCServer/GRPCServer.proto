@@ -21,9 +21,6 @@ service GRPCServer
 
 	rpc GetMetadata (PathRequest) returns (StringResponse) {}
 	rpc ListFolder (PathRequest) returns (StringResponse) {}
-	rpc GetToken (PathRevRequest) returns (GetTokenResult) {}
-	rpc ReturnToken (PathRequest) returns (StringResponse) {}
-	rpc CanModifyFolder (PathRequest) returns (StringResponse) {}
 }
 
 message User
@@ -99,9 +96,8 @@ message BlockRequest
 	string BaseIndex = 5;
 	int32 Index = 6;
 	bool Confident = 7;
-	string SHA256 = 8;
-	string MD5 = 9;
-	bytes Content = 10;
+	string Hash = 8;
+	bytes Content = 9;
 }
 
 message BlockResponse
@@ -109,22 +105,11 @@ message BlockResponse
 	string Path = 1;
 	string Rev = 2;
 	int32 BlockIndex = 3;
-	string SHA = 4;
-	string MD5 = 5;
-	bytes Content = 6;
+	string Hash = 4;
+	bytes Content = 5;
 }
 
 message StringResponse
 {
 	string PayLoad = 1;
-}
-
-message GetTokenResult
-{
-	bool Succeed = 1;
-	string FileName = 2;
-	string Email = 3;
-	string FirstName = 4;
-	string LastName = 5;
-	int32 Error = 6;
 }

@@ -38,43 +38,35 @@ namespace GRPCServer {
             "ZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJ",
             "EhQKDE1vZGlmaWVkVGltZRgEIAEoAxIMCgRTaXplGAUgASgDIkIKDlBhdGhS",
             "ZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgBIAEoCRIMCgRQYXRoGAIgASgJEg8K",
-            "B0Jhc2VSZXYYAyABKAkisAEKDEJsb2NrUmVxdWVzdBIRCglTZXNzaW9uSWQY",
+            "B0Jhc2VSZXYYAyABKAkioQEKDEJsb2NrUmVxdWVzdBIRCglTZXNzaW9uSWQY",
             "ASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJEgsKA1JldhgE",
             "IAEoCRIRCglCYXNlSW5kZXgYBSABKAkSDQoFSW5kZXgYBiABKAUSEQoJQ29u",
-            "ZmlkZW50GAcgASgIEg4KBlNIQTI1NhgIIAEoCRILCgNNRDUYCSABKAkSDwoH",
-            "Q29udGVudBgKIAEoDCJpCg1CbG9ja1Jlc3BvbnNlEgwKBFBhdGgYASABKAkS",
-            "CwoDUmV2GAIgASgJEhIKCkJsb2NrSW5kZXgYAyABKAUSCwoDU0hBGAQgASgJ",
-            "EgsKA01ENRgFIAEoCRIPCgdDb250ZW50GAYgASgMIiEKDlN0cmluZ1Jlc3Bv",
-            "bnNlEg8KB1BheUxvYWQYASABKAkidgoOR2V0VG9rZW5SZXN1bHQSDwoHU3Vj",
-            "Y2VlZBgBIAEoCBIQCghGaWxlTmFtZRgCIAEoCRINCgVFbWFpbBgDIAEoCRIR",
-            "CglGaXJzdE5hbWUYBCABKAkSEAoITGFzdE5hbWUYBSABKAkSDQoFRXJyb3IY",
-            "BiABKAUyjQkKCkdSUENTZXJ2ZXISOgoIUmVnaXN0ZXISEC5HUlBDU2VydmVy",
-            "LlVzZXIaGi5HUlBDU2VydmVyLlJlZ2lzdGVyUmVzdWx0IgASNAoFTG9naW4S",
-            "EC5HUlBDU2VydmVyLlVzZXIaFy5HUlBDU2VydmVyLkxvZ2luUmVzdWx0IgAS",
-            "QAoGTG9nb3V0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2Vy",
-            "dmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoJSGVhcnRCZWF0EhguR1JQQ1NlcnZl",
-            "ci5FbXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgAS",
-            "PwoFU2hhcmUSGC5HUlBDU2VydmVyLlNoYXJlUmVxdWVzdBoaLkdSUENTZXJ2",
-            "ZXIuU3RyaW5nUmVzcG9uc2UiABJFCgxDcmVhdGVGb2xkZXISFy5HUlBDU2Vy",
-            "dmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIA",
-            "EkEKBlJlbmFtZRIZLkdSUENTZXJ2ZXIuUmVuYW1lUmVxdWVzdBoaLkdSUENT",
-            "ZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/CgZEZWxldGUSFy5HUlBDU2VydmVy",
-            "LlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEK",
-            "BlVwbG9hZBIZLkdSUENTZXJ2ZXIuVXBsb2FkUmVxdWVzdBoaLkdSUENTZXJ2",
-            "ZXIuU3RyaW5nUmVzcG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdSUENTZXJ2",
-            "ZXIuQmxvY2tSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIA",
-            "KAESQQoIRG93bmxvYWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQ",
-            "Q1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkoKDURvd25sb2FkQmxvY2sSGC5H",
-            "UlBDU2VydmVyLkJsb2NrUmVxdWVzdBoZLkdSUENTZXJ2ZXIuQmxvY2tSZXNw",
-            "b25zZSIAKAEwARJECgtHZXRNZXRhZGF0YRIXLkdSUENTZXJ2ZXIuUGF0aFJl",
-            "cXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoKTGlzdEZv",
-            "bGRlchIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0",
-            "cmluZ1Jlc3BvbnNlIgASRAoIR2V0VG9rZW4SGi5HUlBDU2VydmVyLlBhdGhS",
-            "ZXZSZXF1ZXN0GhouR1JQQ1NlcnZlci5HZXRUb2tlblJlc3VsdCIAEkQKC1Jl",
-            "dHVyblRva2VuEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2",
-            "ZXIuU3RyaW5nUmVzcG9uc2UiABJICg9DYW5Nb2RpZnlGb2xkZXISFy5HUlBD",
-            "U2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25z",
-            "ZSIAYgZwcm90bzM="));
+            "ZmlkZW50GAcgASgIEgwKBEhhc2gYCCABKAkSDwoHQ29udGVudBgJIAEoDCJd",
+            "Cg1CbG9ja1Jlc3BvbnNlEgwKBFBhdGgYASABKAkSCwoDUmV2GAIgASgJEhIK",
+            "CkJsb2NrSW5kZXgYAyABKAUSDAoESGFzaBgEIAEoCRIPCgdDb250ZW50GAUg",
+            "ASgMIiEKDlN0cmluZ1Jlc3BvbnNlEg8KB1BheUxvYWQYASABKAkytwcKCkdS",
+            "UENTZXJ2ZXISOgoIUmVnaXN0ZXISEC5HUlBDU2VydmVyLlVzZXIaGi5HUlBD",
+            "U2VydmVyLlJlZ2lzdGVyUmVzdWx0IgASNAoFTG9naW4SEC5HUlBDU2VydmVy",
+            "LlVzZXIaFy5HUlBDU2VydmVyLkxvZ2luUmVzdWx0IgASQAoGTG9nb3V0Ehgu",
+            "R1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jl",
+            "c3BvbnNlIgASQwoJSGVhcnRCZWF0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVl",
+            "c3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASPwoFU2hhcmUSGC5H",
+            "UlBDU2VydmVyLlNoYXJlUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVz",
+            "cG9uc2UiABJFCgxDcmVhdGVGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhSZXF1",
+            "ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlJlbmFtZRIZ",
+            "LkdSUENTZXJ2ZXIuUmVuYW1lUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
+            "UmVzcG9uc2UiABI/CgZEZWxldGUSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0",
+            "GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlVwbG9hZBIZLkdS",
+            "UENTZXJ2ZXIuVXBsb2FkUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVz",
+            "cG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdSUENTZXJ2ZXIuQmxvY2tSZXF1",
+            "ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAKAESQQoIRG93bmxv",
+            "YWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJp",
+            "bmdSZXNwb25zZSIAEkoKDURvd25sb2FkQmxvY2sSGC5HUlBDU2VydmVyLkJs",
+            "b2NrUmVxdWVzdBoZLkdSUENTZXJ2ZXIuQmxvY2tSZXNwb25zZSIAKAEwARJE",
+            "CgtHZXRNZXRhZGF0YRIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBD",
+            "U2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoKTGlzdEZvbGRlchIXLkdSUENT",
+            "ZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNl",
+            "IgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -87,10 +79,9 @@ namespace GRPCServer {
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.ShareRequest), global::GRPCServer.ShareRequest.Parser, new[]{ "SessionId", "Path", "Dst" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.UploadRequest), global::GRPCServer.UploadRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "ModifiedTime", "Size" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRevRequest), global::GRPCServer.PathRevRequest.Parser, new[]{ "SessionId", "Path", "BaseRev" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "Confident", "SHA256", "MD5", "Content" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "SHA", "MD5", "Content" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.GetTokenResult), global::GRPCServer.GetTokenResult.Parser, new[]{ "Succeed", "FileName", "Email", "FirstName", "LastName", "Error" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "Confident", "Hash", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "Hash", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null)
           }));
     }
     #endregion
@@ -1822,8 +1813,7 @@ namespace GRPCServer {
       baseIndex_ = other.baseIndex_;
       index_ = other.index_;
       confident_ = other.confident_;
-      sHA256_ = other.sHA256_;
-      mD5_ = other.mD5_;
+      hash_ = other.hash_;
       content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1910,30 +1900,19 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "SHA256" field.</summary>
-    public const int SHA256FieldNumber = 8;
-    private string sHA256_ = "";
+    /// <summary>Field number for the "Hash" field.</summary>
+    public const int HashFieldNumber = 8;
+    private string hash_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string SHA256 {
-      get { return sHA256_; }
+    public string Hash {
+      get { return hash_; }
       set {
-        sHA256_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "MD5" field.</summary>
-    public const int MD5FieldNumber = 9;
-    private string mD5_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string MD5 {
-      get { return mD5_; }
-      set {
-        mD5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 10;
+    public const int ContentFieldNumber = 9;
     private pb::ByteString content_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Content {
@@ -1963,8 +1942,7 @@ namespace GRPCServer {
       if (BaseIndex != other.BaseIndex) return false;
       if (Index != other.Index) return false;
       if (Confident != other.Confident) return false;
-      if (SHA256 != other.SHA256) return false;
-      if (MD5 != other.MD5) return false;
+      if (Hash != other.Hash) return false;
       if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1979,8 +1957,7 @@ namespace GRPCServer {
       if (BaseIndex.Length != 0) hash ^= BaseIndex.GetHashCode();
       if (Index != 0) hash ^= Index.GetHashCode();
       if (Confident != false) hash ^= Confident.GetHashCode();
-      if (SHA256.Length != 0) hash ^= SHA256.GetHashCode();
-      if (MD5.Length != 0) hash ^= MD5.GetHashCode();
+      if (Hash.Length != 0) hash ^= Hash.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2023,16 +2000,12 @@ namespace GRPCServer {
         output.WriteRawTag(56);
         output.WriteBool(Confident);
       }
-      if (SHA256.Length != 0) {
+      if (Hash.Length != 0) {
         output.WriteRawTag(66);
-        output.WriteString(SHA256);
-      }
-      if (MD5.Length != 0) {
-        output.WriteRawTag(74);
-        output.WriteString(MD5);
+        output.WriteString(Hash);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(82);
+        output.WriteRawTag(74);
         output.WriteBytes(Content);
       }
       if (_unknownFields != null) {
@@ -2064,11 +2037,8 @@ namespace GRPCServer {
       if (Confident != false) {
         size += 1 + 1;
       }
-      if (SHA256.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(SHA256);
-      }
-      if (MD5.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MD5);
+      if (Hash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
       }
       if (Content.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
@@ -2105,11 +2075,8 @@ namespace GRPCServer {
       if (other.Confident != false) {
         Confident = other.Confident;
       }
-      if (other.SHA256.Length != 0) {
-        SHA256 = other.SHA256;
-      }
-      if (other.MD5.Length != 0) {
-        MD5 = other.MD5;
+      if (other.Hash.Length != 0) {
+        Hash = other.Hash;
       }
       if (other.Content.Length != 0) {
         Content = other.Content;
@@ -2154,14 +2121,10 @@ namespace GRPCServer {
             break;
           }
           case 66: {
-            SHA256 = input.ReadString();
+            Hash = input.ReadString();
             break;
           }
           case 74: {
-            MD5 = input.ReadString();
-            break;
-          }
-          case 82: {
             Content = input.ReadBytes();
             break;
           }
@@ -2199,8 +2162,7 @@ namespace GRPCServer {
       path_ = other.path_;
       rev_ = other.rev_;
       blockIndex_ = other.blockIndex_;
-      sHA_ = other.sHA_;
-      mD5_ = other.mD5_;
+      hash_ = other.hash_;
       content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2243,30 +2205,19 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "SHA" field.</summary>
-    public const int SHAFieldNumber = 4;
-    private string sHA_ = "";
+    /// <summary>Field number for the "Hash" field.</summary>
+    public const int HashFieldNumber = 4;
+    private string hash_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string SHA {
-      get { return sHA_; }
+    public string Hash {
+      get { return hash_; }
       set {
-        sHA_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "MD5" field.</summary>
-    public const int MD5FieldNumber = 5;
-    private string mD5_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string MD5 {
-      get { return mD5_; }
-      set {
-        mD5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 6;
+    public const int ContentFieldNumber = 5;
     private pb::ByteString content_ = pb::ByteString.Empty;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pb::ByteString Content {
@@ -2292,8 +2243,7 @@ namespace GRPCServer {
       if (Path != other.Path) return false;
       if (Rev != other.Rev) return false;
       if (BlockIndex != other.BlockIndex) return false;
-      if (SHA != other.SHA) return false;
-      if (MD5 != other.MD5) return false;
+      if (Hash != other.Hash) return false;
       if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2304,8 +2254,7 @@ namespace GRPCServer {
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (Rev.Length != 0) hash ^= Rev.GetHashCode();
       if (BlockIndex != 0) hash ^= BlockIndex.GetHashCode();
-      if (SHA.Length != 0) hash ^= SHA.GetHashCode();
-      if (MD5.Length != 0) hash ^= MD5.GetHashCode();
+      if (Hash.Length != 0) hash ^= Hash.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2332,16 +2281,12 @@ namespace GRPCServer {
         output.WriteRawTag(24);
         output.WriteInt32(BlockIndex);
       }
-      if (SHA.Length != 0) {
+      if (Hash.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteString(SHA);
-      }
-      if (MD5.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(MD5);
+        output.WriteString(Hash);
       }
       if (Content.Length != 0) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(42);
         output.WriteBytes(Content);
       }
       if (_unknownFields != null) {
@@ -2361,11 +2306,8 @@ namespace GRPCServer {
       if (BlockIndex != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlockIndex);
       }
-      if (SHA.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(SHA);
-      }
-      if (MD5.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(MD5);
+      if (Hash.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
       }
       if (Content.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
@@ -2390,11 +2332,8 @@ namespace GRPCServer {
       if (other.BlockIndex != 0) {
         BlockIndex = other.BlockIndex;
       }
-      if (other.SHA.Length != 0) {
-        SHA = other.SHA;
-      }
-      if (other.MD5.Length != 0) {
-        MD5 = other.MD5;
+      if (other.Hash.Length != 0) {
+        Hash = other.Hash;
       }
       if (other.Content.Length != 0) {
         Content = other.Content;
@@ -2423,14 +2362,10 @@ namespace GRPCServer {
             break;
           }
           case 34: {
-            SHA = input.ReadString();
+            Hash = input.ReadString();
             break;
           }
           case 42: {
-            MD5 = input.ReadString();
-            break;
-          }
-          case 50: {
             Content = input.ReadBytes();
             break;
           }
@@ -2561,275 +2496,6 @@ namespace GRPCServer {
             break;
           case 10: {
             PayLoad = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class GetTokenResult : pb::IMessage<GetTokenResult> {
-    private static readonly pb::MessageParser<GetTokenResult> _parser = new pb::MessageParser<GetTokenResult>(() => new GetTokenResult());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<GetTokenResult> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[12]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetTokenResult() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetTokenResult(GetTokenResult other) : this() {
-      succeed_ = other.succeed_;
-      fileName_ = other.fileName_;
-      email_ = other.email_;
-      firstName_ = other.firstName_;
-      lastName_ = other.lastName_;
-      error_ = other.error_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public GetTokenResult Clone() {
-      return new GetTokenResult(this);
-    }
-
-    /// <summary>Field number for the "Succeed" field.</summary>
-    public const int SucceedFieldNumber = 1;
-    private bool succeed_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Succeed {
-      get { return succeed_; }
-      set {
-        succeed_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "FileName" field.</summary>
-    public const int FileNameFieldNumber = 2;
-    private string fileName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string FileName {
-      get { return fileName_; }
-      set {
-        fileName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Email" field.</summary>
-    public const int EmailFieldNumber = 3;
-    private string email_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Email {
-      get { return email_; }
-      set {
-        email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "FirstName" field.</summary>
-    public const int FirstNameFieldNumber = 4;
-    private string firstName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string FirstName {
-      get { return firstName_; }
-      set {
-        firstName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "LastName" field.</summary>
-    public const int LastNameFieldNumber = 5;
-    private string lastName_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string LastName {
-      get { return lastName_; }
-      set {
-        lastName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Error" field.</summary>
-    public const int ErrorFieldNumber = 6;
-    private int error_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Error {
-      get { return error_; }
-      set {
-        error_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as GetTokenResult);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(GetTokenResult other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Succeed != other.Succeed) return false;
-      if (FileName != other.FileName) return false;
-      if (Email != other.Email) return false;
-      if (FirstName != other.FirstName) return false;
-      if (LastName != other.LastName) return false;
-      if (Error != other.Error) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Succeed != false) hash ^= Succeed.GetHashCode();
-      if (FileName.Length != 0) hash ^= FileName.GetHashCode();
-      if (Email.Length != 0) hash ^= Email.GetHashCode();
-      if (FirstName.Length != 0) hash ^= FirstName.GetHashCode();
-      if (LastName.Length != 0) hash ^= LastName.GetHashCode();
-      if (Error != 0) hash ^= Error.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Succeed != false) {
-        output.WriteRawTag(8);
-        output.WriteBool(Succeed);
-      }
-      if (FileName.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(FileName);
-      }
-      if (Email.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(Email);
-      }
-      if (FirstName.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(FirstName);
-      }
-      if (LastName.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteString(LastName);
-      }
-      if (Error != 0) {
-        output.WriteRawTag(48);
-        output.WriteInt32(Error);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Succeed != false) {
-        size += 1 + 1;
-      }
-      if (FileName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FileName);
-      }
-      if (Email.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
-      }
-      if (FirstName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(FirstName);
-      }
-      if (LastName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(LastName);
-      }
-      if (Error != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Error);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(GetTokenResult other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Succeed != false) {
-        Succeed = other.Succeed;
-      }
-      if (other.FileName.Length != 0) {
-        FileName = other.FileName;
-      }
-      if (other.Email.Length != 0) {
-        Email = other.Email;
-      }
-      if (other.FirstName.Length != 0) {
-        FirstName = other.FirstName;
-      }
-      if (other.LastName.Length != 0) {
-        LastName = other.LastName;
-      }
-      if (other.Error != 0) {
-        Error = other.Error;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Succeed = input.ReadBool();
-            break;
-          }
-          case 18: {
-            FileName = input.ReadString();
-            break;
-          }
-          case 26: {
-            Email = input.ReadString();
-            break;
-          }
-          case 34: {
-            FirstName = input.ReadString();
-            break;
-          }
-          case 42: {
-            LastName = input.ReadString();
-            break;
-          }
-          case 48: {
-            Error = input.ReadInt32();
             break;
           }
         }

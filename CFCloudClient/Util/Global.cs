@@ -11,7 +11,6 @@ namespace CFCloudClient.Util
     public class Global
     {
         public static Models.User user = new Models.User();
-        public static Dictionary<string, FileStream> LockedFiles = new Dictionary<string, FileStream>();
         public static BackgroundWorks.FileChangeMonitor FileMonitor;
         public static BackgroundWorks.FileChangeQueue FileUpdateQueue;
         public static ManualResetEvent manualResetEvent = new ManualResetEvent(false);

@@ -41,7 +41,6 @@ namespace CFCloudClient
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            Util.Utils.LockAllFiles(Properties.Settings.Default.Workspace);
             Util.Utils.CheckConsistency(Properties.Settings.Default.Workspace);
             ChangeCurrentFolder(Properties.Settings.Default.Workspace);
             FileGrid.ItemsSource = items;
@@ -62,7 +61,6 @@ namespace CFCloudClient
         private void OnClose(object sender, EventArgs e)
         {
             BackgroundWorks.NetworkManager.Logout();
-            Util.Utils.UnLockAllFiles();
             Util.Global.FileMonitor.Stop();
             Util.Global.updater.Destory();
             Util.SqliteHelper.Close();
@@ -180,32 +178,7 @@ namespace CFCloudClient
             string filename = CurrentFolder + "\\" + item.Name;
             if (!item.Type.Equals("Folder"))
             {
-                Models.SQLDataType sdt = Util.SqliteHelper.Select(filename);
-                if (sdt.IsShared.Equals("true"))
-                {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename), sdt.Version);
-                    if (gr != null && !gr.Succeed)
-                    {
-                        if (gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
-                            MessageBox.Show(Properties.Resources.GetTokenFail + gr.TokenHolder.TokenHolder.getUserName(), "Get Token Fail");
-                        else
-                        {
-                            Util.Global.FileUpdateQueue.Add(new Models.FileChangeEvent(
-                                Models.FileChangeEvent.FileChangeType.ServerChange,
-                                filename));
-                            MessageBox.Show(Properties.Resources.GetTokenFailUnconsistent, "Get Token Fail");
-                        }
-                    }
-                    else
-                    {
-                        Util.Utils.UnLockFile(filename);
-                        System.Diagnostics.Process.Start(filename);
-                    }
-                }
-                else
-                {
-                    System.Diagnostics.Process.Start(filename);
-                }
+                System.Diagnostics.Process.Start(filename);
             }
         }
 
@@ -213,84 +186,31 @@ namespace CFCloudClient
         {
             Models.FileSystemItem item = (Models.FileSystemItem)((Button)sender).DataContext;
             string oldName = CurrentFolder + "\\" + item.Name;
-            Models.SQLDataType sdt = Util.SqliteHelper.Select(oldName);
-            if (sdt.IsShared.Equals("true"))
+            InputWindow inputWindow = new InputWindow(Properties.Resources.RenameText, "Rename");
+            string newName = inputWindow.getInput();
+            if (newName == null)
+                return;
+            newName = CurrentFolder + "\\" + newName;
+            if (item.Type.Equals("Folder"))
             {
-                if (item.Type.Equals("Folder"))
+                try
                 {
-                    NetworkResults.CanModifyFolderResult gfr = BackgroundWorks.NetworkManager.CanModifyFolder(Util.Utils.LocalPathtoCloudPath(oldName));
-                    if (gfr != null && !gfr.Succeed)
-                    {
-                        MessageBox.Show(gfr.FailMessage(), "Rename Fail");
-                        return;
-                    }
-                    InputWindow inputWindow = new InputWindow(Properties.Resources.RenameText, "Rename");
-                    string newName = inputWindow.getInput();
-                    if (newName == null)
-                        return;
-                    newName = CurrentFolder + "\\" + newName;
-                    try
-                    {
-                        new DirectoryInfo(oldName).MoveTo(newName);
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
-                    }
+                    new DirectoryInfo(oldName).MoveTo(newName);
                 }
-                else
+                catch (IOException)
                 {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(oldName), sdt.Version);
-                    if (gr != null && !gr.Succeed && gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
-                    {
-                        MessageBox.Show(Properties.Resources.GetTokenFail + gr.TokenHolder.TokenHolder.getUserName(), "Rename Fail");
-                        return;
-                    }
-                    InputWindow inputWindow = new InputWindow(Properties.Resources.RenameText, "Rename");
-                    string newName = inputWindow.getInput();
-                    if (newName == null)
-                        return;
-                    newName = CurrentFolder + "\\" + newName;
-                    Util.Utils.UnLockFile(oldName);
-                    new FileInfo(oldName).Attributes = FileAttributes.Normal;
-                    try
-                    {
-                        new FileInfo(oldName).MoveTo(newName);
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
-                    }
+                    MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
                 }
             }
             else
             {
-                InputWindow inputWindow = new InputWindow(Properties.Resources.RenameText, "Rename");
-                string newName = inputWindow.getInput();
-                if (newName == null)
-                    return;
-                newName = CurrentFolder + "\\" + newName;
-                if (item.Type.Equals("Folder"))
+                try
                 {
-                    try
-                    {
-                        new DirectoryInfo(oldName).MoveTo(newName);
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
-                    }
+                    new FileInfo(oldName).MoveTo(newName);
                 }
-                else
+                catch (IOException)
                 {
-                    try
-                    {
-                        new FileInfo(oldName).MoveTo(newName);
-                    }
-                    catch (IOException)
-                    {
-                        MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
-                    }
+                    MessageBox.Show(Properties.Resources.RenameFail, "Rename Fail");
                 }
             }
         }
@@ -305,8 +225,17 @@ namespace CFCloudClient
                 return;
             else
             {
-                if (BackgroundWorks.NetworkManager.Share(Util.Utils.LocalPathtoCloudPath(filename), Email) != null)
+                Models.Metadata shareResult = BackgroundWorks.NetworkManager.Share(Util.Utils.LocalPathtoCloudPath(filename), Email);
+                if (shareResult != null)
+                {
+                    Models.SQLDataType sdt = new Models.SQLDataType(filename,
+                        shareResult.ModifiedTime,
+                        shareResult.Rev,
+                        shareResult.Modifier.Email,
+                        shareResult.isShared ? "true" : "false");
+                    Util.SqliteHelper.Update(sdt);
                     MessageBox.Show("Share succeed.", "Share");
+                }
                 else
                     MessageBox.Show("Share failed.", "Share");
             }
@@ -316,77 +245,31 @@ namespace CFCloudClient
         {
             Models.FileSystemItem item = (Models.FileSystemItem)((Button)sender).DataContext;
             string filename = CurrentFolder + "\\" + item.Name;
-            Models.SQLDataType sdt = Util.SqliteHelper.Select(filename);
-            if (sdt.IsShared.Equals("true"))
+            if (item.Type.Equals("Folder"))
             {
-                if (item.Type.Equals("Folder"))
+                if (MessageBox.Show(Properties.Resources.FolderDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    NetworkResults.CanModifyFolderResult gfr = BackgroundWorks.NetworkManager.CanModifyFolder(Util.Utils.LocalPathtoCloudPath(filename));
-                    if (gfr != null && !gfr.Succeed)
-                    {
-                        MessageBox.Show(gfr.FailMessage(), "Delete Fail");
-                        return;
-                    }
-                    if (MessageBox.Show(Properties.Resources.FolderDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        Util.Utils.DeleteFolder(filename);
-                    }
-                    else
-                        return;
+                    Util.Utils.DeleteFolder(filename);
                 }
                 else
-                {
-                    NetworkResults.GetTokenResult gr = BackgroundWorks.NetworkManager.GetToken(Util.Utils.LocalPathtoCloudPath(filename), sdt.Version);
-                    if (gr != null && !gr.Succeed && gr.Fail == NetworkResults.GetTokenResult.FailType.OtherHolding)
-                    {
-                        MessageBox.Show(Properties.Resources.GetTokenFail + gr.TokenHolder.TokenHolder.getUserName(), "Delete Fail");
-                        return;
-                    }
-                    if (MessageBox.Show(Properties.Resources.FileDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        Util.Utils.UnLockFile(filename);
-                        new FileInfo(filename).Attributes = FileAttributes.Normal;
-                        try
-                        {
-                            File.Delete(filename);
-                        }
-                        catch (IOException)
-                        {
-                            MessageBox.Show(Properties.Resources.DeleteFail, "Delete Fail");
-                        }
-                    }
-                    else
-                        return;
-                }
+                    return;
             }
             else
             {
-                if (item.Type.Equals("Folder"))
+                if (MessageBox.Show(Properties.Resources.FileDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    if (MessageBox.Show(Properties.Resources.FolderDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    new FileInfo(filename).Attributes = FileAttributes.Normal;
+                    try
                     {
-                        Util.Utils.DeleteFolder(filename);
+                        File.Delete(filename);
                     }
-                    else
-                        return;
+                    catch (IOException)
+                    {
+                        MessageBox.Show(Properties.Resources.DeleteFail, "Delete Fail");
+                    }
                 }
                 else
-                {
-                    if (MessageBox.Show(Properties.Resources.FileDeleteConfirm, "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                    {
-                        new FileInfo(filename).Attributes = FileAttributes.Normal;
-                        try
-                        {
-                            File.Delete(filename);
-                        }
-                        catch (IOException)
-                        {
-                            MessageBox.Show(Properties.Resources.DeleteFail, "Delete Fail");
-                        }
-                    }
-                    else
-                        return;
-                }
+                    return;
             }
         }
     }

@@ -11,23 +11,57 @@ namespace CFCloudClient.FileUtil
     {
         public byte[] data;
         public int index { get; set; }
-        public string sha256 { get; set; }
+        public string adler32 { get; set; }
         public string md5 { get; set; }
         public int start { get; set; }
         public int length { get; set; }
 
-        public string SHA256()
+        public string Adler32()
         {
-            SHA256Managed sha256 = new SHA256Managed();
-            byte[] ret = sha256.ComputeHash(data);
-            return (Encoding.UTF8.GetString(ret));
+            int n;
+            uint s1 = 1 & 0xFFFF;
+            uint s2 = 1 >> 16;
+
+            int pos = 0;
+            int remain = data.Length;
+
+            while (remain > 0)
+            {
+                n = (3800 > remain) ? remain : 3800;
+                remain -= n;
+                while (--n >= 0)
+                {
+                    s1 = s1 + (uint)(data[pos++] & 0xFF);
+                    s2 = s2 + s1;
+                }
+                s1 %= 65521;
+                s2 %= 65521;
+            }
+
+            byte[] ret = new byte[4];
+            ret[0] = (byte)(s2 >> 8);
+            ret[1] = (byte)s2;
+            ret[2] = (byte)(s1 >> 8);
+            ret[3] = (byte)s1;
+
+            StringBuilder str = new StringBuilder();
+            foreach (byte b in ret)
+            {
+                str.Append(b.ToString("x2"));
+            }
+            return str.ToString();
         }
 
         public string MD5()
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] ret = md5.ComputeHash(data);
-            return (Encoding.UTF8.GetString(ret));
+            StringBuilder str = new StringBuilder();
+            foreach (byte b in  ret)
+            {
+                str.Append(b.ToString("x2"));
+            }
+            return str.ToString();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace CFCloudClient.Properties {
     // 类通过类似于 ResGen 或 Visual Studio 的工具自动生成的。
     // 若要添加或移除成员，请编辑 .ResX 文件，然后重新运行 ResGen
     // (以 /str 作为命令选项)，或重新生成 VS 项目。
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -111,33 +111,6 @@ namespace CFCloudClient.Properties {
         internal static string FolderDeleteConfirm {
             get {
                 return ResourceManager.GetString("FolderDeleteConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 This file is editing by  的本地化字符串。
-        /// </summary>
-        internal static string GetTokenFail {
-            get {
-                return ResourceManager.GetString("GetTokenFail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 The client is downloading the latest version. Please wait for a moment. 的本地化字符串。
-        /// </summary>
-        internal static string GetTokenFailUnconsistent {
-            get {
-                return ResourceManager.GetString("GetTokenFailUnconsistent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Get token fail. Unknown error. 的本地化字符串。
-        /// </summary>
-        internal static string GetTokenFailUnknown {
-            get {
-                return ResourceManager.GetString("GetTokenFailUnknown", resourceCulture);
             }
         }
         

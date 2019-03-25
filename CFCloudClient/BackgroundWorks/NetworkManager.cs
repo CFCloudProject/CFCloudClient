@@ -316,17 +316,17 @@ namespace CFCloudClient.BackgroundWorks
                 FileUtil.CloudBlock cb = new FileUtil.CloudBlock
                 {
                     index = i,
-                    sha256 = blocks[i]["SHA256"].ToString(),
+                    adler32 = blocks[i]["ADLER32"].ToString(),
                     md5 = blocks[i]["MD5"].ToString()
                 };
-                if (cloudBlocks.ContainsKey(cb.sha256))
+                if (cloudBlocks.ContainsKey(cb.adler32))
                 {
-                    cloudBlocks[cb.sha256].Add(cb.md5, cb);
+                    cloudBlocks[cb.adler32].Add(cb.md5, cb);
                 }
                 else
                 {
-                    cloudBlocks.Add(cb.sha256, new Dictionary<string, FileUtil.CloudBlock>());
-                    cloudBlocks[cb.sha256].Add(cb.md5, cb);
+                    cloudBlocks.Add(cb.adler32, new Dictionary<string, FileUtil.CloudBlock>());
+                    cloudBlocks[cb.adler32].Add(cb.md5, cb);
                 }
             }
 
@@ -346,10 +346,10 @@ namespace CFCloudClient.BackgroundWorks
                 {
                     FileUtil.Block block = UploadFile.getNextBlock();
                     FileUtil.CloudBlock ret = null;
-                    if (cloudBlocks.ContainsKey(block.sha256))
+                    if (cloudBlocks.ContainsKey(block.adler32))
                     {
-                        if (cloudBlocks[block.sha256].ContainsKey(block.md5))
-                            ret = cloudBlocks[block.sha256][block.md5];
+                        if (cloudBlocks[block.adler32].ContainsKey(block.md5))
+                            ret = cloudBlocks[block.adler32][block.md5];
                     }
                     if (ret != null)
                     {
@@ -362,8 +362,7 @@ namespace CFCloudClient.BackgroundWorks
                             BaseIndex = ret.index.ToString(),
                             Index = block.index,
                             Confident = true,
-                            SHA256 = block.sha256,
-                            MD5 = block.md5,
+                            Hash = block.adler32 + block.md5,
                             Content = null
                         };
                         if (WaitRequests.Count > 0 && ret.index > lastIndex)
@@ -399,8 +398,7 @@ namespace CFCloudClient.BackgroundWorks
                             BaseRev = baseRev,
                             Rev = rev,
                             Index = block.index,
-                            SHA256 = block.sha256,
-                            MD5 = block.md5,
+                            Hash = block.adler32 + block.md5,
                             Content = Google.Protobuf.ByteString.CopyFrom(block.data)
                         };
                         WaitRequests.Add(blockRequest);
@@ -468,7 +466,7 @@ namespace CFCloudClient.BackgroundWorks
                 cloudBlocks.Add(new FileUtil.CloudBlock
                 {
                     index = i,
-                    sha256 = blocks[i]["SHA256"].ToString(),
+                    adler32 = blocks[i]["ADLER32"].ToString(),
                     md5 = blocks[i]["MD5"].ToString()
                 });
             }
@@ -485,7 +483,7 @@ namespace CFCloudClient.BackgroundWorks
             {
                 var block = DownloadFile.getNextBlock();
                 block.data = null;
-                localBlocks.Add(block.sha256 + block.md5, block);
+                localBlocks.Add(block.adler32 + block.md5, block);
             }
 
             var reqres = client.DownloadBlock();
@@ -494,7 +492,7 @@ namespace CFCloudClient.BackgroundWorks
 
             foreach (var block in cloudBlocks)
             {
-                if (!localBlocks.ContainsKey(block.sha256 + block.md5))
+                if (!localBlocks.ContainsKey(block.adler32 + block.md5))
                 {
                     try
                     {
@@ -504,8 +502,7 @@ namespace CFCloudClient.BackgroundWorks
                             Path = path,
                             Rev = rev,
                             Index = block.index,
-                            SHA256 = block.sha256,
-                            MD5 = block.md5,
+                            Hash = block.adler32 + block.md5,
                         }).Wait();
                     }
                     catch (RpcException)
@@ -518,9 +515,9 @@ namespace CFCloudClient.BackgroundWorks
             requests.CompleteAsync().Wait();
             foreach (var block in cloudBlocks)
             {
-                if (localBlocks.ContainsKey(block.sha256 + block.md5))
+                if (localBlocks.ContainsKey(block.adler32 + block.md5))
                 {
-                    var lb = localBlocks[block.sha256 + block.md5];
+                    var lb = localBlocks[block.adler32 + block.md5];
                     DownloadFile.WriteTemp(DownloadFile.ReadBlock(lb.start, lb.length));
                 }
                 else
@@ -595,99 +592,6 @@ namespace CFCloudClient.BackgroundWorks
                 metadataList.Add(Models.Metadata.FromJson(item));
             }
             return metadataList;
-        }
-        
-        public static NetworkResults.GetTokenResult GetToken(string path, string Rev)
-        {
-            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            GetTokenResult response = null;
-
-            NetworkResults.GetTokenResult gr = new NetworkResults.GetTokenResult();
-            gr.Succeed = false;
-            gr.TokenHolder = new Models.FileAndEditorMap();
-            gr.Fail = NetworkResults.GetTokenResult.FailType.Unknown;
-
-            try
-            {
-                response = client.GetToken(new PathRevRequest
-                {
-                    SessionId = _SessionId,
-                    Path = path,
-                    BaseRev = Rev
-                });
-            }
-            catch (RpcException)
-            {
-                return null;
-            }
-
-            if (response != null)
-            {
-                gr.Succeed = response.Succeed;
-                gr.TokenHolder.Name = response.FileName;
-                gr.TokenHolder.TokenHolder = new Models.User
-                {
-                    Email = response.Email,
-                    FirstName = response.FirstName,
-                    LastName = response.LastName
-                };
-                if (!gr.Succeed)
-                {
-                    if (response.Error == 1)
-                        gr.Fail = NetworkResults.GetTokenResult.FailType.OtherHolding;
-                    if (response.Error == 2)
-                        gr.Fail = NetworkResults.GetTokenResult.FailType.UnConsistent;
-                }
-            }
-
-            return gr;
-        }
-
-        public static void ReturnToken(string path)
-        {
-            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringResponse response = null;
-            bool retry = true;
-            while (retry)
-            {
-                try
-                {
-                    response = client.ReturnToken(new PathRequest
-                    {
-                        SessionId = _SessionId,
-                        Path = path
-                    });
-                }
-                catch (RpcException)
-                {
-                    Thread.Sleep(5000);
-                    continue;
-                }
-                retry = false;
-            }
-        }
-        
-        public static NetworkResults.CanModifyFolderResult CanModifyFolder(string folder)
-        {
-            var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
-            StringResponse response = null;
-
-            try
-            {
-                response = client.CanModifyFolder(new PathRequest
-                {
-                    SessionId = _SessionId,
-                    Path = folder
-                });
-            }
-            catch (RpcException)
-            {
-                return null;
-            }
-
-            if (response == null)
-                return null;
-            return NetworkResults.CanModifyFolderResult.FromJson(response.PayLoad);
         }
     }
 }

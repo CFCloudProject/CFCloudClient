@@ -71,10 +71,6 @@ namespace CFCloudClient.BackgroundWorks
                 createResult.Modifier.Email, 
                 createResult.isShared ? "true" : "false");
             Util.SqliteHelper.Insert(sdt);
-            if (createResult.isShared && createResult.Tag.Equals("File"))
-                Util.Utils.LockFile(e.LocalPath);
-            if (createResult.TokenHolder.Equal(Util.Global.user))
-                NetworkManager.ReturnToken(e.CloudPath);
         }
 
         private void ClientChange()
@@ -92,8 +88,6 @@ namespace CFCloudClient.BackgroundWorks
             {
                 if (Directory.Exists(e.LocalPath))
                     return;
-                if (sdt.IsShared.Equals("true"))
-                    Util.Utils.UnLockFile(e.LocalPath);
                 Models.Metadata uploadResult;
                 while ((uploadResult = NetworkManager.Upload(e.CloudPath)) == null)
                     Thread.Sleep(5000);
@@ -103,10 +97,6 @@ namespace CFCloudClient.BackgroundWorks
                     uploadResult.Modifier.Email,
                     uploadResult.isShared ? "true" : "false");
                 Util.SqliteHelper.Update(sdt2);
-                if (uploadResult.isShared)
-                    Util.Utils.LockFile(e.LocalPath);
-                if (uploadResult.TokenHolder.Equal(Util.Global.user))
-                    NetworkManager.ReturnToken(e.CloudPath);
             }
         }
 
@@ -119,10 +109,6 @@ namespace CFCloudClient.BackgroundWorks
             Util.SqliteHelper.Delete(e.OldLocalPath);
             Util.SqliteHelper.Insert(sdt);
             Models.Metadata renameResult = NetworkManager.Rename(e.CloudPath, e.OldCloudPath);
-            if (renameResult.isShared && renameResult.Tag.Equals("File"))
-                Util.Utils.LockFile(e.LocalPath);
-            if (renameResult.TokenHolder.Equal(Util.Global.user))
-                NetworkManager.ReturnToken(e.CloudPath);
         }
 
         private void ClientDelete()
@@ -140,8 +126,6 @@ namespace CFCloudClient.BackgroundWorks
                     Thread.Sleep(5000);
                 metadata = NetworkManager.GetMetadata(e.CloudPath);
                 File.SetLastWriteTimeUtc(e.LocalPath, metadata.ModifiedTime);
-                if (metadata.isShared)
-                    Util.Utils.LockFile(e.LocalPath);
             }
             else
             {
@@ -161,13 +145,10 @@ namespace CFCloudClient.BackgroundWorks
             Models.Metadata metadata = NetworkManager.GetMetadata(e.CloudPath);
             if (metadata.Tag.Equals("File"))
             {
-                Util.Utils.UnLockFile(e.LocalPath);
                 while (!NetworkManager.Download(e.CloudPath))
                     Thread.Sleep(5000);
                 metadata = NetworkManager.GetMetadata(e.CloudPath);
                 File.SetLastWriteTimeUtc(e.LocalPath, metadata.ModifiedTime);
-                if (metadata.isShared)
-                    Util.Utils.LockFile(e.LocalPath);
                 Models.SQLDataType sdt = new Models.SQLDataType(e.LocalPath,
                     metadata.ModifiedTime,
                     metadata.Rev,
@@ -182,7 +163,6 @@ namespace CFCloudClient.BackgroundWorks
             Models.Metadata metadata = NetworkManager.GetMetadata(e.CloudPath);
             if (metadata.Tag.Equals("File"))
             {
-                Util.Utils.UnLockFile(e.LocalPath);
                 bool retry = true;
                 while (retry)
                 {
@@ -196,8 +176,6 @@ namespace CFCloudClient.BackgroundWorks
                         Thread.Sleep(5000);
                     }
                 }
-                if (metadata.isShared)
-                    Util.Utils.LockFile(e.LocalPath);
             }
             else
             {
@@ -225,7 +203,6 @@ namespace CFCloudClient.BackgroundWorks
         {
             if (File.Exists(e.LocalPath))
             {
-                Util.Utils.UnLockFile(e.LocalPath);
                 bool retry = true;
                 while (retry)
                 {

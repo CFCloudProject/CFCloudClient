@@ -20,7 +20,6 @@ namespace CFCloudClient.Models
         public User Owner { get; set; }
         public bool isShared { get; set; }
         public List<User> SharedUsers { get; set; }
-        public User TokenHolder { get; set; }
 
         public static Metadata FromJson(string json)
         {
@@ -47,7 +46,6 @@ namespace CFCloudClient.Models
             {
                 metadata.SharedUsers.Add(User.FromJson(item));
             }
-            metadata.TokenHolder = User.FromJson(json["TokenHolder"]);
             return metadata;
         }
     }

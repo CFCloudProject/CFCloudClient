@@ -135,15 +135,6 @@
   <data name="FolderDeleteConfirm" xml:space="preserve">
     <value>Are you sure to delete this folder and all the files in it?</value>
   </data>
-  <data name="GetTokenFail" xml:space="preserve">
-    <value>This file is editing by </value>
-  </data>
-  <data name="GetTokenFailUnconsistent" xml:space="preserve">
-    <value>The client is downloading the latest version. Please wait for a moment.</value>
-  </data>
-  <data name="GetTokenFailUnknown" xml:space="preserve">
-    <value>Get token fail. Unknown error.</value>
-  </data>
   <data name="HeartBeatHost" xml:space="preserve">
     <value>13.58.187.140:5001</value>
   </data>
