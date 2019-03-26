@@ -153,7 +153,7 @@ namespace CFCloudClient.BackgroundWorks
             if (response.PayLoad == null || response.PayLoad.Equals(""))
                 return null;
             JObject obj = JObject.Parse(response.PayLoad);
-            JArray eventsArray = (JArray)obj["Entries"];
+            JArray eventsArray = (JArray)obj["entries"];
             if (eventsArray.Count == 0)
                 return null;
 
@@ -174,9 +174,9 @@ namespace CFCloudClient.BackgroundWorks
             };
             foreach (var item in eventsArray)
             {
-                int type = int.Parse(item["Type"].ToString());
-                string path = item["Path"].ToString();
-                string oldPath = item["OldPath"].ToString();
+                int type = int.Parse(item["type"].ToString());
+                string path = item["path"].ToString();
+                string oldPath = item["oldpath"].ToString();
                 Models.FileChangeEvent e = new Models.FileChangeEvent(
                     getType(type), Util.Utils.CloudPathtoLocalPath(path), Util.Utils.CloudPathtoLocalPath(oldPath));
                 eventsList.Add(e);
@@ -308,16 +308,16 @@ namespace CFCloudClient.BackgroundWorks
             if (response == null)
                 return null;
             JObject obj = JObject.Parse(response.PayLoad);
-            string rev = obj["Rev"].ToString();
-            JArray blocks = (JArray)obj["Blocks"];
+            string rev = obj["rev"].ToString();
+            JArray blocks = (JArray)obj["blocks"];
             Dictionary<string, Dictionary<string, FileUtil.CloudBlock>> cloudBlocks = new Dictionary<string, Dictionary<string, FileUtil.CloudBlock>>();
             for (int i = 0; i < blocks.Count; i++)
             {
                 FileUtil.CloudBlock cb = new FileUtil.CloudBlock
                 {
                     index = i,
-                    adler32 = blocks[i]["ADLER32"].ToString(),
-                    md5 = blocks[i]["MD5"].ToString()
+                    adler32 = blocks[i]["adler32"].ToString(),
+                    md5 = blocks[i]["md5"].ToString()
                 };
                 if (cloudBlocks.ContainsKey(cb.adler32))
                 {
@@ -458,16 +458,16 @@ namespace CFCloudClient.BackgroundWorks
             if (response == null)
                 return false;
             JObject obj = JObject.Parse(response.PayLoad);
-            string rev = obj["Rev"].ToString();
-            JArray blocks = (JArray)obj["Blocks"];
+            string rev = obj["rev"].ToString();
+            JArray blocks = (JArray)obj["blocks"];
             List<FileUtil.CloudBlock> cloudBlocks = new List<FileUtil.CloudBlock>();
             for (int i = 0; i < blocks.Count; i++)
             {
                 cloudBlocks.Add(new FileUtil.CloudBlock
                 {
                     index = i,
-                    adler32 = blocks[i]["ADLER32"].ToString(),
-                    md5 = blocks[i]["MD5"].ToString()
+                    adler32 = blocks[i]["adler32"].ToString(),
+                    md5 = blocks[i]["md5"].ToString()
                 });
             }
 
@@ -586,7 +586,7 @@ namespace CFCloudClient.BackgroundWorks
             List<Models.Metadata> metadataList = new List<Models.Metadata>();
 
             JObject obj = JObject.Parse(response.PayLoad);
-            JArray MetadataArray = (JArray)obj["Entries"];
+            JArray MetadataArray = (JArray)obj["entries"];
             foreach (var item in MetadataArray)
             {
                 metadataList.Add(Models.Metadata.FromJson(item));

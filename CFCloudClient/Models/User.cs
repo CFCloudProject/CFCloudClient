@@ -33,9 +33,9 @@ namespace CFCloudClient.Models
         public static User FromJson(JToken json)
         {
             User user = new User();
-            user.Email = json["Email"].ToString();
-            user.FirstName = json["FirstName"].ToString();
-            user.LastName = json["LastName"].ToString();
+            user.Email = json["email"].ToString();
+            user.FirstName = json["firstname"].ToString();
+            user.LastName = json["lastname"].ToString();
             return user;
         }
     }

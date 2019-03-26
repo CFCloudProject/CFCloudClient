@@ -30,18 +30,18 @@ namespace CFCloudClient.Models
         public static Metadata FromJson(JToken json)
         {
             Metadata metadata = new Metadata();
-            metadata.Tag = json["Tag"].ToString();
-            metadata.Name = json["Name"].ToString();
-            metadata.FullPath = json["FullPath"].ToString();
+            metadata.Tag = json["tag"].ToString();
+            metadata.Name = json["name"].ToString();
+            metadata.FullPath = json["fullpath"].ToString();
             metadata.size = long.Parse(json["size"].ToString());
-            metadata.Rev = json["Rev"].ToString();
-            metadata.CreationTime = new DateTime(long.Parse(json["CreationTime"].ToString()), DateTimeKind.Utc);
-            metadata.ModifiedTime = new DateTime(long.Parse(json["ModifiedTime"].ToString()), DateTimeKind.Utc);
-            metadata.Modifier = User.FromJson(json["Modifier"]);
-            metadata.Owner = User.FromJson(json["Owner"]);
-            metadata.isShared = json["isShared"].ToString().Equals("true");
+            metadata.Rev = json["rev"].ToString();
+            metadata.CreationTime = new DateTime(long.Parse(json["creation_time"].ToString()), DateTimeKind.Utc);
+            metadata.ModifiedTime = new DateTime(long.Parse(json["modified_time"].ToString()), DateTimeKind.Utc);
+            metadata.Modifier = User.FromJson(json["modifier"]);
+            metadata.Owner = User.FromJson(json["owner"]);
+            metadata.isShared = json["is_shared"].ToString().Equals("true");
             metadata.SharedUsers = new List<User>();
-            JArray sharedUsers = (JArray)json["SharedUsers"];
+            JArray sharedUsers = (JArray)json["sharedusers"];
             foreach (var item in sharedUsers)
             {
                 metadata.SharedUsers.Add(User.FromJson(item));
