@@ -339,44 +339,104 @@ namespace CFCloudClient.BackgroundWorks
             try
             {
                 var requests = client.UploadBlock().RequestStream;
-                List<BlockRequest> WaitRequests = new List<BlockRequest>();
-                int lastIndex = 0;
-                int maxIndex = blocks.Count;
-                while (UploadFile.hasNextBlock())
+                if (baseRev == null)
                 {
-                    FileUtil.Block block = UploadFile.getNextBlock();
-                    FileUtil.CloudBlock ret = null;
-                    if (cloudBlocks.ContainsKey(block.adler32))
+                    while (UploadFile.hasNextBlock())
                     {
-                        if (cloudBlocks[block.adler32].ContainsKey(block.md5))
-                            ret = cloudBlocks[block.adler32][block.md5];
-                    }
-                    if (ret != null)
-                    {
+                        FileUtil.Block block = UploadFile.getNextBlock();
                         BlockRequest blockRequest = new BlockRequest
                         {
                             SessionId = _SessionId,
                             Path = path,
                             BaseRev = baseRev,
                             Rev = rev,
-                            BaseIndex = ret.index.ToString(),
+                            BaseIndex = null,
                             Index = block.index,
                             Confident = true,
                             Hash = block.adler32 + block.md5,
-                            Content = null
+                            Content = Google.Protobuf.ByteString.CopyFrom(block.data)
                         };
-                        if (WaitRequests.Count > 0 && ret.index > lastIndex)
+                        requests.WriteAsync(blockRequest).Wait();
+                    }
+                }
+                else
+                {
+                    List<BlockRequest> WaitRequests = new List<BlockRequest>();
+                    int lastIndex = 0;
+                    int maxIndex = blocks.Count;
+                    while (UploadFile.hasNextBlock())
+                    {
+                        FileUtil.Block block = UploadFile.getNextBlock();
+                        FileUtil.CloudBlock ret = null;
+                        if (cloudBlocks.ContainsKey(block.adler32))
                         {
-                            string baseIndex;
-                            if (ret.index - lastIndex == 1)
-                                baseIndex = null;
-                            else
+                            if (cloudBlocks[block.adler32].ContainsKey(block.md5))
+                                ret = cloudBlocks[block.adler32][block.md5];
+                        }
+                        if (ret != null)
+                        {
+                            BlockRequest blockRequest = new BlockRequest
                             {
-                                baseIndex = (lastIndex + 1).ToString();
-                                for (int i = lastIndex + 2; i < ret.index; ++i)
+                                SessionId = _SessionId,
+                                Path = path,
+                                BaseRev = baseRev,
+                                Rev = rev,
+                                BaseIndex = ret.index.ToString(),
+                                Index = block.index,
+                                Confident = true,
+                                Hash = block.adler32 + block.md5,
+                                Content = null
+                            };
+                            if (WaitRequests.Count > 0 && ret.index > lastIndex)
+                            {
+                                string baseIndex;
+                                if (ret.index - lastIndex == 1)
+                                    baseIndex = null;
+                                else
                                 {
-                                    baseIndex += "|" + i;
+                                    baseIndex = (lastIndex + 1).ToString();
+                                    for (int i = lastIndex + 2; i < ret.index; ++i)
+                                    {
+                                        baseIndex += "|" + i;
+                                    }
                                 }
+                                foreach (var request in WaitRequests)
+                                {
+                                    request.BaseIndex = baseIndex;
+                                    request.Confident = false;
+                                    requests.WriteAsync(request).Wait();
+                                }
+                                WaitRequests.Clear();
+                                lastIndex = ret.index;
+                            }
+                            requests.WriteAsync(blockRequest).Wait();
+                        }
+                        else
+                        {
+                            BlockRequest blockRequest = new BlockRequest
+                            {
+                                SessionId = _SessionId,
+                                Path = path,
+                                BaseRev = baseRev,
+                                Rev = rev,
+                                Index = block.index,
+                                Hash = block.adler32 + block.md5,
+                                Content = Google.Protobuf.ByteString.CopyFrom(block.data)
+                            };
+                            WaitRequests.Add(blockRequest);
+                        }
+                    }
+                    if (WaitRequests.Count != 0)
+                    {
+                        string baseIndex;
+                        if (maxIndex - lastIndex <= 1)
+                            baseIndex = null;
+                        else
+                        {
+                            baseIndex = (lastIndex + 1).ToString();
+                            for (int i = lastIndex + 2; i < maxIndex; ++i)
+                            {
+                                baseIndex += "|" + i;
                             }
                             foreach (var request in WaitRequests)
                             {
@@ -385,44 +445,7 @@ namespace CFCloudClient.BackgroundWorks
                                 requests.WriteAsync(request).Wait();
                             }
                             WaitRequests.Clear();
-                            lastIndex = ret.index;
                         }
-                        requests.WriteAsync(blockRequest).Wait();
-                    }
-                    else
-                    {
-                        BlockRequest blockRequest = new BlockRequest
-                        {
-                            SessionId = _SessionId,
-                            Path = path,
-                            BaseRev = baseRev,
-                            Rev = rev,
-                            Index = block.index,
-                            Hash = block.adler32 + block.md5,
-                            Content = Google.Protobuf.ByteString.CopyFrom(block.data)
-                        };
-                        WaitRequests.Add(blockRequest);
-                    }
-                }
-                if (WaitRequests.Count != 0)
-                {
-                    string baseIndex;
-                    if (maxIndex - lastIndex <= 1)
-                        baseIndex = null;
-                    else
-                    {
-                        baseIndex = (lastIndex + 1).ToString();
-                        for (int i = lastIndex + 2; i < maxIndex; ++i)
-                        {
-                            baseIndex += "|" + i;
-                        }
-                        foreach (var request in WaitRequests)
-                        {
-                            request.BaseIndex = baseIndex;
-                            request.Confident = false;
-                            requests.WriteAsync(request).Wait();
-                        }
-                        WaitRequests.Clear();
                     }
                 }
                 requests.CompleteAsync().Wait();
