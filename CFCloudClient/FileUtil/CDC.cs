@@ -46,7 +46,6 @@ namespace CFCloudClient.FileUtil
         {
             for (int i = 0; i < WINSIZE; i++)
                 window[i] = 0;
-            digest = 0;
             wpos = 0;
             count = 0;
             digest = 0;
