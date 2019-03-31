@@ -6,7 +6,6 @@ service GRPCServer
 	rpc Register (User) returns (RegisterResult) {}
 	rpc Login (User) returns (LoginResult) {}
 	rpc Logout (EmptyRequest) returns (StringResponse) {}
-	rpc HeartBeat (EmptyRequest) returns (StringResponse) {}
 
 	rpc Share (ShareRequest) returns (StringResponse) {}
 	rpc CreateFolder (PathRequest) returns (StringResponse) {}
@@ -17,7 +16,7 @@ service GRPCServer
 	rpc UploadBlock (stream BlockRequest) returns (StringResponse) {}
 
 	rpc Download (PathRequest) returns (StringResponse) {}
-	rpc DownloadBlock (stream BlockRequest) returns (stream BlockResponse) {}
+	rpc DownloadBlock (stream BlockRequest) returns (StringResponse) {}
 
 	rpc GetMetadata (PathRequest) returns (StringResponse) {}
 	rpc ListFolder (PathRequest) returns (StringResponse) {}
@@ -55,6 +54,7 @@ message PathRequest
 {
 	string SessionId = 1;
 	string Path = 2;
+	int64 ModifiedTime = 3;
 }
 
 message RenameRequest
@@ -76,8 +76,7 @@ message UploadRequest
 	string SessionId = 1;
 	string Path = 2;
 	string BaseRev = 3;
-	int64 ModifiedTime = 4;
-	int64 Size = 5;
+	string Hashs = 4;
 }
 
 message PathRevRequest
@@ -91,22 +90,13 @@ message BlockRequest
 {
 	string SessionId = 1;
 	string Path = 2;
-	string BaseRev = 3;
-	string Rev = 4;
-	string BaseIndex = 5;
+	int64 ModifiedTime = 3;
+	string BaseRev = 4;
+	string OtType = 5;
 	int32 Index = 6;
-	bool Confident = 7;
-	string Hash = 8;
+	string Hash = 7;
+	int32 Size = 8;
 	bytes Content = 9;
-}
-
-message BlockResponse
-{
-	string Path = 1;
-	string Rev = 2;
-	int32 BlockIndex = 3;
-	string Hash = 4;
-	bytes Content = 5;
 }
 
 message StringResponse

@@ -22,7 +22,6 @@ namespace GRPCServer {
     static readonly grpc::Marshaller<global::GRPCServer.RenameRequest> __Marshaller_GRPCServer_RenameRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.RenameRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.UploadRequest> __Marshaller_GRPCServer_UploadRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.UploadRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::GRPCServer.BlockRequest> __Marshaller_GRPCServer_BlockRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.BlockRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::GRPCServer.BlockResponse> __Marshaller_GRPCServer_BlockResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GRPCServer.BlockResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult> __Method_Register = new grpc::Method<global::GRPCServer.User, global::GRPCServer.RegisterResult>(
         grpc::MethodType.Unary,
@@ -42,13 +41,6 @@ namespace GRPCServer {
         grpc::MethodType.Unary,
         __ServiceName,
         "Logout",
-        __Marshaller_GRPCServer_EmptyRequest,
-        __Marshaller_GRPCServer_StringResponse);
-
-    static readonly grpc::Method<global::GRPCServer.EmptyRequest, global::GRPCServer.StringResponse> __Method_HeartBeat = new grpc::Method<global::GRPCServer.EmptyRequest, global::GRPCServer.StringResponse>(
-        grpc::MethodType.Unary,
-        __ServiceName,
-        "HeartBeat",
         __Marshaller_GRPCServer_EmptyRequest,
         __Marshaller_GRPCServer_StringResponse);
 
@@ -101,12 +93,12 @@ namespace GRPCServer {
         __Marshaller_GRPCServer_PathRequest,
         __Marshaller_GRPCServer_StringResponse);
 
-    static readonly grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse> __Method_DownloadBlock = new grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse>(
-        grpc::MethodType.DuplexStreaming,
+    static readonly grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse> __Method_DownloadBlock = new grpc::Method<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse>(
+        grpc::MethodType.ClientStreaming,
         __ServiceName,
         "DownloadBlock",
         __Marshaller_GRPCServer_BlockRequest,
-        __Marshaller_GRPCServer_BlockResponse);
+        __Marshaller_GRPCServer_StringResponse);
 
     static readonly grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse> __Method_GetMetadata = new grpc::Method<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(
         grpc::MethodType.Unary,
@@ -146,11 +138,6 @@ namespace GRPCServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringResponse> HeartBeat(global::GRPCServer.EmptyRequest request, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
       public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringResponse> Share(global::GRPCServer.ShareRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -186,7 +173,7 @@ namespace GRPCServer {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task DownloadBlock(grpc::IAsyncStreamReader<global::GRPCServer.BlockRequest> requestStream, grpc::IServerStreamWriter<global::GRPCServer.BlockResponse> responseStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GRPCServer.StringResponse> DownloadBlock(grpc::IAsyncStreamReader<global::GRPCServer.BlockRequest> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -273,22 +260,6 @@ namespace GRPCServer {
       public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> LogoutAsync(global::GRPCServer.EmptyRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Logout, null, options, request);
-      }
-      public virtual global::GRPCServer.StringResponse HeartBeat(global::GRPCServer.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return HeartBeat(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual global::GRPCServer.StringResponse HeartBeat(global::GRPCServer.EmptyRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.BlockingUnaryCall(__Method_HeartBeat, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> HeartBeatAsync(global::GRPCServer.EmptyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return HeartBeatAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::GRPCServer.StringResponse> HeartBeatAsync(global::GRPCServer.EmptyRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_HeartBeat, null, options, request);
       }
       public virtual global::GRPCServer.StringResponse Share(global::GRPCServer.ShareRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -394,13 +365,13 @@ namespace GRPCServer {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Download, null, options, request);
       }
-      public virtual grpc::AsyncDuplexStreamingCall<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse> DownloadBlock(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncClientStreamingCall<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse> DownloadBlock(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return DownloadBlock(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncDuplexStreamingCall<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse> DownloadBlock(grpc::CallOptions options)
+      public virtual grpc::AsyncClientStreamingCall<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse> DownloadBlock(grpc::CallOptions options)
       {
-        return CallInvoker.AsyncDuplexStreamingCall(__Method_DownloadBlock, null, options);
+        return CallInvoker.AsyncClientStreamingCall(__Method_DownloadBlock, null, options);
       }
       public virtual global::GRPCServer.StringResponse GetMetadata(global::GRPCServer.PathRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -449,7 +420,6 @@ namespace GRPCServer {
           .AddMethod(__Method_Register, serviceImpl.Register)
           .AddMethod(__Method_Login, serviceImpl.Login)
           .AddMethod(__Method_Logout, serviceImpl.Logout)
-          .AddMethod(__Method_HeartBeat, serviceImpl.HeartBeat)
           .AddMethod(__Method_Share, serviceImpl.Share)
           .AddMethod(__Method_CreateFolder, serviceImpl.CreateFolder)
           .AddMethod(__Method_Rename, serviceImpl.Rename)
@@ -471,7 +441,6 @@ namespace GRPCServer {
       serviceBinder.AddMethod(__Method_Register, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.User, global::GRPCServer.RegisterResult>(serviceImpl.Register));
       serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.User, global::GRPCServer.LoginResult>(serviceImpl.Login));
       serviceBinder.AddMethod(__Method_Logout, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.EmptyRequest, global::GRPCServer.StringResponse>(serviceImpl.Logout));
-      serviceBinder.AddMethod(__Method_HeartBeat, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.EmptyRequest, global::GRPCServer.StringResponse>(serviceImpl.HeartBeat));
       serviceBinder.AddMethod(__Method_Share, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.ShareRequest, global::GRPCServer.StringResponse>(serviceImpl.Share));
       serviceBinder.AddMethod(__Method_CreateFolder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.CreateFolder));
       serviceBinder.AddMethod(__Method_Rename, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.RenameRequest, global::GRPCServer.StringResponse>(serviceImpl.Rename));
@@ -479,7 +448,7 @@ namespace GRPCServer {
       serviceBinder.AddMethod(__Method_Upload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.UploadRequest, global::GRPCServer.StringResponse>(serviceImpl.Upload));
       serviceBinder.AddMethod(__Method_UploadBlock, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse>(serviceImpl.UploadBlock));
       serviceBinder.AddMethod(__Method_Download, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.Download));
-      serviceBinder.AddMethod(__Method_DownloadBlock, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.BlockResponse>(serviceImpl.DownloadBlock));
+      serviceBinder.AddMethod(__Method_DownloadBlock, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::GRPCServer.BlockRequest, global::GRPCServer.StringResponse>(serviceImpl.DownloadBlock));
       serviceBinder.AddMethod(__Method_GetMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.GetMetadata));
       serviceBinder.AddMethod(__Method_ListFolder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GRPCServer.PathRequest, global::GRPCServer.StringResponse>(serviceImpl.ListFolder));
     }

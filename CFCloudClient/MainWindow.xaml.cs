@@ -50,7 +50,7 @@ namespace CFCloudClient
             Util.Global.FileMonitor.Start();
             Util.Global.FileUpdateQueue = new BackgroundWorks.FileChangeQueue();
             Util.Global.updater = new BackgroundWorks.FileUpdater();
-            BackgroundWorks.HeartBeat.Start();
+            //BackgroundWorks.HeartBeat.Start();
         }
 
         private void FileMonitor_OnFileChange(object sender, EventArgs e)
@@ -217,7 +217,7 @@ namespace CFCloudClient
 
         private void Share_Click(object sender, RoutedEventArgs e)
         {
-            Models.FileSystemItem item = (Models.FileSystemItem)((Button)sender).DataContext;
+            /*Models.FileSystemItem item = (Models.FileSystemItem)((Button)sender).DataContext;
             string filename = CurrentFolder + "\\" + item.Name;
             InputWindow inputWindow = new InputWindow(Properties.Resources.ShareText, "Share");
             string Email = inputWindow.getInput();
@@ -238,7 +238,7 @@ namespace CFCloudClient
                 }
                 else
                     MessageBox.Show("Share failed.", "Share");
-            }
+            }*/
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

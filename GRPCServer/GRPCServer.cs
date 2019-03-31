@@ -30,43 +30,39 @@ namespace GRPCServer {
             "ZWQYASABKAgSDQoFRXJyb3IYAiABKAUiZQoLTG9naW5SZXN1bHQSDwoHU3Vj",
             "Y2VlZBgBIAEoCBIRCglTZXNzaW9uSWQYAiABKAkSEQoJRmlyc3ROYW1lGAMg",
             "ASgJEhAKCExhc3ROYW1lGAQgASgJEg0KBUVycm9yGAUgASgFIiEKDEVtcHR5",
-            "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkiLgoLUGF0aFJlcXVlc3QSEQoJ",
-            "U2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkiQQoNUmVuYW1lUmVxdWVz",
-            "dBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdPbGRQYXRo",
-            "GAMgASgJIjwKDFNoYXJlUmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoE",
-            "UGF0aBgCIAEoCRILCgNEc3QYAyABKAkiZQoNVXBsb2FkUmVxdWVzdBIRCglT",
-            "ZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJ",
-            "EhQKDE1vZGlmaWVkVGltZRgEIAEoAxIMCgRTaXplGAUgASgDIkIKDlBhdGhS",
-            "ZXZSZXF1ZXN0EhEKCVNlc3Npb25JZBgBIAEoCRIMCgRQYXRoGAIgASgJEg8K",
-            "B0Jhc2VSZXYYAyABKAkioQEKDEJsb2NrUmVxdWVzdBIRCglTZXNzaW9uSWQY",
-            "ASABKAkSDAoEUGF0aBgCIAEoCRIPCgdCYXNlUmV2GAMgASgJEgsKA1JldhgE",
-            "IAEoCRIRCglCYXNlSW5kZXgYBSABKAkSDQoFSW5kZXgYBiABKAUSEQoJQ29u",
-            "ZmlkZW50GAcgASgIEgwKBEhhc2gYCCABKAkSDwoHQ29udGVudBgJIAEoDCJd",
-            "Cg1CbG9ja1Jlc3BvbnNlEgwKBFBhdGgYASABKAkSCwoDUmV2GAIgASgJEhIK",
-            "CkJsb2NrSW5kZXgYAyABKAUSDAoESGFzaBgEIAEoCRIPCgdDb250ZW50GAUg",
-            "ASgMIiEKDlN0cmluZ1Jlc3BvbnNlEg8KB1BheUxvYWQYASABKAkytwcKCkdS",
-            "UENTZXJ2ZXISOgoIUmVnaXN0ZXISEC5HUlBDU2VydmVyLlVzZXIaGi5HUlBD",
-            "U2VydmVyLlJlZ2lzdGVyUmVzdWx0IgASNAoFTG9naW4SEC5HUlBDU2VydmVy",
-            "LlVzZXIaFy5HUlBDU2VydmVyLkxvZ2luUmVzdWx0IgASQAoGTG9nb3V0Ehgu",
-            "R1JQQ1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jl",
-            "c3BvbnNlIgASQwoJSGVhcnRCZWF0EhguR1JQQ1NlcnZlci5FbXB0eVJlcXVl",
-            "c3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASPwoFU2hhcmUSGC5H",
-            "UlBDU2VydmVyLlNoYXJlUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVz",
-            "cG9uc2UiABJFCgxDcmVhdGVGb2xkZXISFy5HUlBDU2VydmVyLlBhdGhSZXF1",
-            "ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlJlbmFtZRIZ",
-            "LkdSUENTZXJ2ZXIuUmVuYW1lUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5n",
-            "UmVzcG9uc2UiABI/CgZEZWxldGUSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0",
-            "GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkEKBlVwbG9hZBIZLkdS",
-            "UENTZXJ2ZXIuVXBsb2FkUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVz",
-            "cG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdSUENTZXJ2ZXIuQmxvY2tSZXF1",
-            "ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAKAESQQoIRG93bmxv",
-            "YWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJp",
-            "bmdSZXNwb25zZSIAEkoKDURvd25sb2FkQmxvY2sSGC5HUlBDU2VydmVyLkJs",
-            "b2NrUmVxdWVzdBoZLkdSUENTZXJ2ZXIuQmxvY2tSZXNwb25zZSIAKAEwARJE",
-            "CgtHZXRNZXRhZGF0YRIXLkdSUENTZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBD",
-            "U2VydmVyLlN0cmluZ1Jlc3BvbnNlIgASQwoKTGlzdEZvbGRlchIXLkdSUENT",
-            "ZXJ2ZXIuUGF0aFJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3BvbnNl",
-            "IgBiBnByb3RvMw=="));
+            "UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkiRAoLUGF0aFJlcXVlc3QSEQoJ",
+            "U2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkSFAoMTW9kaWZpZWRUaW1l",
+            "GAMgASgDIkEKDVJlbmFtZVJlcXVlc3QSEQoJU2Vzc2lvbklkGAEgASgJEgwK",
+            "BFBhdGgYAiABKAkSDwoHT2xkUGF0aBgDIAEoCSI8CgxTaGFyZVJlcXVlc3QS",
+            "EQoJU2Vzc2lvbklkGAEgASgJEgwKBFBhdGgYAiABKAkSCwoDRHN0GAMgASgJ",
+            "IlAKDVVwbG9hZFJlcXVlc3QSEQoJU2Vzc2lvbklkGAEgASgJEgwKBFBhdGgY",
+            "AiABKAkSDwoHQmFzZVJldhgDIAEoCRINCgVIYXNocxgEIAEoCSJCCg5QYXRo",
+            "UmV2UmVxdWVzdBIRCglTZXNzaW9uSWQYASABKAkSDAoEUGF0aBgCIAEoCRIP",
+            "CgdCYXNlUmV2GAMgASgJIqIBCgxCbG9ja1JlcXVlc3QSEQoJU2Vzc2lvbklk",
+            "GAEgASgJEgwKBFBhdGgYAiABKAkSFAoMTW9kaWZpZWRUaW1lGAMgASgDEg8K",
+            "B0Jhc2VSZXYYBCABKAkSDgoGT3RUeXBlGAUgASgJEg0KBUluZGV4GAYgASgF",
+            "EgwKBEhhc2gYByABKAkSDAoEU2l6ZRgIIAEoBRIPCgdDb250ZW50GAkgASgM",
+            "IiEKDlN0cmluZ1Jlc3BvbnNlEg8KB1BheUxvYWQYASABKAky8QYKCkdSUENT",
+            "ZXJ2ZXISOgoIUmVnaXN0ZXISEC5HUlBDU2VydmVyLlVzZXIaGi5HUlBDU2Vy",
+            "dmVyLlJlZ2lzdGVyUmVzdWx0IgASNAoFTG9naW4SEC5HUlBDU2VydmVyLlVz",
+            "ZXIaFy5HUlBDU2VydmVyLkxvZ2luUmVzdWx0IgASQAoGTG9nb3V0EhguR1JQ",
+            "Q1NlcnZlci5FbXB0eVJlcXVlc3QaGi5HUlBDU2VydmVyLlN0cmluZ1Jlc3Bv",
+            "bnNlIgASPwoFU2hhcmUSGC5HUlBDU2VydmVyLlNoYXJlUmVxdWVzdBoaLkdS",
+            "UENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJFCgxDcmVhdGVGb2xkZXISFy5H",
+            "UlBDU2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNw",
+            "b25zZSIAEkEKBlJlbmFtZRIZLkdSUENTZXJ2ZXIuUmVuYW1lUmVxdWVzdBoa",
+            "LkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABI/CgZEZWxldGUSFy5HUlBD",
+            "U2VydmVyLlBhdGhSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25z",
+            "ZSIAEkEKBlVwbG9hZBIZLkdSUENTZXJ2ZXIuVXBsb2FkUmVxdWVzdBoaLkdS",
+            "UENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJHCgtVcGxvYWRCbG9jaxIYLkdS",
+            "UENTZXJ2ZXIuQmxvY2tSZXF1ZXN0GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNw",
+            "b25zZSIAKAESQQoIRG93bmxvYWQSFy5HUlBDU2VydmVyLlBhdGhSZXF1ZXN0",
+            "GhouR1JQQ1NlcnZlci5TdHJpbmdSZXNwb25zZSIAEkkKDURvd25sb2FkQmxv",
+            "Y2sSGC5HUlBDU2VydmVyLkJsb2NrUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3Ry",
+            "aW5nUmVzcG9uc2UiACgBEkQKC0dldE1ldGFkYXRhEhcuR1JQQ1NlcnZlci5Q",
+            "YXRoUmVxdWVzdBoaLkdSUENTZXJ2ZXIuU3RyaW5nUmVzcG9uc2UiABJDCgpM",
+            "aXN0Rm9sZGVyEhcuR1JQQ1NlcnZlci5QYXRoUmVxdWVzdBoaLkdSUENTZXJ2",
+            "ZXIuU3RyaW5nUmVzcG9uc2UiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -74,13 +70,12 @@ namespace GRPCServer {
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RegisterResult), global::GRPCServer.RegisterResult.Parser, new[]{ "Succeed", "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.LoginResult), global::GRPCServer.LoginResult.Parser, new[]{ "Succeed", "SessionId", "FirstName", "LastName", "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.EmptyRequest), global::GRPCServer.EmptyRequest.Parser, new[]{ "SessionId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRequest), global::GRPCServer.PathRequest.Parser, new[]{ "SessionId", "Path" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRequest), global::GRPCServer.PathRequest.Parser, new[]{ "SessionId", "Path", "ModifiedTime" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.RenameRequest), global::GRPCServer.RenameRequest.Parser, new[]{ "SessionId", "Path", "OldPath" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.ShareRequest), global::GRPCServer.ShareRequest.Parser, new[]{ "SessionId", "Path", "Dst" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.UploadRequest), global::GRPCServer.UploadRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "ModifiedTime", "Size" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.UploadRequest), global::GRPCServer.UploadRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Hashs" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.PathRevRequest), global::GRPCServer.PathRevRequest.Parser, new[]{ "SessionId", "Path", "BaseRev" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "BaseRev", "Rev", "BaseIndex", "Index", "Confident", "Hash", "Content" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockResponse), global::GRPCServer.BlockResponse.Parser, new[]{ "Path", "Rev", "BlockIndex", "Hash", "Content" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.BlockRequest), global::GRPCServer.BlockRequest.Parser, new[]{ "SessionId", "Path", "ModifiedTime", "BaseRev", "OtType", "Index", "Hash", "Size", "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GRPCServer.StringResponse), global::GRPCServer.StringResponse.Parser, new[]{ "PayLoad" }, null, null, null)
           }));
     }
@@ -855,6 +850,7 @@ namespace GRPCServer {
     public PathRequest(PathRequest other) : this() {
       sessionId_ = other.sessionId_;
       path_ = other.path_;
+      modifiedTime_ = other.modifiedTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -885,6 +881,17 @@ namespace GRPCServer {
       }
     }
 
+    /// <summary>Field number for the "ModifiedTime" field.</summary>
+    public const int ModifiedTimeFieldNumber = 3;
+    private long modifiedTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long ModifiedTime {
+      get { return modifiedTime_; }
+      set {
+        modifiedTime_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as PathRequest);
@@ -900,6 +907,7 @@ namespace GRPCServer {
       }
       if (SessionId != other.SessionId) return false;
       if (Path != other.Path) return false;
+      if (ModifiedTime != other.ModifiedTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -908,6 +916,7 @@ namespace GRPCServer {
       int hash = 1;
       if (SessionId.Length != 0) hash ^= SessionId.GetHashCode();
       if (Path.Length != 0) hash ^= Path.GetHashCode();
+      if (ModifiedTime != 0L) hash ^= ModifiedTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -929,6 +938,10 @@ namespace GRPCServer {
         output.WriteRawTag(18);
         output.WriteString(Path);
       }
+      if (ModifiedTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ModifiedTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -942,6 +955,9 @@ namespace GRPCServer {
       }
       if (Path.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
+      }
+      if (ModifiedTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ModifiedTime);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -960,6 +976,9 @@ namespace GRPCServer {
       if (other.Path.Length != 0) {
         Path = other.Path;
       }
+      if (other.ModifiedTime != 0L) {
+        ModifiedTime = other.ModifiedTime;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -977,6 +996,10 @@ namespace GRPCServer {
           }
           case 18: {
             Path = input.ReadString();
+            break;
+          }
+          case 24: {
+            ModifiedTime = input.ReadInt64();
             break;
           }
         }
@@ -1383,8 +1406,7 @@ namespace GRPCServer {
       sessionId_ = other.sessionId_;
       path_ = other.path_;
       baseRev_ = other.baseRev_;
-      modifiedTime_ = other.modifiedTime_;
-      size_ = other.size_;
+      hashs_ = other.hashs_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1426,25 +1448,14 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "ModifiedTime" field.</summary>
-    public const int ModifiedTimeFieldNumber = 4;
-    private long modifiedTime_;
+    /// <summary>Field number for the "Hashs" field.</summary>
+    public const int HashsFieldNumber = 4;
+    private string hashs_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long ModifiedTime {
-      get { return modifiedTime_; }
+    public string Hashs {
+      get { return hashs_; }
       set {
-        modifiedTime_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Size" field.</summary>
-    public const int SizeFieldNumber = 5;
-    private long size_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public long Size {
-      get { return size_; }
-      set {
-        size_ = value;
+        hashs_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1464,8 +1475,7 @@ namespace GRPCServer {
       if (SessionId != other.SessionId) return false;
       if (Path != other.Path) return false;
       if (BaseRev != other.BaseRev) return false;
-      if (ModifiedTime != other.ModifiedTime) return false;
-      if (Size != other.Size) return false;
+      if (Hashs != other.Hashs) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1475,8 +1485,7 @@ namespace GRPCServer {
       if (SessionId.Length != 0) hash ^= SessionId.GetHashCode();
       if (Path.Length != 0) hash ^= Path.GetHashCode();
       if (BaseRev.Length != 0) hash ^= BaseRev.GetHashCode();
-      if (ModifiedTime != 0L) hash ^= ModifiedTime.GetHashCode();
-      if (Size != 0L) hash ^= Size.GetHashCode();
+      if (Hashs.Length != 0) hash ^= Hashs.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1502,13 +1511,9 @@ namespace GRPCServer {
         output.WriteRawTag(26);
         output.WriteString(BaseRev);
       }
-      if (ModifiedTime != 0L) {
-        output.WriteRawTag(32);
-        output.WriteInt64(ModifiedTime);
-      }
-      if (Size != 0L) {
-        output.WriteRawTag(40);
-        output.WriteInt64(Size);
+      if (Hashs.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Hashs);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1527,11 +1532,8 @@ namespace GRPCServer {
       if (BaseRev.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseRev);
       }
-      if (ModifiedTime != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ModifiedTime);
-      }
-      if (Size != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Size);
+      if (Hashs.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hashs);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1553,11 +1555,8 @@ namespace GRPCServer {
       if (other.BaseRev.Length != 0) {
         BaseRev = other.BaseRev;
       }
-      if (other.ModifiedTime != 0L) {
-        ModifiedTime = other.ModifiedTime;
-      }
-      if (other.Size != 0L) {
-        Size = other.Size;
+      if (other.Hashs.Length != 0) {
+        Hashs = other.Hashs;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1582,12 +1581,8 @@ namespace GRPCServer {
             BaseRev = input.ReadString();
             break;
           }
-          case 32: {
-            ModifiedTime = input.ReadInt64();
-            break;
-          }
-          case 40: {
-            Size = input.ReadInt64();
+          case 34: {
+            Hashs = input.ReadString();
             break;
           }
         }
@@ -1808,12 +1803,12 @@ namespace GRPCServer {
     public BlockRequest(BlockRequest other) : this() {
       sessionId_ = other.sessionId_;
       path_ = other.path_;
+      modifiedTime_ = other.modifiedTime_;
       baseRev_ = other.baseRev_;
-      rev_ = other.rev_;
-      baseIndex_ = other.baseIndex_;
+      otType_ = other.otType_;
       index_ = other.index_;
-      confident_ = other.confident_;
       hash_ = other.hash_;
+      size_ = other.size_;
       content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1845,8 +1840,19 @@ namespace GRPCServer {
       }
     }
 
+    /// <summary>Field number for the "ModifiedTime" field.</summary>
+    public const int ModifiedTimeFieldNumber = 3;
+    private long modifiedTime_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long ModifiedTime {
+      get { return modifiedTime_; }
+      set {
+        modifiedTime_ = value;
+      }
+    }
+
     /// <summary>Field number for the "BaseRev" field.</summary>
-    public const int BaseRevFieldNumber = 3;
+    public const int BaseRevFieldNumber = 4;
     private string baseRev_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string BaseRev {
@@ -1856,25 +1862,14 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "Rev" field.</summary>
-    public const int RevFieldNumber = 4;
-    private string rev_ = "";
+    /// <summary>Field number for the "OtType" field.</summary>
+    public const int OtTypeFieldNumber = 5;
+    private string otType_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Rev {
-      get { return rev_; }
+    public string OtType {
+      get { return otType_; }
       set {
-        rev_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "BaseIndex" field.</summary>
-    public const int BaseIndexFieldNumber = 5;
-    private string baseIndex_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string BaseIndex {
-      get { return baseIndex_; }
-      set {
-        baseIndex_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        otType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1889,25 +1884,25 @@ namespace GRPCServer {
       }
     }
 
-    /// <summary>Field number for the "Confident" field.</summary>
-    public const int ConfidentFieldNumber = 7;
-    private bool confident_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Confident {
-      get { return confident_; }
-      set {
-        confident_ = value;
-      }
-    }
-
     /// <summary>Field number for the "Hash" field.</summary>
-    public const int HashFieldNumber = 8;
+    public const int HashFieldNumber = 7;
     private string hash_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Hash {
       get { return hash_; }
       set {
         hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Size" field.</summary>
+    public const int SizeFieldNumber = 8;
+    private int size_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Size {
+      get { return size_; }
+      set {
+        size_ = value;
       }
     }
 
@@ -1937,12 +1932,12 @@ namespace GRPCServer {
       }
       if (SessionId != other.SessionId) return false;
       if (Path != other.Path) return false;
+      if (ModifiedTime != other.ModifiedTime) return false;
       if (BaseRev != other.BaseRev) return false;
-      if (Rev != other.Rev) return false;
-      if (BaseIndex != other.BaseIndex) return false;
+      if (OtType != other.OtType) return false;
       if (Index != other.Index) return false;
-      if (Confident != other.Confident) return false;
       if (Hash != other.Hash) return false;
+      if (Size != other.Size) return false;
       if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1952,12 +1947,12 @@ namespace GRPCServer {
       int hash = 1;
       if (SessionId.Length != 0) hash ^= SessionId.GetHashCode();
       if (Path.Length != 0) hash ^= Path.GetHashCode();
+      if (ModifiedTime != 0L) hash ^= ModifiedTime.GetHashCode();
       if (BaseRev.Length != 0) hash ^= BaseRev.GetHashCode();
-      if (Rev.Length != 0) hash ^= Rev.GetHashCode();
-      if (BaseIndex.Length != 0) hash ^= BaseIndex.GetHashCode();
+      if (OtType.Length != 0) hash ^= OtType.GetHashCode();
       if (Index != 0) hash ^= Index.GetHashCode();
-      if (Confident != false) hash ^= Confident.GetHashCode();
       if (Hash.Length != 0) hash ^= Hash.GetHashCode();
+      if (Size != 0) hash ^= Size.GetHashCode();
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1980,29 +1975,29 @@ namespace GRPCServer {
         output.WriteRawTag(18);
         output.WriteString(Path);
       }
+      if (ModifiedTime != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(ModifiedTime);
+      }
       if (BaseRev.Length != 0) {
-        output.WriteRawTag(26);
+        output.WriteRawTag(34);
         output.WriteString(BaseRev);
       }
-      if (Rev.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Rev);
-      }
-      if (BaseIndex.Length != 0) {
+      if (OtType.Length != 0) {
         output.WriteRawTag(42);
-        output.WriteString(BaseIndex);
+        output.WriteString(OtType);
       }
       if (Index != 0) {
         output.WriteRawTag(48);
         output.WriteInt32(Index);
       }
-      if (Confident != false) {
-        output.WriteRawTag(56);
-        output.WriteBool(Confident);
-      }
       if (Hash.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(58);
         output.WriteString(Hash);
+      }
+      if (Size != 0) {
+        output.WriteRawTag(64);
+        output.WriteInt32(Size);
       }
       if (Content.Length != 0) {
         output.WriteRawTag(74);
@@ -2022,23 +2017,23 @@ namespace GRPCServer {
       if (Path.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
       }
+      if (ModifiedTime != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ModifiedTime);
+      }
       if (BaseRev.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseRev);
       }
-      if (Rev.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Rev);
-      }
-      if (BaseIndex.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(BaseIndex);
+      if (OtType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OtType);
       }
       if (Index != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Index);
       }
-      if (Confident != false) {
-        size += 1 + 1;
-      }
       if (Hash.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
+      }
+      if (Size != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Size);
       }
       if (Content.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
@@ -2060,23 +2055,23 @@ namespace GRPCServer {
       if (other.Path.Length != 0) {
         Path = other.Path;
       }
+      if (other.ModifiedTime != 0L) {
+        ModifiedTime = other.ModifiedTime;
+      }
       if (other.BaseRev.Length != 0) {
         BaseRev = other.BaseRev;
       }
-      if (other.Rev.Length != 0) {
-        Rev = other.Rev;
-      }
-      if (other.BaseIndex.Length != 0) {
-        BaseIndex = other.BaseIndex;
+      if (other.OtType.Length != 0) {
+        OtType = other.OtType;
       }
       if (other.Index != 0) {
         Index = other.Index;
       }
-      if (other.Confident != false) {
-        Confident = other.Confident;
-      }
       if (other.Hash.Length != 0) {
         Hash = other.Hash;
+      }
+      if (other.Size != 0) {
+        Size = other.Size;
       }
       if (other.Content.Length != 0) {
         Content = other.Content;
@@ -2100,272 +2095,31 @@ namespace GRPCServer {
             Path = input.ReadString();
             break;
           }
-          case 26: {
-            BaseRev = input.ReadString();
+          case 24: {
+            ModifiedTime = input.ReadInt64();
             break;
           }
           case 34: {
-            Rev = input.ReadString();
+            BaseRev = input.ReadString();
             break;
           }
           case 42: {
-            BaseIndex = input.ReadString();
+            OtType = input.ReadString();
             break;
           }
           case 48: {
             Index = input.ReadInt32();
             break;
           }
-          case 56: {
-            Confident = input.ReadBool();
+          case 58: {
+            Hash = input.ReadString();
             break;
           }
-          case 66: {
-            Hash = input.ReadString();
+          case 64: {
+            Size = input.ReadInt32();
             break;
           }
           case 74: {
-            Content = input.ReadBytes();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class BlockResponse : pb::IMessage<BlockResponse> {
-    private static readonly pb::MessageParser<BlockResponse> _parser = new pb::MessageParser<BlockResponse>(() => new BlockResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<BlockResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[10]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BlockResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BlockResponse(BlockResponse other) : this() {
-      path_ = other.path_;
-      rev_ = other.rev_;
-      blockIndex_ = other.blockIndex_;
-      hash_ = other.hash_;
-      content_ = other.content_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BlockResponse Clone() {
-      return new BlockResponse(this);
-    }
-
-    /// <summary>Field number for the "Path" field.</summary>
-    public const int PathFieldNumber = 1;
-    private string path_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Path {
-      get { return path_; }
-      set {
-        path_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Rev" field.</summary>
-    public const int RevFieldNumber = 2;
-    private string rev_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Rev {
-      get { return rev_; }
-      set {
-        rev_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "BlockIndex" field.</summary>
-    public const int BlockIndexFieldNumber = 3;
-    private int blockIndex_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int BlockIndex {
-      get { return blockIndex_; }
-      set {
-        blockIndex_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Hash" field.</summary>
-    public const int HashFieldNumber = 4;
-    private string hash_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Hash {
-      get { return hash_; }
-      set {
-        hash_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "Content" field.</summary>
-    public const int ContentFieldNumber = 5;
-    private pb::ByteString content_ = pb::ByteString.Empty;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pb::ByteString Content {
-      get { return content_; }
-      set {
-        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as BlockResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(BlockResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Path != other.Path) return false;
-      if (Rev != other.Rev) return false;
-      if (BlockIndex != other.BlockIndex) return false;
-      if (Hash != other.Hash) return false;
-      if (Content != other.Content) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Path.Length != 0) hash ^= Path.GetHashCode();
-      if (Rev.Length != 0) hash ^= Rev.GetHashCode();
-      if (BlockIndex != 0) hash ^= BlockIndex.GetHashCode();
-      if (Hash.Length != 0) hash ^= Hash.GetHashCode();
-      if (Content.Length != 0) hash ^= Content.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Path.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Path);
-      }
-      if (Rev.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(Rev);
-      }
-      if (BlockIndex != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(BlockIndex);
-      }
-      if (Hash.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(Hash);
-      }
-      if (Content.Length != 0) {
-        output.WriteRawTag(42);
-        output.WriteBytes(Content);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Path.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
-      }
-      if (Rev.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Rev);
-      }
-      if (BlockIndex != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BlockIndex);
-      }
-      if (Hash.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Hash);
-      }
-      if (Content.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(BlockResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Path.Length != 0) {
-        Path = other.Path;
-      }
-      if (other.Rev.Length != 0) {
-        Rev = other.Rev;
-      }
-      if (other.BlockIndex != 0) {
-        BlockIndex = other.BlockIndex;
-      }
-      if (other.Hash.Length != 0) {
-        Hash = other.Hash;
-      }
-      if (other.Content.Length != 0) {
-        Content = other.Content;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Path = input.ReadString();
-            break;
-          }
-          case 18: {
-            Rev = input.ReadString();
-            break;
-          }
-          case 24: {
-            BlockIndex = input.ReadInt32();
-            break;
-          }
-          case 34: {
-            Hash = input.ReadString();
-            break;
-          }
-          case 42: {
             Content = input.ReadBytes();
             break;
           }
@@ -2383,7 +2137,7 @@ namespace GRPCServer {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[11]; }
+      get { return global::GRPCServer.GRPCServerReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -53,6 +53,21 @@ namespace CFCloudClient.FileUtil
                 System.IO.File.Delete(TempPath);
         }
 
+        public bool isBinary()
+        {
+            for (int i = 0; i < stream.Length; i++)
+            {
+                int c = stream.ReadByte();
+                if (c == 0)
+                {
+                    reset();
+                    return true;
+                }
+            }
+            reset();
+            return false;
+        }
+
         public void CDC_Chunking()
         {
             chunks = new List<Chunk>();
@@ -95,6 +110,12 @@ namespace CFCloudClient.FileUtil
         public bool hasNextBlock()
         {
             return index < chunks.Count;
+        }
+
+        public void reset()
+        {
+            stream.Seek(0, SeekOrigin.Begin);
+            index = 0;
         }
 
         public Block getNextBlock()

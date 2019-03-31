@@ -15,8 +15,8 @@ namespace CFCloudClient.BackgroundWorks
     {
         private static string _SessionId;
         private static Channel channel = new Channel(Properties.Resources.Host, ChannelCredentials.Insecure);
-        private static Channel heartBeatChannel = new Channel(Properties.Resources.HeartBeatHost, ChannelCredentials.Insecure);
-        private static bool Online = true;
+        //private static Channel heartBeatChannel = new Channel(Properties.Resources.HeartBeatHost, ChannelCredentials.Insecure);
+        //private static bool Online = true;
 
         public static NetworkResults.RegisterResult Register(Models.User user)
         {
@@ -118,12 +118,12 @@ namespace CFCloudClient.BackgroundWorks
 
             }
             
-            BackgroundWorks.HeartBeat.Stop();
+            //BackgroundWorks.HeartBeat.Stop();
             channel.ShutdownAsync().Wait();
-            heartBeatChannel.ShutdownAsync().Wait();
+            //heartBeatChannel.ShutdownAsync().Wait();
         }
 
-        public static List<Models.FileChangeEvent> HeartBeat()
+        /*public static List<Models.FileChangeEvent> HeartBeat()
         {
             var client = new GRPCServer.GRPCServer.GRPCServerClient(heartBeatChannel);
             StringResponse response = null;
@@ -182,7 +182,7 @@ namespace CFCloudClient.BackgroundWorks
                 eventsList.Add(e);
             }
             return eventsList;
-        }
+        }*/
         
         public static Models.Metadata Share(string path, string email)
         {
@@ -217,7 +217,8 @@ namespace CFCloudClient.BackgroundWorks
                     response = client.CreateFolder(new PathRequest
                     {
                         SessionId = _SessionId,
-                        Path = path
+                        Path = path,
+                        ModifiedTime = (new DirectoryInfo(Util.Utils.CloudPathtoLocalPath(path)).LastWriteTimeUtc.Ticks - 621355968000000000) / 10000
                     });
                 }
                 catch (RpcException)
@@ -284,9 +285,25 @@ namespace CFCloudClient.BackgroundWorks
             return Models.Metadata.FromJson(response.PayLoad);
         }
         
-        public static Models.Metadata Upload(string path, string baseRev = null)
+        public static Models.Metadata Upload(string path, string baseRev = null, string localpath = null)
         {
-            var info = new FileInfo(Util.Utils.CloudPathtoLocalPath(path));
+            if (localpath == null)
+                localpath = Util.Utils.CloudPathtoLocalPath(path);
+            long modified_time = (new FileInfo(localpath).LastWriteTimeUtc.Ticks - 621355968000000000) / 10000;
+            FileUtil.File UploadFile = new FileUtil.File();
+            UploadFile.Path = Util.Utils.CloudPathtoLocalPath(path);
+            if (!UploadFile.OpenRead())
+                return null;
+            string ottype = UploadFile.isBinary() ? "b" : "s";
+            UploadFile.CDC_Chunking();
+            string hashs = "";
+            while (UploadFile.hasNextBlock())
+            {
+                FileUtil.Block block = UploadFile.getNextBlock();
+                hashs += block.adler32 + block.md5;
+            }
+            UploadFile.reset();
+            
             var client = new GRPCServer.GRPCServer.GRPCServerClient(channel);
             StringResponse response = null;
             try
@@ -296,8 +313,7 @@ namespace CFCloudClient.BackgroundWorks
                     SessionId = _SessionId,
                     Path = path,
                     BaseRev = baseRev,
-                    ModifiedTime = info.LastWriteTimeUtc.Ticks,
-                    Size = info.Length
+                    Hashs = hashs
                 });
             }
             catch (RpcException)
@@ -307,158 +323,49 @@ namespace CFCloudClient.BackgroundWorks
 
             if (response == null)
                 return null;
-            JObject obj = JObject.Parse(response.PayLoad);
-            string rev = obj["rev"].ToString();
-            JArray blocks = (JArray)obj["blocks"];
-            Dictionary<string, Dictionary<string, FileUtil.CloudBlock>> cloudBlocks = new Dictionary<string, Dictionary<string, FileUtil.CloudBlock>>();
-            for (int i = 0; i < blocks.Count; i++)
+            string _hashs = response.PayLoad;
+            int hashcount = _hashs.Length / 20;
+            List<string> cloudhashs = new List<string>();
+            for (int i = 0; i < hashcount; i++)
             {
-                FileUtil.CloudBlock cb = new FileUtil.CloudBlock
-                {
-                    index = i,
-                    adler32 = blocks[i]["adler32"].ToString(),
-                    md5 = blocks[i]["md5"].ToString()
-                };
-                if (cloudBlocks.ContainsKey(cb.adler32))
-                {
-                    cloudBlocks[cb.adler32].Add(cb.md5, cb);
-                }
-                else
-                {
-                    cloudBlocks.Add(cb.adler32, new Dictionary<string, FileUtil.CloudBlock>());
-                    cloudBlocks[cb.adler32].Add(cb.md5, cb);
-                }
+                cloudhashs.Add(_hashs.Substring(20 * i, 20));
             }
 
-            FileUtil.File UploadFile = new FileUtil.File();
-            UploadFile.Path = Util.Utils.CloudPathtoLocalPath(path);
-            UploadFile.Rev = rev;
-            if (!UploadFile.OpenRead())
-                return null;
-            UploadFile.CDC_Chunking();
-            try
-            {
-                var requests = client.UploadBlock().RequestStream;
-                if (baseRev == null)
+            try { 
+                var reqres = client.UploadBlock();
+                var requests = reqres.RequestStream;
+                while (UploadFile.hasNextBlock())
                 {
-                    while (UploadFile.hasNextBlock())
+                    FileUtil.Block block = UploadFile.getNextBlock();
+                    string hash = block.adler32 + block.md5;
+                    Google.Protobuf.ByteString content;
+                    if (cloudhashs.Contains(hash))
+                        content = Google.Protobuf.ByteString.CopyFrom(block.data);
+                    else
+                        content = null;
+                    BlockRequest blockRequest = new BlockRequest
                     {
-                        FileUtil.Block block = UploadFile.getNextBlock();
-                        BlockRequest blockRequest = new BlockRequest
-                        {
-                            SessionId = _SessionId,
-                            Path = path,
-                            BaseRev = baseRev,
-                            Rev = rev,
-                            BaseIndex = null,
-                            Index = block.index,
-                            Confident = true,
-                            Hash = block.adler32 + block.md5,
-                            Content = Google.Protobuf.ByteString.CopyFrom(block.data)
-                        };
-                        requests.WriteAsync(blockRequest).Wait();
-                    }
-                }
-                else
-                {
-                    List<BlockRequest> WaitRequests = new List<BlockRequest>();
-                    int lastIndex = 0;
-                    int maxIndex = blocks.Count;
-                    while (UploadFile.hasNextBlock())
-                    {
-                        FileUtil.Block block = UploadFile.getNextBlock();
-                        FileUtil.CloudBlock ret = null;
-                        if (cloudBlocks.ContainsKey(block.adler32))
-                        {
-                            if (cloudBlocks[block.adler32].ContainsKey(block.md5))
-                                ret = cloudBlocks[block.adler32][block.md5];
-                        }
-                        if (ret != null)
-                        {
-                            BlockRequest blockRequest = new BlockRequest
-                            {
-                                SessionId = _SessionId,
-                                Path = path,
-                                BaseRev = baseRev,
-                                Rev = rev,
-                                BaseIndex = ret.index.ToString(),
-                                Index = block.index,
-                                Confident = true,
-                                Hash = block.adler32 + block.md5,
-                                Content = null
-                            };
-                            if (WaitRequests.Count > 0 && ret.index > lastIndex)
-                            {
-                                string baseIndex;
-                                if (ret.index - lastIndex == 1)
-                                    baseIndex = null;
-                                else
-                                {
-                                    baseIndex = (lastIndex + 1).ToString();
-                                    for (int i = lastIndex + 2; i < ret.index; ++i)
-                                    {
-                                        baseIndex += "|" + i;
-                                    }
-                                }
-                                foreach (var request in WaitRequests)
-                                {
-                                    request.BaseIndex = baseIndex;
-                                    request.Confident = false;
-                                    requests.WriteAsync(request).Wait();
-                                }
-                                WaitRequests.Clear();
-                                lastIndex = ret.index;
-                            }
-                            requests.WriteAsync(blockRequest).Wait();
-                        }
-                        else
-                        {
-                            BlockRequest blockRequest = new BlockRequest
-                            {
-                                SessionId = _SessionId,
-                                Path = path,
-                                BaseRev = baseRev,
-                                Rev = rev,
-                                Index = block.index,
-                                Hash = block.adler32 + block.md5,
-                                Content = Google.Protobuf.ByteString.CopyFrom(block.data)
-                            };
-                            WaitRequests.Add(blockRequest);
-                        }
-                    }
-                    if (WaitRequests.Count != 0)
-                    {
-                        string baseIndex;
-                        if (maxIndex - lastIndex <= 1)
-                            baseIndex = null;
-                        else
-                        {
-                            baseIndex = (lastIndex + 1).ToString();
-                            for (int i = lastIndex + 2; i < maxIndex; ++i)
-                            {
-                                baseIndex += "|" + i;
-                            }
-                            foreach (var request in WaitRequests)
-                            {
-                                request.BaseIndex = baseIndex;
-                                request.Confident = false;
-                                requests.WriteAsync(request).Wait();
-                            }
-                            WaitRequests.Clear();
-                        }
-                    }
+                        SessionId = _SessionId,
+                        Path = path,
+                        ModifiedTime = modified_time,
+                        BaseRev = baseRev,
+                        OtType = ottype,
+                        Index = block.index,
+                        Hash = hash,
+                        Size = block.length,
+                        Content = content
+                    };
+                    requests.WriteAsync(blockRequest).Wait();
                 }
                 requests.CompleteAsync().Wait();
                 UploadFile.Close();
+                return Models.Metadata.FromJson(reqres.ResponseAsync.Result.PayLoad);
             }
             catch (RpcException)
             {
                 UploadFile.Close();
                 return null;
             }
-
-            Models.Metadata metadata = GetMetadata(path);
-            return metadata;
         }
         
         public static bool Download(string path)
@@ -482,15 +389,15 @@ namespace CFCloudClient.BackgroundWorks
                 return false;
             JObject obj = JObject.Parse(response.PayLoad);
             string rev = obj["rev"].ToString();
-            JArray blocks = (JArray)obj["blocks"];
+            JArray hashs = (JArray)obj["hashs"];
             List<FileUtil.CloudBlock> cloudBlocks = new List<FileUtil.CloudBlock>();
-            for (int i = 0; i < blocks.Count; i++)
+            for (int i = 0; i < hashs.Count; i++)
             {
                 cloudBlocks.Add(new FileUtil.CloudBlock
                 {
                     index = i,
-                    adler32 = blocks[i]["adler32"].ToString(),
-                    md5 = blocks[i]["md5"].ToString()
+                    adler32 = hashs[i].ToString().Substring(0, 4),
+                    md5 = hashs[i].ToString().Substring(4, 16)
                 });
             }
 
@@ -511,8 +418,6 @@ namespace CFCloudClient.BackgroundWorks
 
             var reqres = client.DownloadBlock();
             var requests = reqres.RequestStream;
-            var responses = reqres.ResponseStream;
-
             foreach (var block in cloudBlocks)
             {
                 if (!localBlocks.ContainsKey(block.adler32 + block.md5))
@@ -523,8 +428,7 @@ namespace CFCloudClient.BackgroundWorks
                         {
                             SessionId = _SessionId,
                             Path = path,
-                            Rev = rev,
-                            Index = block.index,
+                            BaseRev = rev,
                             Hash = block.adler32 + block.md5,
                         }).Wait();
                     }
@@ -536,6 +440,15 @@ namespace CFCloudClient.BackgroundWorks
                 }
             }
             requests.CompleteAsync().Wait();
+
+            string resp = reqres.ResponseAsync.Result.PayLoad;
+            JObject robj = JObject.Parse(resp);
+            JArray blocks = (JArray)robj["blocks"];
+            Dictionary<string, string> clouddatas = new Dictionary<string, string>();
+            foreach (var item in blocks)
+            {
+                clouddatas.Add(item["hash"].ToString(), item["data"].ToString());
+            }
             foreach (var block in cloudBlocks)
             {
                 if (localBlocks.ContainsKey(block.adler32 + block.md5))
@@ -545,8 +458,26 @@ namespace CFCloudClient.BackgroundWorks
                 }
                 else
                 {
-                    if (responses.MoveNext().Result)
-                        DownloadFile.WriteTemp(responses.Current.Content.ToByteArray());
+                    if (clouddatas.ContainsKey(block.adler32 + block.md5))
+                    {
+                        char[] clouddata = clouddatas[block.adler32 + block.md5].ToCharArray();
+                        byte[] data = new byte[clouddata.Length / 2];
+                        for (int i = 0; i < clouddata.Length / 2; i++)
+                        {
+                            char b1 = clouddata[2 * i];
+                            char b2 = clouddata[2 * i + 1];
+                            if (b1 >= '0' && b1 <= '9')
+                                data[i] = (byte)(b1 - '0');
+                            else
+                                data[i] = (byte)(b1 - 'a' + 10);
+                            data[i] *= 16;
+                            if (b2 >= '0' && b2 <= '9')
+                                data[i] += (byte)(b2 - '0');
+                            else
+                                data[i] += (byte)(b2 - 'a' + 10);
+                        }
+                        DownloadFile.WriteTemp(data);
+                    }
                     else
                         return false;
                 }
