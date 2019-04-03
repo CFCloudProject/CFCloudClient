@@ -326,11 +326,11 @@ namespace CFCloudClient.BackgroundWorks
             if (response == null)
                 return null;
             string _hashs = response.PayLoad;
-            int hashcount = _hashs.Length / 20;
+            int hashcount = _hashs.Length / 40;
             List<string> cloudhashs = new List<string>();
             for (int i = 0; i < hashcount; i++)
             {
-                cloudhashs.Add(_hashs.Substring(20 * i, 20));
+                cloudhashs.Add(_hashs.Substring(40 * i, 40));
             }
 
             try { 
@@ -353,11 +353,12 @@ namespace CFCloudClient.BackgroundWorks
                         OtType = ottype,
                         Index = block.index,
                         Hash = hash,
-                        Size = block.length,
-                        Content = content
+                        Size = block.length
                     };
                     if (baseRev != null)
                         blockRequest.BaseRev = baseRev;
+                    if (content != null)
+                        blockRequest.Content = content;
                     requests.WriteAsync(blockRequest).Wait();
                 }
                 requests.CompleteAsync().Wait();
@@ -399,8 +400,8 @@ namespace CFCloudClient.BackgroundWorks
                 cloudBlocks.Add(new FileUtil.CloudBlock
                 {
                     index = i,
-                    adler32 = hashs[i].ToString().Substring(0, 4),
-                    md5 = hashs[i].ToString().Substring(4, 16)
+                    adler32 = hashs[i].ToString().Substring(0, 8),
+                    md5 = hashs[i].ToString().Substring(8, 32)
                 });
             }
 

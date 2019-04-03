@@ -35,13 +35,13 @@ namespace CFCloudClient.Models
             metadata.FullPath = json["fullpath"].ToString();
             metadata.size = long.Parse(json["size"].ToString());
             metadata.Rev = json["rev"].ToString();
-            metadata.CreationTime = new DateTime(long.Parse(json["creation_time"].ToString()), DateTimeKind.Utc);
-            metadata.ModifiedTime = new DateTime(long.Parse(json["modified_time"].ToString()), DateTimeKind.Utc);
+            metadata.CreationTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(long.Parse(json["creation_time"].ToString()));
+            metadata.ModifiedTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(long.Parse(json["modified_time"].ToString()));
             metadata.Modifier = User.FromJson(json["modifier"]);
             metadata.Owner = User.FromJson(json["owner"]);
             metadata.isShared = json["is_shared"].ToString().Equals("true");
             metadata.SharedUsers = new List<User>();
-            JArray sharedUsers = (JArray)json["sharedusers"];
+            JArray sharedUsers = (JArray)json["shared_users"];
             foreach (var item in sharedUsers)
             {
                 metadata.SharedUsers.Add(User.FromJson(item));

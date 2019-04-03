@@ -13,7 +13,7 @@ namespace CFCloudClient.FileUtil
         const int WINSIZE = 64;
         const int AVERAGE_BITS = 13;
         const int MINSIZE = 1024;
-        const int MAXSIZE = 64 * 1024;
+        const int MAXSIZE = 32 * 1024;
 
         const int MASK = ((1 << AVERAGE_BITS) - 1);
         const int POL_SHIFT = POLYNOMIAL_DEGREE - 8;

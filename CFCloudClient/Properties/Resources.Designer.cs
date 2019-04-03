@@ -115,7 +115,7 @@ namespace CFCloudClient.Properties {
         }
         
         /// <summary>
-        ///   查找类似 13.58.187.140:5001 的本地化字符串。
+        ///   查找类似  的本地化字符串。
         /// </summary>
         internal static string HeartBeatHost {
             get {
@@ -124,7 +124,7 @@ namespace CFCloudClient.Properties {
         }
         
         /// <summary>
-        ///   查找类似 54.161.84.186:6060 的本地化字符串。
+        ///   查找类似  的本地化字符串。
         /// </summary>
         internal static string Host {
             get {

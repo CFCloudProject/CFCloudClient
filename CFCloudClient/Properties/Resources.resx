@@ -136,10 +136,10 @@
     <value>Are you sure to delete this folder and all the files in it?</value>
   </data>
   <data name="HeartBeatHost" xml:space="preserve">
-    <value>13.58.187.140:5001</value>
+    <value />
   </data>
   <data name="Host" xml:space="preserve">
-    <value>54.161.84.186:6060</value>
+    <value />
   </data>
   <data name="InputFolderName" xml:space="preserve">
     <value>Please input your new folder name:</value>
