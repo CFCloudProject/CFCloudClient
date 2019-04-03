@@ -18,7 +18,7 @@ namespace CFCloudClient.BackgroundWorks
 
         public static void Start()
         {
-            new Thread(new ThreadStart(() =>
+            /*new Thread(new ThreadStart(() =>
             {
                 while (!stop)
                 {
@@ -31,7 +31,7 @@ namespace CFCloudClient.BackgroundWorks
                         }
                     }
                 }
-            })).Start();
+            })).Start();*/
         }
     }
 }

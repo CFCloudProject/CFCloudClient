@@ -125,11 +125,11 @@ namespace CFCloudClient.FileUtil
             block.data = new byte[len];
             stream.Read(block.data, 0, len);
             block.index = index + 1;
-            ++index;
             block.adler32 = block.Adler32();
             block.md5 = block.MD5();
             block.start = (int)chunks[index].start;
             block.length = len;
+            ++index;
             return block;
         }
 

@@ -291,7 +291,7 @@ namespace CFCloudClient.BackgroundWorks
                 localpath = Util.Utils.CloudPathtoLocalPath(path);
             long modified_time = (new FileInfo(localpath).LastWriteTimeUtc.Ticks - 621355968000000000) / 10000;
             FileUtil.File UploadFile = new FileUtil.File();
-            UploadFile.Path = Util.Utils.CloudPathtoLocalPath(path);
+            UploadFile.Path = localpath;
             if (!UploadFile.OpenRead())
                 return null;
             string ottype = UploadFile.isBinary() ? "b" : "s";
