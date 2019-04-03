@@ -308,13 +308,15 @@ namespace CFCloudClient.BackgroundWorks
             StringResponse response = null;
             try
             {
-                response = client.Upload(new UploadRequest
+                var uploadrequest = new UploadRequest
                 {
                     SessionId = _SessionId,
                     Path = path,
-                    BaseRev = baseRev,
                     Hashs = hashs
-                });
+                };
+                if (baseRev != null)
+                    uploadrequest.BaseRev = baseRev;
+                response = client.Upload(uploadrequest);
             }
             catch (RpcException)
             {
@@ -348,13 +350,14 @@ namespace CFCloudClient.BackgroundWorks
                         SessionId = _SessionId,
                         Path = path,
                         ModifiedTime = modified_time,
-                        BaseRev = baseRev,
                         OtType = ottype,
                         Index = block.index,
                         Hash = hash,
                         Size = block.length,
                         Content = content
                     };
+                    if (baseRev != null)
+                        blockRequest.BaseRev = baseRev;
                     requests.WriteAsync(blockRequest).Wait();
                 }
                 requests.CompleteAsync().Wait();
