@@ -8,7 +8,7 @@ namespace CFCloudClient.FileUtil
 {
     public class CDC
     {
-        readonly ulong[] OUT_TABLE =
+        readonly ulong[] out_table =
         {
             0, 6732594018357782, 5195956652795231, 1582145096087369,
             7116410070240205, 4119957657983451, 3164290192174738, 8117305825262724,
@@ -76,7 +76,7 @@ namespace CFCloudClient.FileUtil
             3973954201171155, 7306290776909509, 8000028317405580, 3237759165449114
         };
 
-        readonly ulong[] MOD_TABLE =
+        readonly ulong[] mod_table =
         {
             0, 17349423945073011, 19955442907497365, 34698847890146022,
             39910885814994730, 49655631705097817, 57192075069408447, 69397695780292044,
@@ -162,14 +162,14 @@ namespace CFCloudClient.FileUtil
         ulong digest;
 
         bool tables_initialized = false;
-        ulong[] mod_table = new ulong[256];
-        ulong[] out_table = new ulong[256];
+        //ulong[] mod_table = new ulong[256];
+        //ulong[] out_table = new ulong[256];
 
         public Chunk last_chunk = new Chunk();
 
         public void rabin_init()
         {
-            if (!tables_initialized)
+            /*if (!tables_initialized)
             {
                 //calc_tables();
                 for (int i = 0; i < 256; i++)
@@ -178,7 +178,7 @@ namespace CFCloudClient.FileUtil
                     out_table[i] = OUT_TABLE[i];
                 }
                 tables_initialized = true;
-            }
+            }*/
 
             rabin_reset();
         }
